@@ -1,0 +1,5077 @@
+{
+  "lotteryName": "Quiniela Leidsa",
+  "lastUpdated": "18-05-2025 21:48:56",
+  "totalProcessed": 720,
+  "numbersWithData": 100,
+  "analysisPeriod": 240,
+  "totalIterations": 30,
+  "daysPerIteration": 8,
+  "positionsCount": 3,
+  "numbers": {
+    "00": {
+      "number": "00",
+      "lastSeen": "28-10-2024",
+      "daysSinceSeen": 202,
+      "positions": {
+        "first": 1,
+        "second": 0,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "28-10-2024",
+          "position": 1,
+          "daysAgo": 202
+        }
+      ]
+    },
+    "01": {
+      "number": "01",
+      "lastSeen": "29-04-2025",
+      "daysSinceSeen": 19,
+      "positions": {
+        "first": 6,
+        "second": 5,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "29-04-2025",
+          "position": 3,
+          "daysAgo": 19
+        },
+        {
+          "date": "07-04-2025",
+          "position": 1,
+          "daysAgo": 41
+        },
+        {
+          "date": "13-03-2025",
+          "position": 1,
+          "daysAgo": 66
+        },
+        {
+          "date": "29-01-2025",
+          "position": 2,
+          "daysAgo": 109
+        },
+        {
+          "date": "30-12-2024",
+          "position": 2,
+          "daysAgo": 139
+        },
+        {
+          "date": "28-12-2024",
+          "position": 1,
+          "daysAgo": 141
+        },
+        {
+          "date": "12-12-2024",
+          "position": 2,
+          "daysAgo": 157
+        },
+        {
+          "date": "05-12-2024",
+          "position": 3,
+          "daysAgo": 164
+        },
+        {
+          "date": "13-11-2024",
+          "position": 2,
+          "daysAgo": 186
+        },
+        {
+          "date": "07-11-2024",
+          "position": 1,
+          "daysAgo": 192
+        },
+        {
+          "date": "03-11-2024",
+          "position": 2,
+          "daysAgo": 196
+        },
+        {
+          "date": "09-10-2024",
+          "position": 1,
+          "daysAgo": 221
+        },
+        {
+          "date": "30-09-2024",
+          "position": 1,
+          "daysAgo": 230
+        }
+      ]
+    },
+    "02": {
+      "number": "02",
+      "lastSeen": "11-05-2025",
+      "daysSinceSeen": 7,
+      "positions": {
+        "first": 3,
+        "second": 1,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "11-05-2025",
+          "position": 1,
+          "daysAgo": 7
+        },
+        {
+          "date": "14-04-2025",
+          "position": 2,
+          "daysAgo": 34
+        },
+        {
+          "date": "20-01-2025",
+          "position": 1,
+          "daysAgo": 118
+        },
+        {
+          "date": "11-01-2025",
+          "position": 3,
+          "daysAgo": 127
+        },
+        {
+          "date": "18-12-2024",
+          "position": 3,
+          "daysAgo": 151
+        },
+        {
+          "date": "09-12-2024",
+          "position": 1,
+          "daysAgo": 160
+        },
+        {
+          "date": "09-11-2024",
+          "position": 3,
+          "daysAgo": 190
+        }
+      ]
+    },
+    "03": {
+      "number": "03",
+      "lastSeen": "14-05-2025",
+      "daysSinceSeen": 4,
+      "positions": {
+        "first": 2,
+        "second": 4,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "14-05-2025",
+          "position": 2,
+          "daysAgo": 4
+        },
+        {
+          "date": "22-04-2025",
+          "position": 1,
+          "daysAgo": 26
+        },
+        {
+          "date": "08-04-2025",
+          "position": 3,
+          "daysAgo": 40
+        },
+        {
+          "date": "23-02-2025",
+          "position": 1,
+          "daysAgo": 84
+        },
+        {
+          "date": "21-12-2024",
+          "position": 2,
+          "daysAgo": 148
+        },
+        {
+          "date": "18-11-2024",
+          "position": 2,
+          "daysAgo": 181
+        },
+        {
+          "date": "15-10-2024",
+          "position": 2,
+          "daysAgo": 215
+        },
+        {
+          "date": "12-10-2024",
+          "position": 3,
+          "daysAgo": 218
+        }
+      ]
+    },
+    "04": {
+      "number": "04",
+      "lastSeen": "10-05-2025",
+      "daysSinceSeen": 8,
+      "positions": {
+        "first": 2,
+        "second": 4,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "10-05-2025",
+          "position": 1,
+          "daysAgo": 8
+        },
+        {
+          "date": "20-03-2025",
+          "position": 1,
+          "daysAgo": 59
+        },
+        {
+          "date": "19-03-2025",
+          "position": 2,
+          "daysAgo": 60
+        },
+        {
+          "date": "19-02-2025",
+          "position": 2,
+          "daysAgo": 88
+        },
+        {
+          "date": "23-01-2025",
+          "position": 2,
+          "daysAgo": 115
+        },
+        {
+          "date": "12-11-2024",
+          "position": 2,
+          "daysAgo": 187
+        },
+        {
+          "date": "11-11-2024",
+          "position": 3,
+          "daysAgo": 188
+        }
+      ]
+    },
+    "05": {
+      "number": "05",
+      "lastSeen": "03-05-2025",
+      "daysSinceSeen": 15,
+      "positions": {
+        "first": 3,
+        "second": 3,
+        "third": 6
+      },
+      "history": [
+        {
+          "date": "03-05-2025",
+          "position": 3,
+          "daysAgo": 15
+        },
+        {
+          "date": "01-03-2025",
+          "position": 2,
+          "daysAgo": 78
+        },
+        {
+          "date": "15-02-2025",
+          "position": 3,
+          "daysAgo": 92
+        },
+        {
+          "date": "20-01-2025",
+          "position": 2,
+          "daysAgo": 118
+        },
+        {
+          "date": "17-01-2025",
+          "position": 1,
+          "daysAgo": 121
+        },
+        {
+          "date": "05-01-2025",
+          "position": 3,
+          "daysAgo": 133
+        },
+        {
+          "date": "25-11-2024",
+          "position": 1,
+          "daysAgo": 174
+        },
+        {
+          "date": "24-11-2024",
+          "position": 3,
+          "daysAgo": 175
+        },
+        {
+          "date": "03-11-2024",
+          "position": 1,
+          "daysAgo": 196
+        },
+        {
+          "date": "31-10-2024",
+          "position": 3,
+          "daysAgo": 199
+        },
+        {
+          "date": "10-10-2024",
+          "position": 2,
+          "daysAgo": 220
+        },
+        {
+          "date": "21-09-2024",
+          "position": 3,
+          "daysAgo": 239
+        }
+      ]
+    },
+    "06": {
+      "number": "06",
+      "lastSeen": "25-02-2025",
+      "daysSinceSeen": 82,
+      "positions": {
+        "first": 0,
+        "second": 2,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "25-02-2025",
+          "position": 3,
+          "daysAgo": 82
+        },
+        {
+          "date": "22-02-2025",
+          "position": 3,
+          "daysAgo": 85
+        },
+        {
+          "date": "18-02-2025",
+          "position": 2,
+          "daysAgo": 89
+        },
+        {
+          "date": "08-10-2024",
+          "position": 2,
+          "daysAgo": 222
+        }
+      ]
+    },
+    "07": {
+      "number": "07",
+      "lastSeen": "08-04-2025",
+      "daysSinceSeen": 40,
+      "positions": {
+        "first": 2,
+        "second": 4,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "08-04-2025",
+          "position": 2,
+          "daysAgo": 40
+        },
+        {
+          "date": "14-02-2025",
+          "position": 1,
+          "daysAgo": 93
+        },
+        {
+          "date": "05-02-2025",
+          "position": 1,
+          "daysAgo": 102
+        },
+        {
+          "date": "17-01-2025",
+          "position": 2,
+          "daysAgo": 121
+        },
+        {
+          "date": "29-10-2024",
+          "position": 2,
+          "daysAgo": 201
+        },
+        {
+          "date": "28-10-2024",
+          "position": 2,
+          "daysAgo": 202
+        },
+        {
+          "date": "06-10-2024",
+          "position": 3,
+          "daysAgo": 224
+        }
+      ]
+    },
+    "08": {
+      "number": "08",
+      "lastSeen": "02-05-2025",
+      "daysSinceSeen": 16,
+      "positions": {
+        "first": 5,
+        "second": 1,
+        "third": 7
+      },
+      "history": [
+        {
+          "date": "02-05-2025",
+          "position": 3,
+          "daysAgo": 16
+        },
+        {
+          "date": "21-04-2025",
+          "position": 3,
+          "daysAgo": 27
+        },
+        {
+          "date": "02-04-2025",
+          "position": 3,
+          "daysAgo": 46
+        },
+        {
+          "date": "09-03-2025",
+          "position": 3,
+          "daysAgo": 70
+        },
+        {
+          "date": "03-02-2025",
+          "position": 3,
+          "daysAgo": 104
+        },
+        {
+          "date": "18-01-2025",
+          "position": 1,
+          "daysAgo": 120
+        },
+        {
+          "date": "05-01-2025",
+          "position": 1,
+          "daysAgo": 133
+        },
+        {
+          "date": "26-12-2024",
+          "position": 1,
+          "daysAgo": 143
+        },
+        {
+          "date": "15-12-2024",
+          "position": 2,
+          "daysAgo": 154
+        },
+        {
+          "date": "22-11-2024",
+          "position": 3,
+          "daysAgo": 177
+        },
+        {
+          "date": "10-11-2024",
+          "position": 1,
+          "daysAgo": 189
+        },
+        {
+          "date": "11-10-2024",
+          "position": 3,
+          "daysAgo": 219
+        },
+        {
+          "date": "08-10-2024",
+          "position": 1,
+          "daysAgo": 222
+        }
+      ]
+    },
+    "09": {
+      "number": "09",
+      "lastSeen": "10-05-2025",
+      "daysSinceSeen": 8,
+      "positions": {
+        "first": 2,
+        "second": 2,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "10-05-2025",
+          "position": 3,
+          "daysAgo": 8
+        },
+        {
+          "date": "01-03-2025",
+          "position": 3,
+          "daysAgo": 78
+        },
+        {
+          "date": "25-01-2025",
+          "position": 3,
+          "daysAgo": 113
+        },
+        {
+          "date": "28-12-2024",
+          "position": 2,
+          "daysAgo": 141
+        },
+        {
+          "date": "14-12-2024",
+          "position": 2,
+          "daysAgo": 155
+        },
+        {
+          "date": "24-11-2024",
+          "position": 1,
+          "daysAgo": 175
+        },
+        {
+          "date": "10-10-2024",
+          "position": 1,
+          "daysAgo": 220
+        }
+      ]
+    },
+    "10": {
+      "number": "10",
+      "lastSeen": "10-03-2025",
+      "daysSinceSeen": 69,
+      "positions": {
+        "first": 2,
+        "second": 3,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "10-03-2025",
+          "position": 1,
+          "daysAgo": 69
+        },
+        {
+          "date": "04-03-2025",
+          "position": 2,
+          "daysAgo": 75
+        },
+        {
+          "date": "13-01-2025",
+          "position": 3,
+          "daysAgo": 125
+        },
+        {
+          "date": "28-11-2024",
+          "position": 1,
+          "daysAgo": 171
+        },
+        {
+          "date": "26-11-2024",
+          "position": 2,
+          "daysAgo": 173
+        },
+        {
+          "date": "08-11-2024",
+          "position": 3,
+          "daysAgo": 191
+        },
+        {
+          "date": "07-11-2024",
+          "position": 3,
+          "daysAgo": 192
+        },
+        {
+          "date": "28-09-2024",
+          "position": 2,
+          "daysAgo": 232
+        }
+      ]
+    },
+    "11": {
+      "number": "11",
+      "lastSeen": "04-05-2025",
+      "daysSinceSeen": 14,
+      "positions": {
+        "first": 1,
+        "second": 1,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "04-05-2025",
+          "position": 3,
+          "daysAgo": 14
+        },
+        {
+          "date": "05-04-2025",
+          "position": 1,
+          "daysAgo": 43
+        },
+        {
+          "date": "09-11-2024",
+          "position": 2,
+          "daysAgo": 190
+        }
+      ]
+    },
+    "12": {
+      "number": "12",
+      "lastSeen": "28-04-2025",
+      "daysSinceSeen": 20,
+      "positions": {
+        "first": 0,
+        "second": 3,
+        "third": 5
+      },
+      "history": [
+        {
+          "date": "28-04-2025",
+          "position": 2,
+          "daysAgo": 20
+        },
+        {
+          "date": "26-04-2025",
+          "position": 3,
+          "daysAgo": 22
+        },
+        {
+          "date": "02-03-2025",
+          "position": 3,
+          "daysAgo": 77
+        },
+        {
+          "date": "26-02-2025",
+          "position": 3,
+          "daysAgo": 81
+        },
+        {
+          "date": "12-02-2025",
+          "position": 2,
+          "daysAgo": 95
+        },
+        {
+          "date": "28-01-2025",
+          "position": 2,
+          "daysAgo": 110
+        },
+        {
+          "date": "28-01-2025",
+          "position": 3,
+          "daysAgo": 110
+        },
+        {
+          "date": "24-01-2025",
+          "position": 3,
+          "daysAgo": 114
+        }
+      ]
+    },
+    "13": {
+      "number": "13",
+      "lastSeen": "08-03-2025",
+      "daysSinceSeen": 71,
+      "positions": {
+        "first": 1,
+        "second": 0,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "08-03-2025",
+          "position": 3,
+          "daysAgo": 71
+        },
+        {
+          "date": "27-10-2024",
+          "position": 1,
+          "daysAgo": 203
+        },
+        {
+          "date": "14-10-2024",
+          "position": 3,
+          "daysAgo": 216
+        }
+      ]
+    },
+    "14": {
+      "number": "14",
+      "lastSeen": "20-04-2025",
+      "daysSinceSeen": 28,
+      "positions": {
+        "first": 4,
+        "second": 2,
+        "third": 6
+      },
+      "history": [
+        {
+          "date": "20-04-2025",
+          "position": 3,
+          "daysAgo": 28
+        },
+        {
+          "date": "24-03-2025",
+          "position": 3,
+          "daysAgo": 55
+        },
+        {
+          "date": "17-03-2025",
+          "position": 1,
+          "daysAgo": 62
+        },
+        {
+          "date": "11-03-2025",
+          "position": 2,
+          "daysAgo": 68
+        },
+        {
+          "date": "07-02-2025",
+          "position": 1,
+          "daysAgo": 100
+        },
+        {
+          "date": "10-01-2025",
+          "position": 3,
+          "daysAgo": 128
+        },
+        {
+          "date": "09-01-2025",
+          "position": 2,
+          "daysAgo": 129
+        },
+        {
+          "date": "04-12-2024",
+          "position": 3,
+          "daysAgo": 165
+        },
+        {
+          "date": "27-11-2024",
+          "position": 1,
+          "daysAgo": 172
+        },
+        {
+          "date": "04-11-2024",
+          "position": 3,
+          "daysAgo": 195
+        },
+        {
+          "date": "29-09-2024",
+          "position": 3,
+          "daysAgo": 231
+        },
+        {
+          "date": "23-09-2024",
+          "position": 1,
+          "daysAgo": 237
+        }
+      ]
+    },
+    "15": {
+      "number": "15",
+      "lastSeen": "20-04-2025",
+      "daysSinceSeen": 28,
+      "positions": {
+        "first": 4,
+        "second": 1,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "20-04-2025",
+          "position": 1,
+          "daysAgo": 28
+        },
+        {
+          "date": "09-03-2025",
+          "position": 2,
+          "daysAgo": 70
+        },
+        {
+          "date": "06-03-2025",
+          "position": 1,
+          "daysAgo": 73
+        },
+        {
+          "date": "19-01-2025",
+          "position": 1,
+          "daysAgo": 119
+        },
+        {
+          "date": "02-01-2025",
+          "position": 1,
+          "daysAgo": 136
+        },
+        {
+          "date": "03-11-2024",
+          "position": 3,
+          "daysAgo": 196
+        },
+        {
+          "date": "24-10-2024",
+          "position": 3,
+          "daysAgo": 206
+        }
+      ]
+    },
+    "16": {
+      "number": "16",
+      "lastSeen": "23-02-2025",
+      "daysSinceSeen": 84,
+      "positions": {
+        "first": 0,
+        "second": 0,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "23-02-2025",
+          "position": 3,
+          "daysAgo": 84
+        },
+        {
+          "date": "27-11-2024",
+          "position": 3,
+          "daysAgo": 172
+        }
+      ]
+    },
+    "17": {
+      "number": "17",
+      "lastSeen": "06-05-2025",
+      "daysSinceSeen": 12,
+      "positions": {
+        "first": 3,
+        "second": 1,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "06-05-2025",
+          "position": 1,
+          "daysAgo": 12
+        },
+        {
+          "date": "28-04-2025",
+          "position": 1,
+          "daysAgo": 20
+        },
+        {
+          "date": "03-02-2025",
+          "position": 1,
+          "daysAgo": 104
+        },
+        {
+          "date": "05-01-2025",
+          "position": 2,
+          "daysAgo": 133
+        },
+        {
+          "date": "10-12-2024",
+          "position": 3,
+          "daysAgo": 159
+        }
+      ]
+    },
+    "18": {
+      "number": "18",
+      "lastSeen": "25-04-2025",
+      "daysSinceSeen": 23,
+      "positions": {
+        "first": 3,
+        "second": 1,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "25-04-2025",
+          "position": 1,
+          "daysAgo": 23
+        },
+        {
+          "date": "16-04-2025",
+          "position": 3,
+          "daysAgo": 32
+        },
+        {
+          "date": "16-04-2025",
+          "position": 3,
+          "daysAgo": 32
+        },
+        {
+          "date": "13-02-2025",
+          "position": 3,
+          "daysAgo": 94
+        },
+        {
+          "date": "11-01-2025",
+          "position": 1,
+          "daysAgo": 127
+        },
+        {
+          "date": "04-01-2025",
+          "position": 1,
+          "daysAgo": 134
+        },
+        {
+          "date": "20-12-2024",
+          "position": 3,
+          "daysAgo": 149
+        },
+        {
+          "date": "21-09-2024",
+          "position": 2,
+          "daysAgo": 239
+        }
+      ]
+    },
+    "19": {
+      "number": "19",
+      "lastSeen": "10-03-2025",
+      "daysSinceSeen": 69,
+      "positions": {
+        "first": 2,
+        "second": 2,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "10-03-2025",
+          "position": 3,
+          "daysAgo": 69
+        },
+        {
+          "date": "16-01-2025",
+          "position": 3,
+          "daysAgo": 122
+        },
+        {
+          "date": "12-01-2025",
+          "position": 1,
+          "daysAgo": 126
+        },
+        {
+          "date": "20-10-2024",
+          "position": 1,
+          "daysAgo": 210
+        },
+        {
+          "date": "19-10-2024",
+          "position": 3,
+          "daysAgo": 211
+        },
+        {
+          "date": "17-10-2024",
+          "position": 2,
+          "daysAgo": 213
+        },
+        {
+          "date": "24-09-2024",
+          "position": 2,
+          "daysAgo": 236
+        }
+      ]
+    },
+    "20": {
+      "number": "20",
+      "lastSeen": "13-05-2025",
+      "daysSinceSeen": 5,
+      "positions": {
+        "first": 3,
+        "second": 7,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "13-05-2025",
+          "position": 1,
+          "daysAgo": 5
+        },
+        {
+          "date": "06-04-2025",
+          "position": 2,
+          "daysAgo": 42
+        },
+        {
+          "date": "04-04-2025",
+          "position": 2,
+          "daysAgo": 44
+        },
+        {
+          "date": "16-02-2025",
+          "position": 2,
+          "daysAgo": 91
+        },
+        {
+          "date": "04-02-2025",
+          "position": 1,
+          "daysAgo": 103
+        },
+        {
+          "date": "26-12-2024",
+          "position": 2,
+          "daysAgo": 143
+        },
+        {
+          "date": "15-11-2024",
+          "position": 2,
+          "daysAgo": 184
+        },
+        {
+          "date": "25-10-2024",
+          "position": 1,
+          "daysAgo": 205
+        },
+        {
+          "date": "19-10-2024",
+          "position": 2,
+          "daysAgo": 211
+        },
+        {
+          "date": "14-10-2024",
+          "position": 2,
+          "daysAgo": 216
+        }
+      ]
+    },
+    "21": {
+      "number": "21",
+      "lastSeen": "25-04-2025",
+      "daysSinceSeen": 23,
+      "positions": {
+        "first": 3,
+        "second": 0,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "25-04-2025",
+          "position": 3,
+          "daysAgo": 23
+        },
+        {
+          "date": "12-04-2025",
+          "position": 1,
+          "daysAgo": 36
+        },
+        {
+          "date": "10-04-2025",
+          "position": 1,
+          "daysAgo": 38
+        },
+        {
+          "date": "16-03-2025",
+          "position": 3,
+          "daysAgo": 63
+        },
+        {
+          "date": "13-03-2025",
+          "position": 3,
+          "daysAgo": 66
+        },
+        {
+          "date": "24-10-2024",
+          "position": 1,
+          "daysAgo": 206
+        }
+      ]
+    },
+    "22": {
+      "number": "22",
+      "lastSeen": "17-05-2025",
+      "daysSinceSeen": 1,
+      "positions": {
+        "first": 3,
+        "second": 2,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "17-05-2025",
+          "position": 1,
+          "daysAgo": 1
+        },
+        {
+          "date": "05-05-2025",
+          "position": 1,
+          "daysAgo": 13
+        },
+        {
+          "date": "27-04-2025",
+          "position": 2,
+          "daysAgo": 21
+        },
+        {
+          "date": "27-02-2025",
+          "position": 2,
+          "daysAgo": 80
+        },
+        {
+          "date": "05-02-2025",
+          "position": 3,
+          "daysAgo": 102
+        },
+        {
+          "date": "13-12-2024",
+          "position": 1,
+          "daysAgo": 156
+        },
+        {
+          "date": "10-10-2024",
+          "position": 3,
+          "daysAgo": 220
+        }
+      ]
+    },
+    "23": {
+      "number": "23",
+      "lastSeen": "04-05-2025",
+      "daysSinceSeen": 14,
+      "positions": {
+        "first": 3,
+        "second": 4,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "04-05-2025",
+          "position": 1,
+          "daysAgo": 14
+        },
+        {
+          "date": "25-03-2025",
+          "position": 2,
+          "daysAgo": 54
+        },
+        {
+          "date": "20-02-2025",
+          "position": 3,
+          "daysAgo": 87
+        },
+        {
+          "date": "22-01-2025",
+          "position": 1,
+          "daysAgo": 116
+        },
+        {
+          "date": "03-01-2025",
+          "position": 3,
+          "daysAgo": 135
+        },
+        {
+          "date": "08-12-2024",
+          "position": 1,
+          "daysAgo": 161
+        },
+        {
+          "date": "29-11-2024",
+          "position": 2,
+          "daysAgo": 170
+        },
+        {
+          "date": "12-11-2024",
+          "position": 3,
+          "daysAgo": 187
+        },
+        {
+          "date": "02-11-2024",
+          "position": 3,
+          "daysAgo": 197
+        },
+        {
+          "date": "30-10-2024",
+          "position": 2,
+          "daysAgo": 200
+        },
+        {
+          "date": "13-10-2024",
+          "position": 2,
+          "daysAgo": 217
+        }
+      ]
+    },
+    "24": {
+      "number": "24",
+      "lastSeen": "08-03-2025",
+      "daysSinceSeen": 71,
+      "positions": {
+        "first": 1,
+        "second": 3,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "08-03-2025",
+          "position": 1,
+          "daysAgo": 71
+        },
+        {
+          "date": "01-02-2025",
+          "position": 2,
+          "daysAgo": 106
+        },
+        {
+          "date": "26-01-2025",
+          "position": 3,
+          "daysAgo": 112
+        },
+        {
+          "date": "21-01-2025",
+          "position": 3,
+          "daysAgo": 117
+        },
+        {
+          "date": "07-01-2025",
+          "position": 2,
+          "daysAgo": 131
+        },
+        {
+          "date": "06-12-2024",
+          "position": 2,
+          "daysAgo": 163
+        }
+      ]
+    },
+    "25": {
+      "number": "25",
+      "lastSeen": "06-05-2025",
+      "daysSinceSeen": 12,
+      "positions": {
+        "first": 0,
+        "second": 3,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "06-05-2025",
+          "position": 2,
+          "daysAgo": 12
+        },
+        {
+          "date": "03-05-2025",
+          "position": 2,
+          "daysAgo": 15
+        },
+        {
+          "date": "10-04-2025",
+          "position": 3,
+          "daysAgo": 38
+        },
+        {
+          "date": "31-01-2025",
+          "position": 3,
+          "daysAgo": 107
+        },
+        {
+          "date": "16-01-2025",
+          "position": 2,
+          "daysAgo": 122
+        },
+        {
+          "date": "11-12-2024",
+          "position": 3,
+          "daysAgo": 158
+        }
+      ]
+    },
+    "26": {
+      "number": "26",
+      "lastSeen": "25-01-2025",
+      "daysSinceSeen": 113,
+      "positions": {
+        "first": 3,
+        "second": 3,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "25-01-2025",
+          "position": 1,
+          "daysAgo": 113
+        },
+        {
+          "date": "14-01-2025",
+          "position": 2,
+          "daysAgo": 124
+        },
+        {
+          "date": "10-01-2025",
+          "position": 1,
+          "daysAgo": 128
+        },
+        {
+          "date": "06-01-2025",
+          "position": 1,
+          "daysAgo": 132
+        },
+        {
+          "date": "29-12-2024",
+          "position": 2,
+          "daysAgo": 140
+        },
+        {
+          "date": "09-12-2024",
+          "position": 2,
+          "daysAgo": 160
+        }
+      ]
+    },
+    "27": {
+      "number": "27",
+      "lastSeen": "29-04-2025",
+      "daysSinceSeen": 19,
+      "positions": {
+        "first": 2,
+        "second": 0,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "29-04-2025",
+          "position": 1,
+          "daysAgo": 19
+        },
+        {
+          "date": "22-01-2025",
+          "position": 3,
+          "daysAgo": 116
+        },
+        {
+          "date": "08-01-2025",
+          "position": 3,
+          "daysAgo": 130
+        },
+        {
+          "date": "05-11-2024",
+          "position": 1,
+          "daysAgo": 194
+        },
+        {
+          "date": "29-10-2024",
+          "position": 3,
+          "daysAgo": 201
+        },
+        {
+          "date": "26-09-2024",
+          "position": 3,
+          "daysAgo": 234
+        }
+      ]
+    },
+    "28": {
+      "number": "28",
+      "lastSeen": "17-05-2025",
+      "daysSinceSeen": 1,
+      "positions": {
+        "first": 4,
+        "second": 3,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "17-05-2025",
+          "position": 2,
+          "daysAgo": 1
+        },
+        {
+          "date": "15-05-2025",
+          "position": 3,
+          "daysAgo": 3
+        },
+        {
+          "date": "07-05-2025",
+          "position": 3,
+          "daysAgo": 11
+        },
+        {
+          "date": "06-05-2025",
+          "position": 3,
+          "daysAgo": 12
+        },
+        {
+          "date": "08-04-2025",
+          "position": 1,
+          "daysAgo": 40
+        },
+        {
+          "date": "30-03-2025",
+          "position": 1,
+          "daysAgo": 49
+        },
+        {
+          "date": "24-02-2025",
+          "position": 2,
+          "daysAgo": 83
+        },
+        {
+          "date": "01-02-2025",
+          "position": 1,
+          "daysAgo": 106
+        },
+        {
+          "date": "10-11-2024",
+          "position": 3,
+          "daysAgo": 189
+        },
+        {
+          "date": "06-11-2024",
+          "position": 1,
+          "daysAgo": 193
+        },
+        {
+          "date": "06-11-2024",
+          "position": 2,
+          "daysAgo": 193
+        }
+      ]
+    },
+    "29": {
+      "number": "29",
+      "lastSeen": "31-03-2025",
+      "daysSinceSeen": 48,
+      "positions": {
+        "first": 2,
+        "second": 5,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "31-03-2025",
+          "position": 1,
+          "daysAgo": 48
+        },
+        {
+          "date": "23-03-2025",
+          "position": 2,
+          "daysAgo": 56
+        },
+        {
+          "date": "21-03-2025",
+          "position": 3,
+          "daysAgo": 58
+        },
+        {
+          "date": "11-03-2025",
+          "position": 1,
+          "daysAgo": 68
+        },
+        {
+          "date": "18-12-2024",
+          "position": 2,
+          "daysAgo": 151
+        },
+        {
+          "date": "21-11-2024",
+          "position": 2,
+          "daysAgo": 178
+        },
+        {
+          "date": "22-10-2024",
+          "position": 2,
+          "daysAgo": 208
+        },
+        {
+          "date": "23-09-2024",
+          "position": 2,
+          "daysAgo": 237
+        }
+      ]
+    },
+    "30": {
+      "number": "30",
+      "lastSeen": "14-05-2025",
+      "daysSinceSeen": 4,
+      "positions": {
+        "first": 6,
+        "second": 2,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "14-05-2025",
+          "position": 1,
+          "daysAgo": 4
+        },
+        {
+          "date": "08-05-2025",
+          "position": 1,
+          "daysAgo": 10
+        },
+        {
+          "date": "14-04-2025",
+          "position": 1,
+          "daysAgo": 34
+        },
+        {
+          "date": "12-04-2025",
+          "position": 2,
+          "daysAgo": 36
+        },
+        {
+          "date": "04-04-2025",
+          "position": 1,
+          "daysAgo": 44
+        },
+        {
+          "date": "19-01-2025",
+          "position": 2,
+          "daysAgo": 119
+        },
+        {
+          "date": "20-11-2024",
+          "position": 1,
+          "daysAgo": 179
+        },
+        {
+          "date": "16-11-2024",
+          "position": 1,
+          "daysAgo": 183
+        },
+        {
+          "date": "05-11-2024",
+          "position": 3,
+          "daysAgo": 194
+        }
+      ]
+    },
+    "31": {
+      "number": "31",
+      "lastSeen": "05-05-2025",
+      "daysSinceSeen": 13,
+      "positions": {
+        "first": 3,
+        "second": 2,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "05-05-2025",
+          "position": 2,
+          "daysAgo": 13
+        },
+        {
+          "date": "19-04-2025",
+          "position": 3,
+          "daysAgo": 29
+        },
+        {
+          "date": "16-03-2025",
+          "position": 2,
+          "daysAgo": 63
+        },
+        {
+          "date": "03-03-2025",
+          "position": 1,
+          "daysAgo": 76
+        },
+        {
+          "date": "04-02-2025",
+          "position": 3,
+          "daysAgo": 103
+        },
+        {
+          "date": "26-01-2025",
+          "position": 1,
+          "daysAgo": 112
+        },
+        {
+          "date": "06-12-2024",
+          "position": 3,
+          "daysAgo": 163
+        },
+        {
+          "date": "29-11-2024",
+          "position": 1,
+          "daysAgo": 170
+        },
+        {
+          "date": "08-10-2024",
+          "position": 3,
+          "daysAgo": 222
+        }
+      ]
+    },
+    "32": {
+      "number": "32",
+      "lastSeen": "09-04-2025",
+      "daysSinceSeen": 39,
+      "positions": {
+        "first": 4,
+        "second": 3,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "09-04-2025",
+          "position": 2,
+          "daysAgo": 39
+        },
+        {
+          "date": "14-03-2025",
+          "position": 1,
+          "daysAgo": 65
+        },
+        {
+          "date": "27-02-2025",
+          "position": 1,
+          "daysAgo": 80
+        },
+        {
+          "date": "03-01-2025",
+          "position": 1,
+          "daysAgo": 135
+        },
+        {
+          "date": "17-11-2024",
+          "position": 2,
+          "daysAgo": 182
+        },
+        {
+          "date": "31-10-2024",
+          "position": 2,
+          "daysAgo": 199
+        },
+        {
+          "date": "15-10-2024",
+          "position": 1,
+          "daysAgo": 215
+        }
+      ]
+    },
+    "33": {
+      "number": "33",
+      "lastSeen": "24-04-2025",
+      "daysSinceSeen": 24,
+      "positions": {
+        "first": 1,
+        "second": 1,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "24-04-2025",
+          "position": 3,
+          "daysAgo": 24
+        },
+        {
+          "date": "04-04-2025",
+          "position": 3,
+          "daysAgo": 44
+        },
+        {
+          "date": "23-02-2025",
+          "position": 2,
+          "daysAgo": 84
+        },
+        {
+          "date": "23-01-2025",
+          "position": 3,
+          "daysAgo": 115
+        },
+        {
+          "date": "20-12-2024",
+          "position": 1,
+          "daysAgo": 149
+        },
+        {
+          "date": "25-10-2024",
+          "position": 3,
+          "daysAgo": 205
+        }
+      ]
+    },
+    "34": {
+      "number": "34",
+      "lastSeen": "15-05-2025",
+      "daysSinceSeen": 3,
+      "positions": {
+        "first": 4,
+        "second": 4,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "15-05-2025",
+          "position": 1,
+          "daysAgo": 3
+        },
+        {
+          "date": "23-04-2025",
+          "position": 1,
+          "daysAgo": 25
+        },
+        {
+          "date": "26-03-2025",
+          "position": 2,
+          "daysAgo": 53
+        },
+        {
+          "date": "14-02-2025",
+          "position": 3,
+          "daysAgo": 93
+        },
+        {
+          "date": "12-02-2025",
+          "position": 1,
+          "daysAgo": 95
+        },
+        {
+          "date": "20-01-2025",
+          "position": 3,
+          "daysAgo": 118
+        },
+        {
+          "date": "30-11-2024",
+          "position": 2,
+          "daysAgo": 169
+        },
+        {
+          "date": "01-11-2024",
+          "position": 1,
+          "daysAgo": 198
+        },
+        {
+          "date": "23-10-2024",
+          "position": 2,
+          "daysAgo": 207
+        },
+        {
+          "date": "16-10-2024",
+          "position": 2,
+          "daysAgo": 214
+        }
+      ]
+    },
+    "35": {
+      "number": "35",
+      "lastSeen": "18-05-2025",
+      "daysSinceSeen": 0,
+      "positions": {
+        "first": 3,
+        "second": 3,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "18-05-2025",
+          "position": 1,
+          "daysAgo": 0
+        },
+        {
+          "date": "18-05-2025",
+          "position": 3,
+          "daysAgo": 0
+        },
+        {
+          "date": "28-03-2025",
+          "position": 2,
+          "daysAgo": 51
+        },
+        {
+          "date": "24-03-2025",
+          "position": 2,
+          "daysAgo": 55
+        },
+        {
+          "date": "21-03-2025",
+          "position": 2,
+          "daysAgo": 58
+        },
+        {
+          "date": "27-02-2025",
+          "position": 3,
+          "daysAgo": 80
+        },
+        {
+          "date": "29-12-2024",
+          "position": 1,
+          "daysAgo": 140
+        },
+        {
+          "date": "12-12-2024",
+          "position": 1,
+          "daysAgo": 157
+        },
+        {
+          "date": "12-12-2024",
+          "position": 3,
+          "daysAgo": 157
+        },
+        {
+          "date": "24-09-2024",
+          "position": 3,
+          "daysAgo": 236
+        }
+      ]
+    },
+    "36": {
+      "number": "36",
+      "lastSeen": "15-05-2025",
+      "daysSinceSeen": 3,
+      "positions": {
+        "first": 3,
+        "second": 2,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "15-05-2025",
+          "position": 2,
+          "daysAgo": 3
+        },
+        {
+          "date": "12-04-2025",
+          "position": 3,
+          "daysAgo": 36
+        },
+        {
+          "date": "07-02-2025",
+          "position": 2,
+          "daysAgo": 100
+        },
+        {
+          "date": "16-12-2024",
+          "position": 1,
+          "daysAgo": 153
+        },
+        {
+          "date": "16-12-2024",
+          "position": 1,
+          "daysAgo": 153
+        },
+        {
+          "date": "08-12-2024",
+          "position": 3,
+          "daysAgo": 161
+        },
+        {
+          "date": "02-10-2024",
+          "position": 1,
+          "daysAgo": 228
+        }
+      ]
+    },
+    "37": {
+      "number": "37",
+      "lastSeen": "19-04-2025",
+      "daysSinceSeen": 29,
+      "positions": {
+        "first": 5,
+        "second": 2,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "19-04-2025",
+          "position": 1,
+          "daysAgo": 29
+        },
+        {
+          "date": "15-03-2025",
+          "position": 2,
+          "daysAgo": 64
+        },
+        {
+          "date": "03-03-2025",
+          "position": 2,
+          "daysAgo": 76
+        },
+        {
+          "date": "21-02-2025",
+          "position": 1,
+          "daysAgo": 86
+        },
+        {
+          "date": "15-02-2025",
+          "position": 1,
+          "daysAgo": 92
+        },
+        {
+          "date": "08-01-2025",
+          "position": 1,
+          "daysAgo": 130
+        },
+        {
+          "date": "01-12-2024",
+          "position": 1,
+          "daysAgo": 168
+        }
+      ]
+    },
+    "38": {
+      "number": "38",
+      "lastSeen": "24-04-2025",
+      "daysSinceSeen": 24,
+      "positions": {
+        "first": 5,
+        "second": 3,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "24-04-2025",
+          "position": 2,
+          "daysAgo": 24
+        },
+        {
+          "date": "25-03-2025",
+          "position": 1,
+          "daysAgo": 54
+        },
+        {
+          "date": "15-03-2025",
+          "position": 1,
+          "daysAgo": 64
+        },
+        {
+          "date": "12-03-2025",
+          "position": 1,
+          "daysAgo": 67
+        },
+        {
+          "date": "26-02-2025",
+          "position": 2,
+          "daysAgo": 81
+        },
+        {
+          "date": "18-01-2025",
+          "position": 3,
+          "daysAgo": 120
+        },
+        {
+          "date": "06-01-2025",
+          "position": 2,
+          "daysAgo": 132
+        },
+        {
+          "date": "21-12-2024",
+          "position": 1,
+          "daysAgo": 148
+        },
+        {
+          "date": "09-11-2024",
+          "position": 1,
+          "daysAgo": 190
+        }
+      ]
+    },
+    "39": {
+      "number": "39",
+      "lastSeen": "08-02-2025",
+      "daysSinceSeen": 99,
+      "positions": {
+        "first": 0,
+        "second": 2,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "08-02-2025",
+          "position": 3,
+          "daysAgo": 99
+        },
+        {
+          "date": "02-01-2025",
+          "position": 2,
+          "daysAgo": 136
+        },
+        {
+          "date": "30-12-2024",
+          "position": 3,
+          "daysAgo": 139
+        },
+        {
+          "date": "25-10-2024",
+          "position": 2,
+          "daysAgo": 205
+        }
+      ]
+    },
+    "40": {
+      "number": "40",
+      "lastSeen": "16-05-2025",
+      "daysSinceSeen": 2,
+      "positions": {
+        "first": 4,
+        "second": 2,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "16-05-2025",
+          "position": 1,
+          "daysAgo": 2
+        },
+        {
+          "date": "18-03-2025",
+          "position": 2,
+          "daysAgo": 61
+        },
+        {
+          "date": "23-12-2024",
+          "position": 1,
+          "daysAgo": 146
+        },
+        {
+          "date": "23-12-2024",
+          "position": 1,
+          "daysAgo": 146
+        },
+        {
+          "date": "02-12-2024",
+          "position": 1,
+          "daysAgo": 167
+        },
+        {
+          "date": "28-11-2024",
+          "position": 2,
+          "daysAgo": 171
+        },
+        {
+          "date": "07-10-2024",
+          "position": 3,
+          "daysAgo": 223
+        }
+      ]
+    },
+    "41": {
+      "number": "41",
+      "lastSeen": "13-05-2025",
+      "daysSinceSeen": 5,
+      "positions": {
+        "first": 2,
+        "second": 1,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "13-05-2025",
+          "position": 2,
+          "daysAgo": 5
+        },
+        {
+          "date": "29-03-2025",
+          "position": 3,
+          "daysAgo": 50
+        },
+        {
+          "date": "07-12-2024",
+          "position": 1,
+          "daysAgo": 162
+        },
+        {
+          "date": "30-11-2024",
+          "position": 1,
+          "daysAgo": 169
+        }
+      ]
+    },
+    "42": {
+      "number": "42",
+      "lastSeen": "14-05-2025",
+      "daysSinceSeen": 4,
+      "positions": {
+        "first": 1,
+        "second": 3,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "14-05-2025",
+          "position": 3,
+          "daysAgo": 4
+        },
+        {
+          "date": "01-05-2025",
+          "position": 2,
+          "daysAgo": 17
+        },
+        {
+          "date": "06-04-2025",
+          "position": 3,
+          "daysAgo": 42
+        },
+        {
+          "date": "19-03-2025",
+          "position": 1,
+          "daysAgo": 60
+        },
+        {
+          "date": "14-03-2025",
+          "position": 2,
+          "daysAgo": 65
+        },
+        {
+          "date": "06-03-2025",
+          "position": 3,
+          "daysAgo": 73
+        },
+        {
+          "date": "29-12-2024",
+          "position": 3,
+          "daysAgo": 140
+        },
+        {
+          "date": "05-10-2024",
+          "position": 2,
+          "daysAgo": 225
+        }
+      ]
+    },
+    "43": {
+      "number": "43",
+      "lastSeen": "02-05-2025",
+      "daysSinceSeen": 16,
+      "positions": {
+        "first": 0,
+        "second": 6,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "02-05-2025",
+          "position": 2,
+          "daysAgo": 16
+        },
+        {
+          "date": "27-04-2025",
+          "position": 3,
+          "daysAgo": 21
+        },
+        {
+          "date": "02-03-2025",
+          "position": 2,
+          "daysAgo": 77
+        },
+        {
+          "date": "10-02-2025",
+          "position": 2,
+          "daysAgo": 97
+        },
+        {
+          "date": "12-01-2025",
+          "position": 2,
+          "daysAgo": 126
+        },
+        {
+          "date": "26-11-2024",
+          "position": 3,
+          "daysAgo": 173
+        },
+        {
+          "date": "10-11-2024",
+          "position": 2,
+          "daysAgo": 189
+        },
+        {
+          "date": "21-10-2024",
+          "position": 3,
+          "daysAgo": 209
+        },
+        {
+          "date": "18-10-2024",
+          "position": 3,
+          "daysAgo": 212
+        },
+        {
+          "date": "12-10-2024",
+          "position": 2,
+          "daysAgo": 218
+        }
+      ]
+    },
+    "44": {
+      "number": "44",
+      "lastSeen": "09-04-2025",
+      "daysSinceSeen": 39,
+      "positions": {
+        "first": 1,
+        "second": 3,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "09-04-2025",
+          "position": 1,
+          "daysAgo": 39
+        },
+        {
+          "date": "28-03-2025",
+          "position": 3,
+          "daysAgo": 51
+        },
+        {
+          "date": "23-03-2025",
+          "position": 3,
+          "daysAgo": 56
+        },
+        {
+          "date": "25-02-2025",
+          "position": 2,
+          "daysAgo": 82
+        },
+        {
+          "date": "16-12-2024",
+          "position": 2,
+          "daysAgo": 153
+        },
+        {
+          "date": "16-12-2024",
+          "position": 2,
+          "daysAgo": 153
+        },
+        {
+          "date": "13-12-2024",
+          "position": 3,
+          "daysAgo": 156
+        }
+      ]
+    },
+    "45": {
+      "number": "45",
+      "lastSeen": "18-03-2025",
+      "daysSinceSeen": 61,
+      "positions": {
+        "first": 3,
+        "second": 1,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "18-03-2025",
+          "position": 3,
+          "daysAgo": 61
+        },
+        {
+          "date": "11-02-2025",
+          "position": 3,
+          "daysAgo": 96
+        },
+        {
+          "date": "10-12-2024",
+          "position": 1,
+          "daysAgo": 159
+        },
+        {
+          "date": "07-11-2024",
+          "position": 2,
+          "daysAgo": 192
+        },
+        {
+          "date": "13-10-2024",
+          "position": 1,
+          "daysAgo": 217
+        },
+        {
+          "date": "12-10-2024",
+          "position": 1,
+          "daysAgo": 218
+        }
+      ]
+    },
+    "46": {
+      "number": "46",
+      "lastSeen": "02-05-2025",
+      "daysSinceSeen": 16,
+      "positions": {
+        "first": 3,
+        "second": 1,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "02-05-2025",
+          "position": 1,
+          "daysAgo": 16
+        },
+        {
+          "date": "13-04-2025",
+          "position": 1,
+          "daysAgo": 35
+        },
+        {
+          "date": "06-04-2025",
+          "position": 1,
+          "daysAgo": 42
+        },
+        {
+          "date": "27-03-2025",
+          "position": 3,
+          "daysAgo": 52
+        },
+        {
+          "date": "30-01-2025",
+          "position": 2,
+          "daysAgo": 108
+        },
+        {
+          "date": "07-01-2025",
+          "position": 3,
+          "daysAgo": 131
+        },
+        {
+          "date": "09-12-2024",
+          "position": 3,
+          "daysAgo": 160
+        }
+      ]
+    },
+    "47": {
+      "number": "47",
+      "lastSeen": "12-05-2025",
+      "daysSinceSeen": 6,
+      "positions": {
+        "first": 4,
+        "second": 4,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "12-05-2025",
+          "position": 1,
+          "daysAgo": 6
+        },
+        {
+          "date": "20-04-2025",
+          "position": 2,
+          "daysAgo": 28
+        },
+        {
+          "date": "30-12-2024",
+          "position": 1,
+          "daysAgo": 139
+        },
+        {
+          "date": "03-12-2024",
+          "position": 1,
+          "daysAgo": 166
+        },
+        {
+          "date": "27-11-2024",
+          "position": 2,
+          "daysAgo": 172
+        },
+        {
+          "date": "14-11-2024",
+          "position": 2,
+          "daysAgo": 185
+        },
+        {
+          "date": "26-10-2024",
+          "position": 2,
+          "daysAgo": 204
+        },
+        {
+          "date": "25-09-2024",
+          "position": 1,
+          "daysAgo": 235
+        }
+      ]
+    },
+    "48": {
+      "number": "48",
+      "lastSeen": "11-05-2025",
+      "daysSinceSeen": 7,
+      "positions": {
+        "first": 4,
+        "second": 1,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "11-05-2025",
+          "position": 2,
+          "daysAgo": 7
+        },
+        {
+          "date": "19-02-2025",
+          "position": 1,
+          "daysAgo": 88
+        },
+        {
+          "date": "08-02-2025",
+          "position": 1,
+          "daysAgo": 99
+        },
+        {
+          "date": "15-12-2024",
+          "position": 3,
+          "daysAgo": 154
+        },
+        {
+          "date": "14-11-2024",
+          "position": 1,
+          "daysAgo": 185
+        },
+        {
+          "date": "14-11-2024",
+          "position": 3,
+          "daysAgo": 185
+        },
+        {
+          "date": "23-10-2024",
+          "position": 1,
+          "daysAgo": 207
+        },
+        {
+          "date": "13-10-2024",
+          "position": 3,
+          "daysAgo": 217
+        }
+      ]
+    },
+    "49": {
+      "number": "49",
+      "lastSeen": "21-04-2025",
+      "daysSinceSeen": 27,
+      "positions": {
+        "first": 1,
+        "second": 4,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "21-04-2025",
+          "position": 2,
+          "daysAgo": 27
+        },
+        {
+          "date": "15-04-2025",
+          "position": 2,
+          "daysAgo": 33
+        },
+        {
+          "date": "15-04-2025",
+          "position": 2,
+          "daysAgo": 33
+        },
+        {
+          "date": "13-04-2025",
+          "position": 3,
+          "daysAgo": 35
+        },
+        {
+          "date": "03-01-2025",
+          "position": 2,
+          "daysAgo": 135
+        },
+        {
+          "date": "19-12-2024",
+          "position": 1,
+          "daysAgo": 150
+        }
+      ]
+    },
+    "50": {
+      "number": "50",
+      "lastSeen": "25-02-2025",
+      "daysSinceSeen": 82,
+      "positions": {
+        "first": 5,
+        "second": 2,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "25-02-2025",
+          "position": 1,
+          "daysAgo": 82
+        },
+        {
+          "date": "17-02-2025",
+          "position": 2,
+          "daysAgo": 90
+        },
+        {
+          "date": "11-02-2025",
+          "position": 1,
+          "daysAgo": 96
+        },
+        {
+          "date": "22-12-2024",
+          "position": 1,
+          "daysAgo": 147
+        },
+        {
+          "date": "22-12-2024",
+          "position": 1,
+          "daysAgo": 147
+        },
+        {
+          "date": "22-11-2024",
+          "position": 2,
+          "daysAgo": 177
+        },
+        {
+          "date": "21-10-2024",
+          "position": 1,
+          "daysAgo": 209
+        }
+      ]
+    },
+    "51": {
+      "number": "51",
+      "lastSeen": "18-05-2025",
+      "daysSinceSeen": 0,
+      "positions": {
+        "first": 3,
+        "second": 5,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "18-05-2025",
+          "position": 2,
+          "daysAgo": 0
+        },
+        {
+          "date": "17-03-2025",
+          "position": 3,
+          "daysAgo": 62
+        },
+        {
+          "date": "04-03-2025",
+          "position": 3,
+          "daysAgo": 75
+        },
+        {
+          "date": "27-01-2025",
+          "position": 1,
+          "daysAgo": 111
+        },
+        {
+          "date": "23-12-2024",
+          "position": 2,
+          "daysAgo": 146
+        },
+        {
+          "date": "22-12-2024",
+          "position": 2,
+          "daysAgo": 147
+        },
+        {
+          "date": "23-12-2024",
+          "position": 2,
+          "daysAgo": 146
+        },
+        {
+          "date": "22-12-2024",
+          "position": 2,
+          "daysAgo": 147
+        },
+        {
+          "date": "03-10-2024",
+          "position": 1,
+          "daysAgo": 227
+        },
+        {
+          "date": "21-09-2024",
+          "position": 1,
+          "daysAgo": 239
+        }
+      ]
+    },
+    "52": {
+      "number": "52",
+      "lastSeen": "09-05-2025",
+      "daysSinceSeen": 9,
+      "positions": {
+        "first": 2,
+        "second": 0,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "09-05-2025",
+          "position": 1,
+          "daysAgo": 9
+        },
+        {
+          "date": "12-02-2025",
+          "position": 3,
+          "daysAgo": 95
+        },
+        {
+          "date": "19-01-2025",
+          "position": 3,
+          "daysAgo": 119
+        },
+        {
+          "date": "21-11-2024",
+          "position": 1,
+          "daysAgo": 178
+        }
+      ]
+    },
+    "53": {
+      "number": "53",
+      "lastSeen": "07-05-2025",
+      "daysSinceSeen": 11,
+      "positions": {
+        "first": 2,
+        "second": 2,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "07-05-2025",
+          "position": 2,
+          "daysAgo": 11
+        },
+        {
+          "date": "19-03-2025",
+          "position": 3,
+          "daysAgo": 60
+        },
+        {
+          "date": "22-02-2025",
+          "position": 1,
+          "daysAgo": 85
+        },
+        {
+          "date": "08-02-2025",
+          "position": 2,
+          "daysAgo": 99
+        },
+        {
+          "date": "02-01-2025",
+          "position": 3,
+          "daysAgo": 136
+        },
+        {
+          "date": "29-10-2024",
+          "position": 1,
+          "daysAgo": 201
+        }
+      ]
+    },
+    "54": {
+      "number": "54",
+      "lastSeen": "16-05-2025",
+      "daysSinceSeen": 2,
+      "positions": {
+        "first": 0,
+        "second": 0,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "16-05-2025",
+          "position": 3,
+          "daysAgo": 2
+        },
+        {
+          "date": "05-04-2025",
+          "position": 3,
+          "daysAgo": 43
+        },
+        {
+          "date": "28-12-2024",
+          "position": 3,
+          "daysAgo": 141
+        }
+      ]
+    },
+    "55": {
+      "number": "55",
+      "lastSeen": "03-04-2025",
+      "daysSinceSeen": 45,
+      "positions": {
+        "first": 2,
+        "second": 2,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "03-04-2025",
+          "position": 3,
+          "daysAgo": 45
+        },
+        {
+          "date": "30-03-2025",
+          "position": 3,
+          "daysAgo": 49
+        },
+        {
+          "date": "28-03-2025",
+          "position": 1,
+          "daysAgo": 51
+        },
+        {
+          "date": "04-02-2025",
+          "position": 2,
+          "daysAgo": 103
+        },
+        {
+          "date": "05-12-2024",
+          "position": 1,
+          "daysAgo": 164
+        },
+        {
+          "date": "05-11-2024",
+          "position": 2,
+          "daysAgo": 194
+        }
+      ]
+    },
+    "56": {
+      "number": "56",
+      "lastSeen": "16-03-2025",
+      "daysSinceSeen": 63,
+      "positions": {
+        "first": 4,
+        "second": 3,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "16-03-2025",
+          "position": 1,
+          "daysAgo": 63
+        },
+        {
+          "date": "09-03-2025",
+          "position": 1,
+          "daysAgo": 70
+        },
+        {
+          "date": "21-02-2025",
+          "position": 2,
+          "daysAgo": 86
+        },
+        {
+          "date": "07-02-2025",
+          "position": 3,
+          "daysAgo": 100
+        },
+        {
+          "date": "06-02-2025",
+          "position": 1,
+          "daysAgo": 101
+        },
+        {
+          "date": "22-01-2025",
+          "position": 2,
+          "daysAgo": 116
+        },
+        {
+          "date": "02-11-2024",
+          "position": 1,
+          "daysAgo": 197
+        },
+        {
+          "date": "02-11-2024",
+          "position": 2,
+          "daysAgo": 197
+        },
+        {
+          "date": "28-10-2024",
+          "position": 3,
+          "daysAgo": 202
+        }
+      ]
+    },
+    "57": {
+      "number": "57",
+      "lastSeen": "12-05-2025",
+      "daysSinceSeen": 6,
+      "positions": {
+        "first": 1,
+        "second": 2,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "12-05-2025",
+          "position": 3,
+          "daysAgo": 6
+        },
+        {
+          "date": "08-05-2025",
+          "position": 3,
+          "daysAgo": 10
+        },
+        {
+          "date": "16-04-2025",
+          "position": 2,
+          "daysAgo": 32
+        },
+        {
+          "date": "16-04-2025",
+          "position": 2,
+          "daysAgo": 32
+        },
+        {
+          "date": "29-01-2025",
+          "position": 1,
+          "daysAgo": 109
+        }
+      ]
+    },
+    "58": {
+      "number": "58",
+      "lastSeen": "01-04-2025",
+      "daysSinceSeen": 47,
+      "positions": {
+        "first": 4,
+        "second": 2,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "01-04-2025",
+          "position": 3,
+          "daysAgo": 47
+        },
+        {
+          "date": "24-02-2025",
+          "position": 3,
+          "daysAgo": 83
+        },
+        {
+          "date": "17-02-2025",
+          "position": 1,
+          "daysAgo": 90
+        },
+        {
+          "date": "25-01-2025",
+          "position": 2,
+          "daysAgo": 113
+        },
+        {
+          "date": "14-01-2025",
+          "position": 3,
+          "daysAgo": 124
+        },
+        {
+          "date": "13-01-2025",
+          "position": 1,
+          "daysAgo": 125
+        },
+        {
+          "date": "26-11-2024",
+          "position": 1,
+          "daysAgo": 173
+        },
+        {
+          "date": "11-11-2024",
+          "position": 2,
+          "daysAgo": 188
+        },
+        {
+          "date": "01-10-2024",
+          "position": 1,
+          "daysAgo": 229
+        }
+      ]
+    },
+    "59": {
+      "number": "59",
+      "lastSeen": "12-01-2025",
+      "daysSinceSeen": 126,
+      "positions": {
+        "first": 1,
+        "second": 2,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "12-01-2025",
+          "position": 3,
+          "daysAgo": 126
+        },
+        {
+          "date": "03-12-2024",
+          "position": 3,
+          "daysAgo": 166
+        },
+        {
+          "date": "20-11-2024",
+          "position": 3,
+          "daysAgo": 179
+        },
+        {
+          "date": "19-11-2024",
+          "position": 1,
+          "daysAgo": 180
+        },
+        {
+          "date": "16-11-2024",
+          "position": 2,
+          "daysAgo": 183
+        },
+        {
+          "date": "18-10-2024",
+          "position": 2,
+          "daysAgo": 212
+        }
+      ]
+    },
+    "60": {
+      "number": "60",
+      "lastSeen": "01-04-2025",
+      "daysSinceSeen": 47,
+      "positions": {
+        "first": 2,
+        "second": 3,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "01-04-2025",
+          "position": 1,
+          "daysAgo": 47
+        },
+        {
+          "date": "16-02-2025",
+          "position": 1,
+          "daysAgo": 91
+        },
+        {
+          "date": "18-11-2024",
+          "position": 3,
+          "daysAgo": 181
+        },
+        {
+          "date": "30-10-2024",
+          "position": 3,
+          "daysAgo": 200
+        },
+        {
+          "date": "06-10-2024",
+          "position": 2,
+          "daysAgo": 224
+        },
+        {
+          "date": "04-10-2024",
+          "position": 2,
+          "daysAgo": 226
+        },
+        {
+          "date": "01-10-2024",
+          "position": 2,
+          "daysAgo": 229
+        }
+      ]
+    },
+    "61": {
+      "number": "61",
+      "lastSeen": "02-04-2025",
+      "daysSinceSeen": 46,
+      "positions": {
+        "first": 2,
+        "second": 3,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "02-04-2025",
+          "position": 1,
+          "daysAgo": 46
+        },
+        {
+          "date": "26-01-2025",
+          "position": 2,
+          "daysAgo": 112
+        },
+        {
+          "date": "11-01-2025",
+          "position": 2,
+          "daysAgo": 127
+        },
+        {
+          "date": "11-12-2024",
+          "position": 2,
+          "daysAgo": 158
+        },
+        {
+          "date": "22-10-2024",
+          "position": 1,
+          "daysAgo": 208
+        }
+      ]
+    },
+    "62": {
+      "number": "62",
+      "lastSeen": "10-03-2025",
+      "daysSinceSeen": 69,
+      "positions": {
+        "first": 2,
+        "second": 4,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "10-03-2025",
+          "position": 2,
+          "daysAgo": 69
+        },
+        {
+          "date": "07-03-2025",
+          "position": 3,
+          "daysAgo": 72
+        },
+        {
+          "date": "13-01-2025",
+          "position": 2,
+          "daysAgo": 125
+        },
+        {
+          "date": "10-12-2024",
+          "position": 2,
+          "daysAgo": 159
+        },
+        {
+          "date": "31-10-2024",
+          "position": 1,
+          "daysAgo": 199
+        },
+        {
+          "date": "05-10-2024",
+          "position": 1,
+          "daysAgo": 225
+        },
+        {
+          "date": "27-09-2024",
+          "position": 2,
+          "daysAgo": 233
+        }
+      ]
+    },
+    "63": {
+      "number": "63",
+      "lastSeen": "03-04-2025",
+      "daysSinceSeen": 45,
+      "positions": {
+        "first": 3,
+        "second": 4,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "03-04-2025",
+          "position": 2,
+          "daysAgo": 45
+        },
+        {
+          "date": "31-03-2025",
+          "position": 2,
+          "daysAgo": 48
+        },
+        {
+          "date": "29-03-2025",
+          "position": 2,
+          "daysAgo": 50
+        },
+        {
+          "date": "05-02-2025",
+          "position": 2,
+          "daysAgo": 102
+        },
+        {
+          "date": "02-02-2025",
+          "position": 3,
+          "daysAgo": 105
+        },
+        {
+          "date": "11-12-2024",
+          "position": 1,
+          "daysAgo": 158
+        },
+        {
+          "date": "30-10-2024",
+          "position": 1,
+          "daysAgo": 200
+        },
+        {
+          "date": "28-09-2024",
+          "position": 1,
+          "daysAgo": 232
+        }
+      ]
+    },
+    "64": {
+      "number": "64",
+      "lastSeen": "08-05-2025",
+      "daysSinceSeen": 10,
+      "positions": {
+        "first": 2,
+        "second": 3,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "08-05-2025",
+          "position": 2,
+          "daysAgo": 10
+        },
+        {
+          "date": "27-04-2025",
+          "position": 1,
+          "daysAgo": 21
+        },
+        {
+          "date": "04-01-2025",
+          "position": 3,
+          "daysAgo": 134
+        },
+        {
+          "date": "23-11-2024",
+          "position": 1,
+          "daysAgo": 176
+        },
+        {
+          "date": "19-11-2024",
+          "position": 3,
+          "daysAgo": 180
+        },
+        {
+          "date": "11-10-2024",
+          "position": 2,
+          "daysAgo": 219
+        },
+        {
+          "date": "03-10-2024",
+          "position": 2,
+          "daysAgo": 227
+        },
+        {
+          "date": "28-09-2024",
+          "position": 3,
+          "daysAgo": 232
+        }
+      ]
+    },
+    "65": {
+      "number": "65",
+      "lastSeen": "29-04-2025",
+      "daysSinceSeen": 19,
+      "positions": {
+        "first": 2,
+        "second": 1,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "29-04-2025",
+          "position": 2,
+          "daysAgo": 19
+        },
+        {
+          "date": "22-03-2025",
+          "position": 3,
+          "daysAgo": 57
+        },
+        {
+          "date": "09-02-2025",
+          "position": 1,
+          "daysAgo": 98
+        },
+        {
+          "date": "09-02-2025",
+          "position": 3,
+          "daysAgo": 98
+        },
+        {
+          "date": "14-01-2025",
+          "position": 1,
+          "daysAgo": 124
+        },
+        {
+          "date": "16-10-2024",
+          "position": 3,
+          "daysAgo": 214
+        },
+        {
+          "date": "02-10-2024",
+          "position": 3,
+          "daysAgo": 228
+        }
+      ]
+    },
+    "66": {
+      "number": "66",
+      "lastSeen": "24-04-2025",
+      "daysSinceSeen": 24,
+      "positions": {
+        "first": 5,
+        "second": 2,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "24-04-2025",
+          "position": 1,
+          "daysAgo": 24
+        },
+        {
+          "date": "11-04-2025",
+          "position": 1,
+          "daysAgo": 37
+        },
+        {
+          "date": "29-01-2025",
+          "position": 3,
+          "daysAgo": 109
+        },
+        {
+          "date": "15-01-2025",
+          "position": 3,
+          "daysAgo": 123
+        },
+        {
+          "date": "27-12-2024",
+          "position": 2,
+          "daysAgo": 142
+        },
+        {
+          "date": "04-12-2024",
+          "position": 2,
+          "daysAgo": 165
+        },
+        {
+          "date": "17-11-2024",
+          "position": 1,
+          "daysAgo": 182
+        },
+        {
+          "date": "16-10-2024",
+          "position": 1,
+          "daysAgo": 214
+        },
+        {
+          "date": "29-09-2024",
+          "position": 1,
+          "daysAgo": 231
+        }
+      ]
+    },
+    "67": {
+      "number": "67",
+      "lastSeen": "17-05-2025",
+      "daysSinceSeen": 1,
+      "positions": {
+        "first": 0,
+        "second": 3,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "17-05-2025",
+          "position": 3,
+          "daysAgo": 1
+        },
+        {
+          "date": "02-04-2025",
+          "position": 2,
+          "daysAgo": 46
+        },
+        {
+          "date": "20-03-2025",
+          "position": 2,
+          "daysAgo": 59
+        },
+        {
+          "date": "27-01-2025",
+          "position": 2,
+          "daysAgo": 111
+        },
+        {
+          "date": "14-12-2024",
+          "position": 3,
+          "daysAgo": 155
+        },
+        {
+          "date": "23-11-2024",
+          "position": 3,
+          "daysAgo": 176
+        },
+        {
+          "date": "26-10-2024",
+          "position": 3,
+          "daysAgo": 204
+        }
+      ]
+    },
+    "68": {
+      "number": "68",
+      "lastSeen": "12-05-2025",
+      "daysSinceSeen": 6,
+      "positions": {
+        "first": 3,
+        "second": 3,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "12-05-2025",
+          "position": 2,
+          "daysAgo": 6
+        },
+        {
+          "date": "18-03-2025",
+          "position": 1,
+          "daysAgo": 61
+        },
+        {
+          "date": "13-03-2025",
+          "position": 2,
+          "daysAgo": 66
+        },
+        {
+          "date": "24-01-2025",
+          "position": 1,
+          "daysAgo": 114
+        },
+        {
+          "date": "26-12-2024",
+          "position": 3,
+          "daysAgo": 143
+        },
+        {
+          "date": "13-11-2024",
+          "position": 3,
+          "daysAgo": 186
+        },
+        {
+          "date": "24-10-2024",
+          "position": 2,
+          "daysAgo": 206
+        },
+        {
+          "date": "04-10-2024",
+          "position": 1,
+          "daysAgo": 226
+        }
+      ]
+    },
+    "69": {
+      "number": "69",
+      "lastSeen": "26-04-2025",
+      "daysSinceSeen": 22,
+      "positions": {
+        "first": 5,
+        "second": 3,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "26-04-2025",
+          "position": 2,
+          "daysAgo": 22
+        },
+        {
+          "date": "29-03-2025",
+          "position": 1,
+          "daysAgo": 50
+        },
+        {
+          "date": "10-02-2025",
+          "position": 1,
+          "daysAgo": 97
+        },
+        {
+          "date": "28-01-2025",
+          "position": 1,
+          "daysAgo": 110
+        },
+        {
+          "date": "08-01-2025",
+          "position": 2,
+          "daysAgo": 130
+        },
+        {
+          "date": "06-01-2025",
+          "position": 3,
+          "daysAgo": 132
+        },
+        {
+          "date": "18-11-2024",
+          "position": 1,
+          "daysAgo": 181
+        },
+        {
+          "date": "06-11-2024",
+          "position": 3,
+          "daysAgo": 193
+        },
+        {
+          "date": "07-10-2024",
+          "position": 2,
+          "daysAgo": 223
+        },
+        {
+          "date": "22-09-2024",
+          "position": 1,
+          "daysAgo": 238
+        }
+      ]
+    },
+    "70": {
+      "number": "70",
+      "lastSeen": "16-05-2025",
+      "daysSinceSeen": 2,
+      "positions": {
+        "first": 2,
+        "second": 1,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "16-05-2025",
+          "position": 2,
+          "daysAgo": 2
+        },
+        {
+          "date": "15-03-2025",
+          "position": 3,
+          "daysAgo": 64
+        },
+        {
+          "date": "17-12-2024",
+          "position": 1,
+          "daysAgo": 152
+        },
+        {
+          "date": "17-12-2024",
+          "position": 1,
+          "daysAgo": 152
+        },
+        {
+          "date": "15-10-2024",
+          "position": 3,
+          "daysAgo": 215
+        }
+      ]
+    },
+    "71": {
+      "number": "71",
+      "lastSeen": "17-03-2025",
+      "daysSinceSeen": 62,
+      "positions": {
+        "first": 6,
+        "second": 1,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "17-03-2025",
+          "position": 2,
+          "daysAgo": 62
+        },
+        {
+          "date": "07-03-2025",
+          "position": 1,
+          "daysAgo": 72
+        },
+        {
+          "date": "09-01-2025",
+          "position": 1,
+          "daysAgo": 129
+        },
+        {
+          "date": "23-12-2024",
+          "position": 3,
+          "daysAgo": 146
+        },
+        {
+          "date": "23-12-2024",
+          "position": 3,
+          "daysAgo": 146
+        },
+        {
+          "date": "18-12-2024",
+          "position": 1,
+          "daysAgo": 151
+        },
+        {
+          "date": "29-11-2024",
+          "position": 3,
+          "daysAgo": 170
+        },
+        {
+          "date": "17-11-2024",
+          "position": 3,
+          "daysAgo": 182
+        },
+        {
+          "date": "26-10-2024",
+          "position": 1,
+          "daysAgo": 204
+        },
+        {
+          "date": "19-10-2024",
+          "position": 1,
+          "daysAgo": 211
+        },
+        {
+          "date": "27-09-2024",
+          "position": 1,
+          "daysAgo": 233
+        }
+      ]
+    },
+    "72": {
+      "number": "72",
+      "lastSeen": "11-04-2025",
+      "daysSinceSeen": 37,
+      "positions": {
+        "first": 3,
+        "second": 2,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "11-04-2025",
+          "position": 3,
+          "daysAgo": 37
+        },
+        {
+          "date": "27-03-2025",
+          "position": 2,
+          "daysAgo": 52
+        },
+        {
+          "date": "09-02-2025",
+          "position": 2,
+          "daysAgo": 98
+        },
+        {
+          "date": "30-01-2025",
+          "position": 1,
+          "daysAgo": 108
+        },
+        {
+          "date": "28-11-2024",
+          "position": 3,
+          "daysAgo": 171
+        },
+        {
+          "date": "12-11-2024",
+          "position": 1,
+          "daysAgo": 187
+        },
+        {
+          "date": "07-10-2024",
+          "position": 1,
+          "daysAgo": 223
+        }
+      ]
+    },
+    "73": {
+      "number": "73",
+      "lastSeen": "01-05-2025",
+      "daysSinceSeen": 17,
+      "positions": {
+        "first": 3,
+        "second": 2,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "01-05-2025",
+          "position": 1,
+          "daysAgo": 17
+        },
+        {
+          "date": "30-03-2025",
+          "position": 2,
+          "daysAgo": 49
+        },
+        {
+          "date": "18-02-2025",
+          "position": 1,
+          "daysAgo": 89
+        },
+        {
+          "date": "15-02-2025",
+          "position": 2,
+          "daysAgo": 92
+        },
+        {
+          "date": "04-11-2024",
+          "position": 1,
+          "daysAgo": 195
+        }
+      ]
+    },
+    "74": {
+      "number": "74",
+      "lastSeen": "30-04-2025",
+      "daysSinceSeen": 18,
+      "positions": {
+        "first": 2,
+        "second": 2,
+        "third": 7
+      },
+      "history": [
+        {
+          "date": "30-04-2025",
+          "position": 3,
+          "daysAgo": 18
+        },
+        {
+          "date": "23-04-2025",
+          "position": 3,
+          "daysAgo": 25
+        },
+        {
+          "date": "12-03-2025",
+          "position": 3,
+          "daysAgo": 67
+        },
+        {
+          "date": "22-02-2025",
+          "position": 2,
+          "daysAgo": 85
+        },
+        {
+          "date": "18-02-2025",
+          "position": 3,
+          "daysAgo": 89
+        },
+        {
+          "date": "07-12-2024",
+          "position": 2,
+          "daysAgo": 162
+        },
+        {
+          "date": "06-12-2024",
+          "position": 1,
+          "daysAgo": 163
+        },
+        {
+          "date": "25-11-2024",
+          "position": 3,
+          "daysAgo": 174
+        },
+        {
+          "date": "15-11-2024",
+          "position": 1,
+          "daysAgo": 184
+        },
+        {
+          "date": "27-10-2024",
+          "position": 3,
+          "daysAgo": 203
+        },
+        {
+          "date": "23-09-2024",
+          "position": 3,
+          "daysAgo": 237
+        }
+      ]
+    },
+    "75": {
+      "number": "75",
+      "lastSeen": "05-03-2025",
+      "daysSinceSeen": 74,
+      "positions": {
+        "first": 1,
+        "second": 1,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "05-03-2025",
+          "position": 1,
+          "daysAgo": 74
+        },
+        {
+          "date": "21-01-2025",
+          "position": 2,
+          "daysAgo": 117
+        },
+        {
+          "date": "17-10-2024",
+          "position": 3,
+          "daysAgo": 213
+        }
+      ]
+    },
+    "76": {
+      "number": "76",
+      "lastSeen": "16-04-2025",
+      "daysSinceSeen": 32,
+      "positions": {
+        "first": 6,
+        "second": 2,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "16-04-2025",
+          "position": 1,
+          "daysAgo": 32
+        },
+        {
+          "date": "16-04-2025",
+          "position": 1,
+          "daysAgo": 32
+        },
+        {
+          "date": "24-03-2025",
+          "position": 1,
+          "daysAgo": 55
+        },
+        {
+          "date": "24-02-2025",
+          "position": 1,
+          "daysAgo": 83
+        },
+        {
+          "date": "17-01-2025",
+          "position": 3,
+          "daysAgo": 121
+        },
+        {
+          "date": "14-12-2024",
+          "position": 1,
+          "daysAgo": 155
+        },
+        {
+          "date": "23-11-2024",
+          "position": 2,
+          "daysAgo": 176
+        },
+        {
+          "date": "11-11-2024",
+          "position": 1,
+          "daysAgo": 188
+        },
+        {
+          "date": "25-09-2024",
+          "position": 2,
+          "daysAgo": 235
+        }
+      ]
+    },
+    "77": {
+      "number": "77",
+      "lastSeen": "12-03-2025",
+      "daysSinceSeen": 67,
+      "positions": {
+        "first": 1,
+        "second": 4,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "12-03-2025",
+          "position": 2,
+          "daysAgo": 67
+        },
+        {
+          "date": "11-03-2025",
+          "position": 3,
+          "daysAgo": 68
+        },
+        {
+          "date": "08-03-2025",
+          "position": 2,
+          "daysAgo": 71
+        },
+        {
+          "date": "01-12-2024",
+          "position": 3,
+          "daysAgo": 168
+        },
+        {
+          "date": "22-11-2024",
+          "position": 1,
+          "daysAgo": 177
+        },
+        {
+          "date": "20-11-2024",
+          "position": 2,
+          "daysAgo": 179
+        },
+        {
+          "date": "26-09-2024",
+          "position": 2,
+          "daysAgo": 234
+        }
+      ]
+    },
+    "78": {
+      "number": "78",
+      "lastSeen": "11-05-2025",
+      "daysSinceSeen": 7,
+      "positions": {
+        "first": 1,
+        "second": 5,
+        "third": 7
+      },
+      "history": [
+        {
+          "date": "11-05-2025",
+          "position": 3,
+          "daysAgo": 7
+        },
+        {
+          "date": "09-05-2025",
+          "position": 3,
+          "daysAgo": 9
+        },
+        {
+          "date": "14-04-2025",
+          "position": 3,
+          "daysAgo": 34
+        },
+        {
+          "date": "07-03-2025",
+          "position": 2,
+          "daysAgo": 72
+        },
+        {
+          "date": "04-03-2025",
+          "position": 1,
+          "daysAgo": 75
+        },
+        {
+          "date": "06-02-2025",
+          "position": 2,
+          "daysAgo": 101
+        },
+        {
+          "date": "03-02-2025",
+          "position": 2,
+          "daysAgo": 104
+        },
+        {
+          "date": "01-02-2025",
+          "position": 3,
+          "daysAgo": 106
+        },
+        {
+          "date": "16-12-2024",
+          "position": 3,
+          "daysAgo": 153
+        },
+        {
+          "date": "16-12-2024",
+          "position": 3,
+          "daysAgo": 153
+        },
+        {
+          "date": "27-10-2024",
+          "position": 2,
+          "daysAgo": 203
+        },
+        {
+          "date": "20-10-2024",
+          "position": 2,
+          "daysAgo": 210
+        },
+        {
+          "date": "27-09-2024",
+          "position": 3,
+          "daysAgo": 233
+        }
+      ]
+    },
+    "79": {
+      "number": "79",
+      "lastSeen": "16-11-2024",
+      "daysSinceSeen": 183,
+      "positions": {
+        "first": 0,
+        "second": 1,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "16-11-2024",
+          "position": 3,
+          "daysAgo": 183
+        },
+        {
+          "date": "08-11-2024",
+          "position": 2,
+          "daysAgo": 191
+        },
+        {
+          "date": "23-10-2024",
+          "position": 3,
+          "daysAgo": 207
+        },
+        {
+          "date": "09-10-2024",
+          "position": 3,
+          "daysAgo": 221
+        }
+      ]
+    },
+    "80": {
+      "number": "80",
+      "lastSeen": "17-02-2025",
+      "daysSinceSeen": 90,
+      "positions": {
+        "first": 1,
+        "second": 2,
+        "third": 5
+      },
+      "history": [
+        {
+          "date": "17-02-2025",
+          "position": 3,
+          "daysAgo": 90
+        },
+        {
+          "date": "30-01-2025",
+          "position": 3,
+          "daysAgo": 108
+        },
+        {
+          "date": "19-12-2024",
+          "position": 2,
+          "daysAgo": 150
+        },
+        {
+          "date": "17-12-2024",
+          "position": 3,
+          "daysAgo": 152
+        },
+        {
+          "date": "17-12-2024",
+          "position": 3,
+          "daysAgo": 152
+        },
+        {
+          "date": "30-11-2024",
+          "position": 3,
+          "daysAgo": 169
+        },
+        {
+          "date": "08-11-2024",
+          "position": 1,
+          "daysAgo": 191
+        },
+        {
+          "date": "22-09-2024",
+          "position": 2,
+          "daysAgo": 238
+        }
+      ]
+    },
+    "81": {
+      "number": "81",
+      "lastSeen": "26-03-2025",
+      "daysSinceSeen": 53,
+      "positions": {
+        "first": 3,
+        "second": 2,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "26-03-2025",
+          "position": 1,
+          "daysAgo": 53
+        },
+        {
+          "date": "01-03-2025",
+          "position": 1,
+          "daysAgo": 78
+        },
+        {
+          "date": "09-01-2025",
+          "position": 3,
+          "daysAgo": 129
+        },
+        {
+          "date": "07-01-2025",
+          "position": 1,
+          "daysAgo": 131
+        },
+        {
+          "date": "13-12-2024",
+          "position": 2,
+          "daysAgo": 156
+        },
+        {
+          "date": "29-09-2024",
+          "position": 2,
+          "daysAgo": 231
+        }
+      ]
+    },
+    "82": {
+      "number": "82",
+      "lastSeen": "30-04-2025",
+      "daysSinceSeen": 18,
+      "positions": {
+        "first": 2,
+        "second": 3,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "30-04-2025",
+          "position": 1,
+          "daysAgo": 18
+        },
+        {
+          "date": "30-04-2025",
+          "position": 2,
+          "daysAgo": 18
+        },
+        {
+          "date": "22-03-2025",
+          "position": 2,
+          "daysAgo": 57
+        },
+        {
+          "date": "05-12-2024",
+          "position": 2,
+          "daysAgo": 164
+        },
+        {
+          "date": "18-10-2024",
+          "position": 1,
+          "daysAgo": 212
+        }
+      ]
+    },
+    "83": {
+      "number": "83",
+      "lastSeen": "22-04-2025",
+      "daysSinceSeen": 26,
+      "positions": {
+        "first": 3,
+        "second": 3,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "22-04-2025",
+          "position": 2,
+          "daysAgo": 26
+        },
+        {
+          "date": "02-02-2025",
+          "position": 1,
+          "daysAgo": 105
+        },
+        {
+          "date": "23-01-2025",
+          "position": 1,
+          "daysAgo": 115
+        },
+        {
+          "date": "24-11-2024",
+          "position": 2,
+          "daysAgo": 175
+        },
+        {
+          "date": "02-10-2024",
+          "position": 2,
+          "daysAgo": 228
+        },
+        {
+          "date": "26-09-2024",
+          "position": 1,
+          "daysAgo": 234
+        }
+      ]
+    },
+    "84": {
+      "number": "84",
+      "lastSeen": "13-05-2025",
+      "daysSinceSeen": 5,
+      "positions": {
+        "first": 0,
+        "second": 3,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "13-05-2025",
+          "position": 3,
+          "daysAgo": 5
+        },
+        {
+          "date": "01-04-2025",
+          "position": 2,
+          "daysAgo": 47
+        },
+        {
+          "date": "14-03-2025",
+          "position": 3,
+          "daysAgo": 65
+        },
+        {
+          "date": "28-02-2025",
+          "position": 2,
+          "daysAgo": 79
+        },
+        {
+          "date": "16-02-2025",
+          "position": 3,
+          "daysAgo": 91
+        },
+        {
+          "date": "11-02-2025",
+          "position": 2,
+          "daysAgo": 96
+        },
+        {
+          "date": "21-12-2024",
+          "position": 3,
+          "daysAgo": 148
+        }
+      ]
+    },
+    "85": {
+      "number": "85",
+      "lastSeen": "09-04-2025",
+      "daysSinceSeen": 39,
+      "positions": {
+        "first": 2,
+        "second": 2,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "09-04-2025",
+          "position": 3,
+          "daysAgo": 39
+        },
+        {
+          "date": "13-02-2025",
+          "position": 1,
+          "daysAgo": 94
+        },
+        {
+          "date": "02-02-2025",
+          "position": 2,
+          "daysAgo": 105
+        },
+        {
+          "date": "27-01-2025",
+          "position": 3,
+          "daysAgo": 111
+        },
+        {
+          "date": "04-01-2025",
+          "position": 2,
+          "daysAgo": 134
+        },
+        {
+          "date": "19-12-2024",
+          "position": 3,
+          "daysAgo": 150
+        },
+        {
+          "date": "06-10-2024",
+          "position": 1,
+          "daysAgo": 224
+        }
+      ]
+    },
+    "86": {
+      "number": "86",
+      "lastSeen": "03-03-2025",
+      "daysSinceSeen": 76,
+      "positions": {
+        "first": 0,
+        "second": 2,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "03-03-2025",
+          "position": 3,
+          "daysAgo": 76
+        },
+        {
+          "date": "20-12-2024",
+          "position": 2,
+          "daysAgo": 149
+        },
+        {
+          "date": "30-09-2024",
+          "position": 2,
+          "daysAgo": 230
+        }
+      ]
+    },
+    "87": {
+      "number": "87",
+      "lastSeen": "07-05-2025",
+      "daysSinceSeen": 11,
+      "positions": {
+        "first": 1,
+        "second": 1,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "07-05-2025",
+          "position": 1,
+          "daysAgo": 11
+        },
+        {
+          "date": "31-03-2025",
+          "position": 3,
+          "daysAgo": 48
+        },
+        {
+          "date": "19-02-2025",
+          "position": 3,
+          "daysAgo": 88
+        },
+        {
+          "date": "07-12-2024",
+          "position": 3,
+          "daysAgo": 162
+        },
+        {
+          "date": "21-11-2024",
+          "position": 3,
+          "daysAgo": 178
+        },
+        {
+          "date": "21-10-2024",
+          "position": 2,
+          "daysAgo": 209
+        }
+      ]
+    },
+    "88": {
+      "number": "88",
+      "lastSeen": "15-04-2025",
+      "daysSinceSeen": 33,
+      "positions": {
+        "first": 5,
+        "second": 1,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "15-04-2025",
+          "position": 1,
+          "daysAgo": 33
+        },
+        {
+          "date": "15-04-2025",
+          "position": 1,
+          "daysAgo": 33
+        },
+        {
+          "date": "07-04-2025",
+          "position": 3,
+          "daysAgo": 41
+        },
+        {
+          "date": "26-03-2025",
+          "position": 3,
+          "daysAgo": 53
+        },
+        {
+          "date": "23-03-2025",
+          "position": 1,
+          "daysAgo": 56
+        },
+        {
+          "date": "31-01-2025",
+          "position": 1,
+          "daysAgo": 107
+        },
+        {
+          "date": "21-01-2025",
+          "position": 1,
+          "daysAgo": 117
+        },
+        {
+          "date": "18-01-2025",
+          "position": 2,
+          "daysAgo": 120
+        }
+      ]
+    },
+    "89": {
+      "number": "89",
+      "lastSeen": "15-04-2025",
+      "daysSinceSeen": 33,
+      "positions": {
+        "first": 3,
+        "second": 2,
+        "third": 5
+      },
+      "history": [
+        {
+          "date": "15-04-2025",
+          "position": 3,
+          "daysAgo": 33
+        },
+        {
+          "date": "15-04-2025",
+          "position": 3,
+          "daysAgo": 33
+        },
+        {
+          "date": "11-04-2025",
+          "position": 2,
+          "daysAgo": 37
+        },
+        {
+          "date": "28-02-2025",
+          "position": 1,
+          "daysAgo": 79
+        },
+        {
+          "date": "21-02-2025",
+          "position": 3,
+          "daysAgo": 86
+        },
+        {
+          "date": "24-01-2025",
+          "position": 2,
+          "daysAgo": 114
+        },
+        {
+          "date": "27-12-2024",
+          "position": 1,
+          "daysAgo": 142
+        },
+        {
+          "date": "11-10-2024",
+          "position": 1,
+          "daysAgo": 219
+        },
+        {
+          "date": "05-10-2024",
+          "position": 3,
+          "daysAgo": 225
+        },
+        {
+          "date": "22-09-2024",
+          "position": 3,
+          "daysAgo": 238
+        }
+      ]
+    },
+    "90": {
+      "number": "90",
+      "lastSeen": "07-04-2025",
+      "daysSinceSeen": 41,
+      "positions": {
+        "first": 2,
+        "second": 3,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "07-04-2025",
+          "position": 2,
+          "daysAgo": 41
+        },
+        {
+          "date": "06-03-2025",
+          "position": 2,
+          "daysAgo": 73
+        },
+        {
+          "date": "20-02-2025",
+          "position": 1,
+          "daysAgo": 87
+        },
+        {
+          "date": "13-02-2025",
+          "position": 2,
+          "daysAgo": 94
+        },
+        {
+          "date": "04-12-2024",
+          "position": 1,
+          "daysAgo": 165
+        }
+      ]
+    },
+    "91": {
+      "number": "91",
+      "lastSeen": "10-05-2025",
+      "daysSinceSeen": 8,
+      "positions": {
+        "first": 2,
+        "second": 8,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "10-05-2025",
+          "position": 2,
+          "daysAgo": 8
+        },
+        {
+          "date": "23-04-2025",
+          "position": 2,
+          "daysAgo": 25
+        },
+        {
+          "date": "22-04-2025",
+          "position": 3,
+          "daysAgo": 26
+        },
+        {
+          "date": "21-04-2025",
+          "position": 1,
+          "daysAgo": 27
+        },
+        {
+          "date": "13-04-2025",
+          "position": 2,
+          "daysAgo": 35
+        },
+        {
+          "date": "10-04-2025",
+          "position": 2,
+          "daysAgo": 38
+        },
+        {
+          "date": "22-03-2025",
+          "position": 1,
+          "daysAgo": 57
+        },
+        {
+          "date": "20-03-2025",
+          "position": 3,
+          "daysAgo": 59
+        },
+        {
+          "date": "20-02-2025",
+          "position": 2,
+          "daysAgo": 87
+        },
+        {
+          "date": "14-02-2025",
+          "position": 2,
+          "daysAgo": 93
+        },
+        {
+          "date": "25-11-2024",
+          "position": 2,
+          "daysAgo": 174
+        },
+        {
+          "date": "09-10-2024",
+          "position": 2,
+          "daysAgo": 221
+        }
+      ]
+    },
+    "92": {
+      "number": "92",
+      "lastSeen": "04-05-2025",
+      "daysSinceSeen": 14,
+      "positions": {
+        "first": 1,
+        "second": 3,
+        "third": 1
+      },
+      "history": [
+        {
+          "date": "04-05-2025",
+          "position": 2,
+          "daysAgo": 14
+        },
+        {
+          "date": "28-04-2025",
+          "position": 3,
+          "daysAgo": 20
+        },
+        {
+          "date": "05-04-2025",
+          "position": 2,
+          "daysAgo": 43
+        },
+        {
+          "date": "03-04-2025",
+          "position": 1,
+          "daysAgo": 45
+        },
+        {
+          "date": "01-11-2024",
+          "position": 2,
+          "daysAgo": 198
+        }
+      ]
+    },
+    "93": {
+      "number": "93",
+      "lastSeen": "05-03-2025",
+      "daysSinceSeen": 74,
+      "positions": {
+        "first": 4,
+        "second": 3,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "05-03-2025",
+          "position": 2,
+          "daysAgo": 74
+        },
+        {
+          "date": "02-03-2025",
+          "position": 1,
+          "daysAgo": 77
+        },
+        {
+          "date": "28-02-2025",
+          "position": 3,
+          "daysAgo": 79
+        },
+        {
+          "date": "26-02-2025",
+          "position": 1,
+          "daysAgo": 81
+        },
+        {
+          "date": "31-01-2025",
+          "position": 2,
+          "daysAgo": 107
+        },
+        {
+          "date": "10-01-2025",
+          "position": 2,
+          "daysAgo": 128
+        },
+        {
+          "date": "27-12-2024",
+          "position": 3,
+          "daysAgo": 142
+        },
+        {
+          "date": "13-11-2024",
+          "position": 1,
+          "daysAgo": 186
+        },
+        {
+          "date": "01-11-2024",
+          "position": 3,
+          "daysAgo": 198
+        },
+        {
+          "date": "14-10-2024",
+          "position": 1,
+          "daysAgo": 216
+        },
+        {
+          "date": "25-09-2024",
+          "position": 3,
+          "daysAgo": 235
+        }
+      ]
+    },
+    "94": {
+      "number": "94",
+      "lastSeen": "09-05-2025",
+      "daysSinceSeen": 9,
+      "positions": {
+        "first": 2,
+        "second": 2,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "09-05-2025",
+          "position": 2,
+          "daysAgo": 9
+        },
+        {
+          "date": "19-04-2025",
+          "position": 2,
+          "daysAgo": 29
+        },
+        {
+          "date": "25-03-2025",
+          "position": 3,
+          "daysAgo": 54
+        },
+        {
+          "date": "10-02-2025",
+          "position": 3,
+          "daysAgo": 97
+        },
+        {
+          "date": "15-01-2025",
+          "position": 1,
+          "daysAgo": 123
+        },
+        {
+          "date": "04-10-2024",
+          "position": 3,
+          "daysAgo": 226
+        },
+        {
+          "date": "01-10-2024",
+          "position": 3,
+          "daysAgo": 229
+        },
+        {
+          "date": "24-09-2024",
+          "position": 1,
+          "daysAgo": 236
+        }
+      ]
+    },
+    "95": {
+      "number": "95",
+      "lastSeen": "05-03-2025",
+      "daysSinceSeen": 74,
+      "positions": {
+        "first": 3,
+        "second": 5,
+        "third": 2
+      },
+      "history": [
+        {
+          "date": "05-03-2025",
+          "position": 3,
+          "daysAgo": 74
+        },
+        {
+          "date": "06-02-2025",
+          "position": 3,
+          "daysAgo": 101
+        },
+        {
+          "date": "16-01-2025",
+          "position": 1,
+          "daysAgo": 122
+        },
+        {
+          "date": "15-01-2025",
+          "position": 2,
+          "daysAgo": 123
+        },
+        {
+          "date": "17-12-2024",
+          "position": 2,
+          "daysAgo": 152
+        },
+        {
+          "date": "17-12-2024",
+          "position": 2,
+          "daysAgo": 152
+        },
+        {
+          "date": "15-12-2024",
+          "position": 1,
+          "daysAgo": 154
+        },
+        {
+          "date": "08-12-2024",
+          "position": 2,
+          "daysAgo": 161
+        },
+        {
+          "date": "03-12-2024",
+          "position": 2,
+          "daysAgo": 166
+        },
+        {
+          "date": "17-10-2024",
+          "position": 1,
+          "daysAgo": 213
+        }
+      ]
+    },
+    "96": {
+      "number": "96",
+      "lastSeen": "05-05-2025",
+      "daysSinceSeen": 13,
+      "positions": {
+        "first": 1,
+        "second": 1,
+        "third": 4
+      },
+      "history": [
+        {
+          "date": "05-05-2025",
+          "position": 3,
+          "daysAgo": 13
+        },
+        {
+          "date": "27-03-2025",
+          "position": 1,
+          "daysAgo": 52
+        },
+        {
+          "date": "22-12-2024",
+          "position": 3,
+          "daysAgo": 147
+        },
+        {
+          "date": "22-12-2024",
+          "position": 3,
+          "daysAgo": 147
+        },
+        {
+          "date": "01-12-2024",
+          "position": 2,
+          "daysAgo": 168
+        },
+        {
+          "date": "15-11-2024",
+          "position": 3,
+          "daysAgo": 184
+        }
+      ]
+    },
+    "97": {
+      "number": "97",
+      "lastSeen": "21-03-2025",
+      "daysSinceSeen": 58,
+      "positions": {
+        "first": 1,
+        "second": 1,
+        "third": 0
+      },
+      "history": [
+        {
+          "date": "21-03-2025",
+          "position": 1,
+          "daysAgo": 58
+        },
+        {
+          "date": "19-11-2024",
+          "position": 2,
+          "daysAgo": 180
+        }
+      ]
+    },
+    "98": {
+      "number": "98",
+      "lastSeen": "01-05-2025",
+      "daysSinceSeen": 17,
+      "positions": {
+        "first": 0,
+        "second": 3,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "01-05-2025",
+          "position": 3,
+          "daysAgo": 17
+        },
+        {
+          "date": "25-04-2025",
+          "position": 2,
+          "daysAgo": 23
+        },
+        {
+          "date": "02-12-2024",
+          "position": 2,
+          "daysAgo": 167
+        },
+        {
+          "date": "04-11-2024",
+          "position": 2,
+          "daysAgo": 195
+        },
+        {
+          "date": "20-10-2024",
+          "position": 3,
+          "daysAgo": 210
+        },
+        {
+          "date": "03-10-2024",
+          "position": 3,
+          "daysAgo": 227
+        }
+      ]
+    },
+    "99": {
+      "number": "99",
+      "lastSeen": "03-05-2025",
+      "daysSinceSeen": 15,
+      "positions": {
+        "first": 2,
+        "second": 0,
+        "third": 3
+      },
+      "history": [
+        {
+          "date": "03-05-2025",
+          "position": 1,
+          "daysAgo": 15
+        },
+        {
+          "date": "26-04-2025",
+          "position": 1,
+          "daysAgo": 22
+        },
+        {
+          "date": "02-12-2024",
+          "position": 3,
+          "daysAgo": 167
+        },
+        {
+          "date": "22-10-2024",
+          "position": 3,
+          "daysAgo": 208
+        },
+        {
+          "date": "30-09-2024",
+          "position": 3,
+          "daysAgo": 230
+        }
+      ]
+    }
+  },
+  "repeatedInLast30Days": {
+    "22": {
+      "occurrences": 3,
+      "dates": [
+        "17-05-2025",
+        "05-05-2025",
+        "27-04-2025"
+      ]
+    },
+    "28": {
+      "occurrences": 4,
+      "dates": [
+        "17-05-2025",
+        "15-05-2025",
+        "07-05-2025",
+        "06-05-2025"
+      ]
+    },
+    "34": {
+      "occurrences": 2,
+      "dates": [
+        "15-05-2025",
+        "23-04-2025"
+      ]
+    },
+    "30": {
+      "occurrences": 2,
+      "dates": [
+        "14-05-2025",
+        "08-05-2025"
+      ]
+    },
+    "03": {
+      "occurrences": 2,
+      "dates": [
+        "14-05-2025",
+        "22-04-2025"
+      ]
+    },
+    "42": {
+      "occurrences": 2,
+      "dates": [
+        "14-05-2025",
+        "01-05-2025"
+      ]
+    },
+    "47": {
+      "occurrences": 2,
+      "dates": [
+        "12-05-2025",
+        "20-04-2025"
+      ]
+    },
+    "57": {
+      "occurrences": 2,
+      "dates": [
+        "12-05-2025",
+        "08-05-2025"
+      ]
+    },
+    "78": {
+      "occurrences": 2,
+      "dates": [
+        "11-05-2025",
+        "09-05-2025"
+      ]
+    },
+    "91": {
+      "occurrences": 4,
+      "dates": [
+        "10-05-2025",
+        "23-04-2025",
+        "22-04-2025",
+        "21-04-2025"
+      ]
+    },
+    "94": {
+      "occurrences": 2,
+      "dates": [
+        "09-05-2025",
+        "19-04-2025"
+      ]
+    },
+    "64": {
+      "occurrences": 2,
+      "dates": [
+        "08-05-2025",
+        "27-04-2025"
+      ]
+    },
+    "17": {
+      "occurrences": 2,
+      "dates": [
+        "06-05-2025",
+        "28-04-2025"
+      ]
+    },
+    "25": {
+      "occurrences": 2,
+      "dates": [
+        "06-05-2025",
+        "03-05-2025"
+      ]
+    },
+    "31": {
+      "occurrences": 2,
+      "dates": [
+        "05-05-2025",
+        "19-04-2025"
+      ]
+    },
+    "92": {
+      "occurrences": 2,
+      "dates": [
+        "04-05-2025",
+        "28-04-2025"
+      ]
+    },
+    "99": {
+      "occurrences": 2,
+      "dates": [
+        "03-05-2025",
+        "26-04-2025"
+      ]
+    },
+    "43": {
+      "occurrences": 2,
+      "dates": [
+        "02-05-2025",
+        "27-04-2025"
+      ]
+    },
+    "08": {
+      "occurrences": 2,
+      "dates": [
+        "02-05-2025",
+        "21-04-2025"
+      ]
+    },
+    "98": {
+      "occurrences": 2,
+      "dates": [
+        "01-05-2025",
+        "25-04-2025"
+      ]
+    },
+    "74": {
+      "occurrences": 2,
+      "dates": [
+        "30-04-2025",
+        "23-04-2025"
+      ]
+    },
+    "12": {
+      "occurrences": 2,
+      "dates": [
+        "28-04-2025",
+        "26-04-2025"
+      ]
+    }
+  },
+  "coldestNumbers": [
+    {
+      "number": "00",
+      "daysSinceSeen": 202,
+      "lastSeen": "28-10-2024"
+    },
+    {
+      "number": "79",
+      "daysSinceSeen": 183,
+      "lastSeen": "16-11-2024"
+    },
+    {
+      "number": "59",
+      "daysSinceSeen": 126,
+      "lastSeen": "12-01-2025"
+    },
+    {
+      "number": "26",
+      "daysSinceSeen": 113,
+      "lastSeen": "25-01-2025"
+    },
+    {
+      "number": "39",
+      "daysSinceSeen": 99,
+      "lastSeen": "08-02-2025"
+    },
+    {
+      "number": "80",
+      "daysSinceSeen": 90,
+      "lastSeen": "17-02-2025"
+    },
+    {
+      "number": "16",
+      "daysSinceSeen": 84,
+      "lastSeen": "23-02-2025"
+    },
+    {
+      "number": "06",
+      "daysSinceSeen": 82,
+      "lastSeen": "25-02-2025"
+    },
+    {
+      "number": "50",
+      "daysSinceSeen": 82,
+      "lastSeen": "25-02-2025"
+    },
+    {
+      "number": "86",
+      "daysSinceSeen": 76,
+      "lastSeen": "03-03-2025"
+    }
+  ],
+  "hottestNumbers": [
+    {
+      "number": "35",
+      "daysSinceSeen": 0,
+      "lastSeen": "18-05-2025"
+    },
+    {
+      "number": "51",
+      "daysSinceSeen": 0,
+      "lastSeen": "18-05-2025"
+    },
+    {
+      "number": "22",
+      "daysSinceSeen": 1,
+      "lastSeen": "17-05-2025"
+    },
+    {
+      "number": "28",
+      "daysSinceSeen": 1,
+      "lastSeen": "17-05-2025"
+    },
+    {
+      "number": "67",
+      "daysSinceSeen": 1,
+      "lastSeen": "17-05-2025"
+    },
+    {
+      "number": "40",
+      "daysSinceSeen": 2,
+      "lastSeen": "16-05-2025"
+    },
+    {
+      "number": "54",
+      "daysSinceSeen": 2,
+      "lastSeen": "16-05-2025"
+    },
+    {
+      "number": "70",
+      "daysSinceSeen": 2,
+      "lastSeen": "16-05-2025"
+    },
+    {
+      "number": "34",
+      "daysSinceSeen": 3,
+      "lastSeen": "15-05-2025"
+    },
+    {
+      "number": "36",
+      "daysSinceSeen": 3,
+      "lastSeen": "15-05-2025"
+    }
+  ]
+}

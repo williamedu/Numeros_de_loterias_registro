@@ -1,0 +1,203 @@
+/* Estilos para los números y el mapa de calor */
+.number-cell {
+    transition: all 0.3s ease;
+}
+.number-cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.heatmap-0 { background-color: #f0fff4; } /* 0-10 días */
+.heatmap-1 { background-color: #c6f6d5; } /* 11-20 días */
+.heatmap-2 { background-color: #9ae6b4; } /* 21-30 días */
+.heatmap-3 { background-color: #68d391; } /* 31-40 días */
+.heatmap-4 { background-color: #48bb78; } /* 41-50 días */
+.heatmap-5 { background-color: #38a169; } /* 51-60 días */
+.heatmap-6 { background-color: #2f855a; } /* 61-70 días */
+.heatmap-7 { background-color: #276749; } /* 71-80 días */
+.heatmap-8 { background-color: #22543d; } /* 81-90 días */
+.heatmap-9 { background-color: #1c4532; color: white; } /* 91-100 días */
+.heatmap-10 { background-color: #1a365d; color: white; } /* 100+ días */
+
+/* Estilos para el indicador de carga */
+/* Si no está ya en tu styles.css, añade esto */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #4299e1;
+    animation: spin 1s ease-in-out infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Animación de fundido para detalles */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* Estilos para el panel de detalles con altura fija */
+.fixed-height-panel {
+    transition: all 0.3s ease;
+    scrollbar-width: thin; /* Para Firefox */
+}
+
+.fixed-height-panel::-webkit-scrollbar {
+    width: 6px; /* Para Chrome, Safari, etc. */
+}
+
+.fixed-height-panel::-webkit-scrollbar-thumb {
+    background-color: #cbd5e0;
+    border-radius: 3px;
+}
+
+.fixed-height-panel::-webkit-scrollbar-track {
+    background-color: #f7fafc;
+}
+
+/* Estilos para el banner de lotería */
+.lottery-card {
+    transition: all 0.3s ease;
+    max-width: 320px;
+    margin: 2rem auto;
+}
+.lottery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
+}
+.lottery-number {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: #4299e1;
+    color: white;
+    font-size: 1.25rem;
+}
+.title-button {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.title-button:hover {
+    transform: scale(1.05);
+}
+.title-button:active {
+    transform: scale(0.98);
+}
+
+/* Estilos para múltiples banners */
+.lottery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+/* Variantes para diferentes tipos de loterías */
+.lottery-type-3 .lottery-number {
+    background-color: #4299e1; /* Azul para loterías de 3 números */
+}
+.lottery-type-6 .lottery-number {
+    background-color: #38a169; /* Verde para loterías de 6 números */
+}
+.lottery-type-many .lottery-number {
+    background-color: #dd6b20; /* Naranja para loterías con muchos números */
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+}
+
+/* Efectos para resultados recientes */
+.recent-result {
+    position: relative;
+    overflow: hidden;
+}
+.recent-result::after {
+    content: "Reciente";
+    position: absolute;
+    top: 0.75rem;
+    right: -2rem;
+    background-color: #e53e3e;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 2rem;
+    transform: rotate(45deg);
+}
+
+/* Estilos para las tarjetas de lotería */
+.lottery-card {
+    transition: all 0.3s ease;
+}
+.lottery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los contenedores de gráficos */
+.chart-container {
+    height: 300px;
+}
+
+/* Estilos para los números en las bolas */
+.number-ball {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+.dark-mode .bg-white {
+    background-color: #334155 !important;
+    color: #f8fafc !important;
+}
+.dark-mode .text-gray-800 {
+    color: #f8fafc !important;
+}
+.dark-mode .border-gray-200 {
+    border-color: #475569 !important;
+}
+
+/* Estilos para las pestañas de contenido */
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* Estilos para las estrellas de favoritos */
+.favorite-star {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.favorite-star:hover {
+    transform: scale(1.2);
+}
+
+/* Estilos para elementos activos */
+.nav-link.active {
+    font-weight: bold;
+    color: #f59e0b;
+    border-bottom: 2px solid #f59e0b;
+    padding-bottom: 4px;
+}
