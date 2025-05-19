@@ -301,8 +301,7 @@ try:
         "repeatedInLast30Days": repeated_numbers,
         "coldestNumbers": [],  # Lo llenaremos a continuación
         "hottestNumbers": []   # Lo llenaremos a continuación
-    }
-    
+    }    
     # Calcular y añadir números fríos y calientes
     numbers_with_values = [(num, data["daysSinceSeen"]) 
                           for num, data in numbers_data.items() 

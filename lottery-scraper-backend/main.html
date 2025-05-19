@@ -255,8 +255,31 @@
                         // Limpiar el contenedor de números
                         container.innerHTML = '';
                         
-                        // Encontrar los números más recientes (los "más calientes")
-                        if (data.hottestNumbers && data.hottestNumbers.length > 0) {
+                        // CAMBIO AQUÍ: Primero comprobar si existen números ganadores
+                        if (data.winningNumbers && data.winningNumbers.length > 0) {
+                            // Mostrar los números ganadores más recientes
+                            data.winningNumbers.forEach(numData => {
+                                // Determinar el color a usar (mantener consistencia con la tarjeta)
+                                const bgColorClass = card.querySelector('a').classList.contains('bg-accent') 
+                                    ? 'bg-accent' : 'bg-primary';
+                                
+                                // Crear el elemento para el número
+                                const numberElement = document.createElement('span');
+                                numberElement.className = `number-ball ${bgColorClass} text-white`;
+                                numberElement.textContent = numData.number;
+                                container.appendChild(numberElement);
+                            });
+                            
+                            // Opcional: Mostrar la fecha del sorteo
+                            if (data.winningNumbers[0].date) {
+                                const dateElement = document.createElement('div');
+                                dateElement.className = 'text-xs text-gray-500 mt-2';
+                                dateElement.textContent = `Sorteo: ${data.winningNumbers[0].date}`;
+                                container.parentNode.appendChild(dateElement);
+                            }
+                        } 
+                        // Si no hay números ganadores, mostrar los "números calientes" como fallback
+                        else if (data.hottestNumbers && data.hottestNumbers.length > 0) {
                             // Mostrar solo los primeros 'positions' números (ej: 3 para Gana Más)
                             const hotNumbers = data.hottestNumbers.slice(0, positions);
                             

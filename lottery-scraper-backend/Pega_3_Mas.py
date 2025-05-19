@@ -28,7 +28,7 @@ MIN_NUMBER = 0  # Número mínimo (algunas loterías comienzan desde 1 en lugar 
 MAX_NUMBER = 50  # Número máximo
 
 # Definir la ruta absoluta a la carpeta del proyecto
-PROJECT_DIR = r"C:\Users\willi\OneDrive\Escritorio\New_Loteria_Resultados\lottery-scraper-backend"
+PROJECT_DIR = r"C:\Users\Admin\Desktop\New_Loterry\Numeros_de_loterias_registro\lottery-scraper-backend"
 OUTPUT_FILE = os.path.join(PROJECT_DIR, f"lottery_data_{LOTTERY_NAME}.json")
 
 # Configurar opciones para Chrome
@@ -77,6 +77,10 @@ for i in range(MIN_NUMBER, MAX_NUMBER + 1):  # El +1 asegura que incluya el 50
 
 # Estructura de datos para seguimiento de repeticiones en los últimos 30 días
 last_30_days_occurrences = defaultdict(list)  # Número -> lista de fechas de aparición
+
+# Variable para almacenar los números ganadores más recientes
+latest_winning_numbers = []
+latest_winning_date = None
 
 try:
     # Fecha inicial (hoy)
@@ -212,6 +216,14 @@ try:
                             # Convertir la fecha a objeto datetime
                             block_date = datetime.strptime(complete_date, "%d-%m-%Y")
                             
+                            # Guardar los números ganadores del primer bloque de la primera iteración
+                            # (solo si no los hemos guardado antes o si esta fecha es más reciente)
+                            if iteration == 1 and i == 0:
+                                if latest_winning_date is None or block_date > latest_winning_date:
+                                    latest_winning_numbers = drawn_numbers
+                                    latest_winning_date = block_date
+                                    print(f"Números ganadores más recientes actualizados: {numbers_str} ({complete_date})")
+                            
                             # Calcular días desde hoy
                             days_diff = (today - block_date).days
                             
@@ -285,8 +297,7 @@ try:
             repeated_numbers[num] = {
                 "occurrences": len(dates),
                 "dates": dates
-            }
-    
+            }    
     # Crear estructura de datos final para guardar en JSON
     output_data = {
         "lotteryName": LOTTERY_DISPLAY_NAME,
@@ -300,9 +311,9 @@ try:
         "numbers": numbers_data,
         "repeatedInLast30Days": repeated_numbers,
         "coldestNumbers": [],  # Lo llenaremos a continuación
-        "hottestNumbers": []   # Lo llenaremos a continuación
-    }
-    
+        "hottestNumbers": [],
+        "winningNumbers": []   # Lo llenaremos a continuación
+    }    
     # Calcular y añadir números fríos y calientes
     numbers_with_values = [(num, data["daysSinceSeen"]) 
                           for num, data in numbers_data.items() 
@@ -329,6 +340,17 @@ try:
                 "daysSinceSeen": days,
                 "lastSeen": numbers_data[num]["lastSeen"]
             })
+    
+    # Añadir los números ganadores más recientes
+    if latest_winning_numbers and latest_winning_date:
+        winning_date_str = latest_winning_date.strftime("%d-%m-%Y")
+        for idx, num in enumerate(latest_winning_numbers):
+            output_data["winningNumbers"].append({
+                "number": num,
+                "position": idx + 1,
+                "date": winning_date_str
+            })
+        print(f"Números ganadores añadidos al JSON: {latest_winning_numbers} ({winning_date_str})")
     
     # Guardar datos en archivo JSON
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:

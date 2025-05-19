@@ -74,7 +74,6 @@ for i in range(MIN_NUMBER, MAX_NUMBER + 1):
         "positions": positions,
         "history": []  # Añadido array para historial de apariciones
     }
-
 # Estructura de datos para seguimiento de repeticiones en los últimos 30 días
 last_30_days_occurrences = defaultdict(list)  # Número -> lista de fechas de aparición
 

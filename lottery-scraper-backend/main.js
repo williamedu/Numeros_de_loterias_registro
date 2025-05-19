@@ -45,6 +45,9 @@ async function initApp() {
         // Actualizar la fecha de última actualización
         updateLastUpdatedInfo();
         
+        // Mostrar los números ganadores en el encabezado si existe el contenedor
+        displayWinningNumbers();
+        
         // Actualizar estadísticas generales
         updateStatsSummary();
         
@@ -69,6 +72,48 @@ async function initApp() {
         console.error('Error al inicializar la aplicación:', error);
         hideLoading();
         alert('Error al cargar los datos. Por favor, inténtelo de nuevo más tarde.');
+    }
+}
+
+// Función para mostrar los números ganadores en el encabezado
+function displayWinningNumbers() {
+    const winningNumbersContainer = document.getElementById('currentWinningNumbers');
+    if (!winningNumbersContainer) return; // Si no existe el contenedor, salir
+    
+    // Limpiar el contenedor
+    winningNumbersContainer.innerHTML = '';
+    
+    if (lotteryData && lotteryData.winningNumbers && lotteryData.winningNumbers.length > 0) {
+        // Crear un título para los números ganadores
+        const titleElement = document.createElement('div');
+        titleElement.className = 'text-lg font-semibold mb-2';
+        titleElement.textContent = 'Números Ganadores:';
+        winningNumbersContainer.appendChild(titleElement);
+        
+        // Crear un contenedor para los números
+        const numbersContainer = document.createElement('div');
+        numbersContainer.className = 'flex justify-center space-x-2 mb-2';
+        
+        // Añadir cada número
+        lotteryData.winningNumbers.forEach(numData => {
+            const numberElement = document.createElement('span');
+            numberElement.className = 'number-ball bg-primary text-white';
+            numberElement.textContent = numData.number;
+            numbersContainer.appendChild(numberElement);
+        });
+        
+        winningNumbersContainer.appendChild(numbersContainer);
+        
+        // Añadir la fecha del sorteo
+        if (lotteryData.winningNumbers[0].date) {
+            const dateElement = document.createElement('div');
+            dateElement.className = 'text-sm text-gray-500';
+            dateElement.textContent = `Fecha del sorteo: ${lotteryData.winningNumbers[0].date}`;
+            winningNumbersContainer.appendChild(dateElement);
+        }
+    } else {
+        // Si no hay números ganadores, mostrar mensaje
+        winningNumbersContainer.innerHTML = '<p class="text-gray-500">No hay datos de números ganadores disponibles.</p>';
     }
 }
 
@@ -109,6 +154,19 @@ function updateStatsSummary() {
         }
         
         mostRepeatedNumber.textContent = `${maxRepeated.number} (${maxRepeated.occurrences} veces)`;
+    }
+    
+    // Actualizar números ganadores en la sección de resumen si existe
+    const winningNumbersSummary = document.getElementById('winningNumbersSummary');
+    if (winningNumbersSummary && lotteryData.winningNumbers && lotteryData.winningNumbers.length > 0) {
+        const numbersStr = lotteryData.winningNumbers.map(n => n.number).join(', ');
+        winningNumbersSummary.textContent = numbersStr;
+        
+        // Mostrar la fecha del sorteo si existe
+        const winningDateSummary = document.getElementById('winningDateSummary');
+        if (winningDateSummary && lotteryData.winningNumbers[0].date) {
+            winningDateSummary.textContent = lotteryData.winningNumbers[0].date;
+        }
     }
 }
 
@@ -198,12 +256,26 @@ function renderNumbersGrid() {
         filteredCount.textContent = filteredNumbers.length;
     }
     
+    // Comprobar si algún número es ganador para resaltarlo
+    const winningNumbersSet = new Set();
+    if (lotteryData.winningNumbers && lotteryData.winningNumbers.length > 0) {
+        lotteryData.winningNumbers.forEach(numData => {
+            winningNumbersSet.add(numData.number);
+        });
+    }
+    
     // Renderizar cada número en la cuadrícula
     filteredNumbers.forEach(num => {
         // Determinar la clase de color basada en días sin salir
         const days = num.daysSinceSeen !== null ? num.daysSinceSeen : 1000;
         const heatLevel = Math.min(Math.floor(days / 10), 10);
-        const heatClass = `heatmap-${heatLevel}`;
+        let heatClass = `heatmap-${heatLevel}`;
+        
+        // Si el número es un número ganador actual, aplicar clase especial
+        const isWinningNumber = winningNumbersSet.has(num.number);
+        if (isWinningNumber) {
+            heatClass = 'winner-highlight'; // Esta clase debe estar definida en CSS
+        }
         
         // Crear el elemento div para el número
         const numElement = document.createElement('div');
@@ -250,6 +322,19 @@ function showNumberDetails(number) {
     
     // Usar el período de análisis directamente del JSON
     let analysisPeriod = lotteryData.analysisPeriod || 0;
+    
+    // Verificar si el número es ganador actual
+    let winnerInfo = '';
+    if (lotteryData.winningNumbers && lotteryData.winningNumbers.some(n => n.number === number.number)) {
+        const winningNumber = lotteryData.winningNumbers.find(n => n.number === number.number);
+        winnerInfo = `
+            <div class="bg-green-200 text-green-800 rounded-lg p-4 max-w-xs mx-auto mt-4">
+                <div class="font-medium mb-1">¡Número Ganador Actual!</div>
+                <div class="text-sm">Posición: ${winningNumber.position}</div>
+                <div class="text-sm">Fecha: ${winningNumber.date}</div>
+            </div>
+        `;
+    }
     
     // Verificar si el número está repetido en los últimos 30 días
     let repeatedInfo = '';
@@ -311,6 +396,8 @@ function showNumberDetails(number) {
                 ${frequency === 0 ? 'Nunca ha salido' : 
                   `Ha salido ${frequency} veces (${positionsText.join('/')})`}
             </div>
+            
+            ${winnerInfo}
             
             ${number.lastSeen ? `
                 <div class="bg-gray-100 rounded-lg p-4 max-w-xs mx-auto">
@@ -378,6 +465,27 @@ function updateNumbersLists() {
                 <span class="text-sm text-gray-600">${num.occurrences} veces</span>
             </div>
         `).join('');
+    }
+    
+    // Actualizar lista de números ganadores actuales
+    const currentWinnersList = document.getElementById('currentWinnersList');
+    if (currentWinnersList && lotteryData.winningNumbers && lotteryData.winningNumbers.length > 0) {
+        currentWinnersList.innerHTML = lotteryData.winningNumbers.map(num => `
+            <div class="flex justify-between items-center p-2 bg-green-50 rounded-lg">
+                <span class="font-medium">${num.number}</span>
+                <span class="text-sm text-gray-600">Pos. ${num.position}</span>
+            </div>
+        `).join('');
+        
+        // Mostrar la fecha del sorteo si existe
+        if (lotteryData.winningNumbers[0].date) {
+            const dateDisplay = document.createElement('div');
+            dateDisplay.className = 'text-sm text-gray-500 mt-2 text-center';
+            dateDisplay.textContent = `Sorteo: ${lotteryData.winningNumbers[0].date}`;
+            currentWinnersList.appendChild(dateDisplay);
+        }
+    } else if (currentWinnersList) {
+        currentWinnersList.innerHTML = '<p class="text-sm text-gray-500 text-center">No hay datos disponibles</p>';
     }
 }
 
@@ -465,6 +573,20 @@ function setupEventListeners() {
             setTimeout(() => {
                 location.reload();
             }, 1000);
+        });
+    }
+    
+    // Botón de actualizar números ganadores
+    const updateWinnersBtn = document.getElementById('updateWinnersBtn');
+    if (updateWinnersBtn) {
+        updateWinnersBtn.addEventListener('click', () => {
+            // Redirigir a una página de actualización de números ganadores o mostrar un modal
+            const modal = document.getElementById('updateWinnersModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+            } else {
+                alert('Esta función está en desarrollo. Por favor, actualice los números ganadores desde el script de actualización.');
+            }
         });
     }
     

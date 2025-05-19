@@ -133,8 +133,9 @@ try:
         
         # Encontrar todos los bloques de juego
         game_blocks = driver.find_elements(By.CSS_SELECTOR, ".game-scores.p-2.ball-mode")
-        print(f"Encontrados {len(game_blocks)} bloques de juego")
-        
+        print(f"Encontrados {len(game_blocks)} bloques de juego")       
+
+
         # Si no hay suficientes elementos, continuar
         if len(date_elements) == 0 or len(game_blocks) == 0:
             print("No se encontraron suficientes elementos en esta página.")
