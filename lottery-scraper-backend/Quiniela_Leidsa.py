@@ -293,7 +293,7 @@ try:
         "lastUpdated": today.strftime("%d-%m-%Y %H:%M:%S"),
         "totalProcessed": total_numbers_found,
         "numbersWithData": numbers_with_data,
-        "analysisPeriod": TOTAL_ITERATIONS * DAYS_TO_GO_BACK,  # Añadimos el período de análisis en días
+        "analysisPeriod": TOTAL_ITERATIONS * DAYS_TO_GO_BACK, # Añadimos el período de análisis en días
         "totalIterations": TOTAL_ITERATIONS,                  # Número de iteraciones
         "daysPerIteration": DAYS_TO_GO_BACK,                  # Días por iteración
         "positionsCount": NUMBER_OF_POSITIONS,                # Número de posiciones

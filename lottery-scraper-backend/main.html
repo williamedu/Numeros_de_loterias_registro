@@ -234,7 +234,8 @@
                 const positions = parseInt(container.getAttribute('data-positions'));
                 
                 // URL del archivo JSON específico de la lotería
-                const jsonUrl = `lottery_data_${lotteryName}.json`;
+                const jsonUrl = `json_Datos/lottery_data_${lotteryName}.json`;
+
                 
                 // Cargar datos desde el JSON
                 fetch(jsonUrl)

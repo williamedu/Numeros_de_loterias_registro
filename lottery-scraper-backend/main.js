@@ -25,7 +25,8 @@ async function initApp() {
         showLoading('Cargando datos de la lotería...');
         
         // Cargar los datos JSON específicos para esta lotería
-        const jsonFileName = `lottery_data_${lotteryName}.json`;
+        const jsonFileName = `json_Datos/lottery_data_${lotteryName}.json`;
+
         const response = await fetch(jsonFileName);
         if (!response.ok) {
             throw new Error(`Error al cargar datos: ${response.status}`);
