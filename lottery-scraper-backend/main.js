@@ -66,6 +66,11 @@ async function initApp() {
             window.chartFunctions.initCharts(lotteryData);
         }
         
+        // AÑADIR ESTAS LÍNEAS JUSTO DESPUÉS:
+// Inicializar la estrategia de 3 números
+        if (window.strategyFunctions && window.strategyFunctions.initThreeNumberStrategy) {
+             window.strategyFunctions.initThreeNumberStrategy(lotteryData);
+        }       
         // Ocultar indicador de carga
         hideLoading();
         

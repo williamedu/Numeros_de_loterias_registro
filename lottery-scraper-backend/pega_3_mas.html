@@ -213,6 +213,76 @@
             </div>
         </div>
         
+
+
+<!-- Sección de Estrategia de 3 Números (solo visible si positionsCount = 3) -->
+<div id="threeNumberStrategy" class="mt-8 bg-white rounded-lg shadow-lg p-6 hidden">
+    <h2 class="text-xl font-bold text-gray-800 mb-4">
+        <i class="fas fa-brain text-accent mr-2"></i>
+        Estrategia de los 3 Números
+    </h2>
+    <p class="text-gray-600 mb-6">
+        <strong>Análisis basado en patrones de repetición:</strong> Este patrón se basa en que un número que aparece dos veces en cualquier posición dentro de un período de 10 días consecutivos, tiene una alta probabilidad estadística de volver a salir por tercera vez en los siguientes 7 días. Esta estrategia identifica números "calientes" que están en una racha activa y pueden ser candidatos fuertes para futuras apuestas. <span class="text-blue-600 font-medium">Los números candidatos activos son aquellos que ya cumplieron la primera parte del patrón y están esperando completarlo.</span>    
+    </p>
+    
+    <!-- Estadística de precisión -->
+    <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 mb-6 border border-blue-200">
+        <h3 class="font-medium text-gray-800 mb-3 flex items-center">
+            <i class="fas fa-chart-pie text-blue-600 mr-2"></i>
+            Precisión de la Estrategia
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="text-center">
+                <div class="text-2xl font-bold text-green-600" id="successRate">--%</div>
+                <div class="text-sm text-gray-600">Tasa de Éxito</div>
+            </div>
+            <div class="text-center">
+                <div class="text-lg font-semibold text-green-700" id="totalSuccesses">--</div>
+                <div class="text-sm text-gray-600">Predicciones Correctas</div>
+            </div>
+            <div class="text-center">
+                <div class="text-lg font-semibold text-red-700" id="totalFailures">--</div>
+                <div class="text-sm text-gray-600">Predicciones Fallidas</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Números candidatos activos -->
+    <div class="mb-6">
+        <h3 class="font-medium text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-bullseye text-warning mr-2"></i>
+            Números Candidatos Activos
+            <span class="ml-2 bg-warning text-white text-xs px-2 py-1 rounded-full" id="activeCandidatesCount">0</span>
+        </h3>
+        <div id="activeCandidatesList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Los números candidatos se cargarán dinámicamente aquí -->
+        </div>
+        <div id="noCandidatesMessage" class="text-center py-8 text-gray-500 hidden">
+            <i class="fas fa-search text-4xl mb-2"></i>
+            <p>No hay números candidatos en este momento</p>
+        </div>
+    </div>
+    
+    <!-- Historial de predicciones -->
+    <div>
+        <h3 class="font-medium text-gray-800 mb-4 flex items-center">
+            <i class="fas fa-history text-gray-600 mr-2"></i>
+            Historial Reciente de Predicciones
+        </h3>
+        <div class="max-h-96 overflow-y-auto">
+            <div id="predictionHistoryList" class="space-y-3">
+                <!-- El historial se cargará dinámicamente aquí -->
+            </div>
+        </div>
+        <div id="noHistoryMessage" class="text-center py-8 text-gray-500 hidden">
+            <i class="fas fa-clock text-4xl mb-2"></i>
+            <p>No hay historial de predicciones disponible</p>
+        </div>
+    </div>
+</div>
+
+
+
         <!-- Footer -->
         <footer class="mt-12 text-center text-gray-500 text-sm">
             <p>© 2023 Analizador Gana Más - Todos los derechos reservados</p>
@@ -281,6 +351,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="charts.js"></script>
-<script src="main.js"></script>
+    <script src="main.js"></script>
+    <script src="strategy.js"></script>
 </body>
 </html>

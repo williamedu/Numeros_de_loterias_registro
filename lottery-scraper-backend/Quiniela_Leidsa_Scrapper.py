@@ -14,13 +14,13 @@ import time
 import random
 
 # Configuración de la lotería
-LOTTERY_NAME = "Quiniela_Leidsa"  # Nombre para el archivo (sin espacios ni caracteres especiales)
+LOTTERY_NAME = "Quiniela_Leidsa"  # Nombre para el archivo se usa en el html de la pagina para cargar el json (sin espacios ni caracteres especiales)
 LOTTERY_URL_PARAM = "leidsa/quiniela-pale"  # Parámetro para la URL en loteriasdominicanas.com
 LOTTERY_DISPLAY_NAME = "Quiniela Leidsa"  # Nombre para mostrar en la salida (puede tener espacios)
 NUMBER_OF_POSITIONS = 3  # Número de posiciones (ej: 3 para Gana Más)
 
 # Configuración del scraping
-TOTAL_ITERATIONS = 30  # Número de iteraciones (páginas a visitar)
+TOTAL_ITERATIONS = 45  # Número de iteraciones (páginas a visitar)
 DAYS_TO_GO_BACK = 8  # Días a retroceder entre cada iteración
 WAIT_TIMEOUT = 15  # Tiempo máximo de espera para elementos (segundos)
 PAUSE_AFTER_PAGE_LOAD = 2  # Segundos de pausa después de cargar cada página
@@ -28,9 +28,18 @@ MIN_NUMBER = 0  # Número mínimo (algunas loterías comienzan desde 1 en lugar 
 MAX_NUMBER = 99  # Número máximo
 
 # Definir la ruta absoluta a la carpeta del proyecto
-PROJECT_DIR = r"C:\Users\willi\OneDrive\Escritorio\New_Loteria_Resultados\lottery-scraper-backend"
-OUTPUT_FILE = os.path.join(PROJECT_DIR, f"lottery_data_{LOTTERY_NAME}.json")
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+JSON_DIR = os.path.join(SCRIPT_DIR, "json_Datos")
+OUTPUT_FILE = os.path.join(JSON_DIR, f"lottery_data_{LOTTERY_NAME}.json")
 
+if not os.path.exists(JSON_DIR):
+    try:
+        os.makedirs(JSON_DIR)
+        print(f"Carpeta {JSON_DIR} creada correctamente")
+    except Exception as e:
+        print(f"Error al crear carpeta {JSON_DIR}: {e}")
+
+        
 # Configurar opciones para Chrome
 chrome_options = Options()
 chrome_options.add_argument("--no-sandbox")
@@ -77,6 +86,9 @@ for i in range(MIN_NUMBER, MAX_NUMBER + 1):
 
 # Estructura de datos para seguimiento de repeticiones en los últimos 30 días
 last_30_days_occurrences = defaultdict(list)  # Número -> lista de fechas de aparición
+
+latest_winning_numbers = []
+latest_winning_date = None
 
 try:
     # Fecha inicial (hoy)
@@ -212,9 +224,20 @@ try:
                             # Convertir la fecha a objeto datetime
                             block_date = datetime.strptime(complete_date, "%d-%m-%Y")
                             
+                            
+                            
+                            # Guardar los números ganadores del primer bloque de la primera iteración
+                            # (solo si no los hemos guardado antes o si esta fecha es más reciente)
+                            if iteration == 1 and i == 0:
+                                if latest_winning_date is None or block_date > latest_winning_date:
+                                    latest_winning_numbers = drawn_numbers
+                                    latest_winning_date = block_date
+                                    print(f"Números ganadores más recientes actualizados: {numbers_str} ({complete_date})")           
+
                             # Calcular días desde hoy
                             days_diff = (today - block_date).days
-                            
+
+
                             # Actualizar datos para cada número
                             position_names = ["first", "second", "third", "fourth", "fifth", "sixth"]
                             
@@ -300,7 +323,8 @@ try:
         "numbers": numbers_data,
         "repeatedInLast30Days": repeated_numbers,
         "coldestNumbers": [],  # Lo llenaremos a continuación
-        "hottestNumbers": []   # Lo llenaremos a continuación
+        "hottestNumbers": [],
+        "winningNumbers": []   # Lo llenaremos a continuación
     }    
     # Calcular y añadir números fríos y calientes
     numbers_with_values = [(num, data["daysSinceSeen"]) 
@@ -328,6 +352,17 @@ try:
                 "daysSinceSeen": days,
                 "lastSeen": numbers_data[num]["lastSeen"]
             })
+    # Añadir los números ganadores más recientes
+    if latest_winning_numbers and latest_winning_date:
+        winning_date_str = latest_winning_date.strftime("%d-%m-%Y")
+        for idx, num in enumerate(latest_winning_numbers):
+            output_data["winningNumbers"].append({
+                "number": num,
+                "position": idx + 1,
+                "date": winning_date_str
+            })
+        print(f"Números ganadores añadidos al JSON: {latest_winning_numbers} ({winning_date_str})")
+            
     
     # Guardar datos en archivo JSON
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
