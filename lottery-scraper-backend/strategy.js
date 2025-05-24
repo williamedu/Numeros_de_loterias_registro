@@ -87,17 +87,35 @@ function createNumberAppearancesMap(lotteryData) {
     // Recorrer el historial de cada número
     for (const [number, data] of Object.entries(lotteryData.numbers)) {
         if (data.history && data.history.length > 0) {
-            // Ordenar apariciones por fecha (más reciente primero)
-            const sortedHistory = data.history
-                .map(entry => ({
-                    ...entry,
-                    dateObj: parseDate(entry.date)
-                }))
-                .filter(entry => entry.dateObj !== null)
-                .sort((a, b) => b.dateObj - a.dateObj);
+            // Agrupar apariciones por fecha (eliminar duplicados del mismo día)
+            const dateMap = new Map();
             
-            if (sortedHistory.length > 0) {
-                appearancesMap[number] = sortedHistory;
+            data.history.forEach(entry => {
+                const dateKey = entry.date;
+                if (!dateMap.has(dateKey)) {
+                    // Si es la primera vez que vemos esta fecha, guardarla
+                    dateMap.set(dateKey, {
+                        date: entry.date,
+                        dateObj: parseDate(entry.date),
+                        positions: [entry.position], // Array de posiciones donde apareció
+                        daysAgo: entry.daysAgo
+                    });
+                } else {
+                    // Si ya existe esta fecha, solo añadir la posición
+                    const existing = dateMap.get(dateKey);
+                    if (!existing.positions.includes(entry.position)) {
+                        existing.positions.push(entry.position);
+                    }
+                }
+            });
+            
+            // Convertir el Map a array y filtrar fechas válidas
+            const uniqueAppearances = Array.from(dateMap.values())
+                .filter(entry => entry.dateObj !== null)
+                .sort((a, b) => b.dateObj - a.dateObj); // Ordenar por fecha (más reciente primero)
+            
+            if (uniqueAppearances.length > 0) {
+                appearancesMap[number] = uniqueAppearances;
             }
         }
     }
@@ -171,9 +189,9 @@ function analyzeNumberPattern(number, appearances, today) {
                     });
                     strategyData.statistics.successfulPredictions++;
                 } else {
-                    // Verificar si ya pasaron más de 7 días desde la segunda aparición
+                    // Verificar si ya pasaron más de 10 días desde la segunda aparición
                     const daysSinceSecond = daysDifference(chronoSecond.dateObj, today);
-                    if (daysSinceSecond > 7) {
+                    if (daysSinceSecond > 10) {
                         // Patrón falló
                         strategyData.predictionHistory.push({
                             ...pattern,
@@ -188,7 +206,7 @@ function analyzeNumberPattern(number, appearances, today) {
                         strategyData.activeCandidates.push({
                             ...pattern,
                             daysSinceSecond: daysSinceSecond,
-                            daysRemaining: Math.max(0, 7 - daysSinceSecond),
+                            daysRemaining: Math.max(0, 10 - daysSinceSecond),
                             status: 'active'
                         });
                     }
@@ -202,7 +220,7 @@ function analyzeNumberPattern(number, appearances, today) {
 }
 
 /**
- * Buscar tercera aparición dentro de 7 días después de la segunda
+ * Buscar tercera aparición dentro de 10 días después de la segunda
  */
 function findThirdAppearance(appearances, secondDate, startIndex) {
     for (let k = 0; k < appearances.length; k++) {
@@ -210,7 +228,7 @@ function findThirdAppearance(appearances, secondDate, startIndex) {
         const daysFromSecond = daysDifference(secondDate, potentialThird.dateObj);
         
         // La tercera aparición debe ser DESPUÉS de la segunda fecha (más reciente)
-        if (potentialThird.dateObj > secondDate && daysFromSecond <= 7) {
+        if (potentialThird.dateObj > secondDate && daysFromSecond <= 10) {
             return potentialThird;
         }
     }
@@ -227,14 +245,99 @@ function calculateFinalStatistics() {
         strategyData.statistics.successRate = Math.round((successfulPredictions / totalPredictions) * 100);
     }
     
+    // Calcular estadísticas por día de aparición del tercer número
+    calculateDayByDayStatistics();
+    
     // Ordenar candidatos activos por días restantes (menos días primero)
     strategyData.activeCandidates.sort((a, b) => a.daysRemaining - b.daysRemaining);
+    
+    // Asignar categorías de probabilidad a candidatos activos
+    assignProbabilityCategories();
     
     // Ordenar historial por fecha (más reciente primero)
     strategyData.predictionHistory.sort((a, b) => b.firstDateObj - a.firstDateObj);
     
-    // Limitar historial a los últimos 20 patrones
-    strategyData.predictionHistory = strategyData.predictionHistory.slice(0, 20);
+    // COMENTAR ESTA LÍNEA PARA MOSTRAR TODO EL HISTORIAL:
+    // strategyData.predictionHistory = strategyData.predictionHistory.slice(0, 20);
+}
+
+/**
+ * Calcular estadísticas de qué día aparece el tercer número
+ */
+function calculateDayByDayStatistics() {
+    const dayStats = {};
+    
+    // Inicializar estadísticas para días 1-10
+    for (let day = 1; day <= 10; day++) {
+        dayStats[day] = { count: 0, percentage: 0 };
+    }
+    
+    // Contar en qué día apareció cada tercer número exitoso
+    const successfulPatterns = strategyData.predictionHistory.filter(entry => entry.success);
+    
+    successfulPatterns.forEach(pattern => {
+        const daysAfterSecond = daysDifference(pattern.secondDateObj, parseDate(pattern.thirdDate));
+        if (daysAfterSecond >= 1 && daysAfterSecond <= 10) {
+            dayStats[daysAfterSecond].count++;
+        }
+    });
+    
+    // Calcular porcentajes
+    const totalSuccessful = successfulPatterns.length;
+    if (totalSuccessful > 0) {
+        for (let day = 1; day <= 10; day++) {
+            dayStats[day].percentage = Math.round((dayStats[day].count / totalSuccessful) * 100);
+        }
+    }
+    
+    strategyData.dayByDayStats = dayStats;
+}
+
+/**
+ * Asignar categorías de probabilidad a candidatos activos
+ */
+function assignProbabilityCategories() {
+    if (!strategyData.dayByDayStats) return;
+    
+    strategyData.activeCandidates.forEach(candidate => {
+        const todayDay = candidate.daysSinceSecond; // Día de hoy
+        const tomorrowDay = candidate.daysSinceSecond + 1; // Día de mañana
+        
+        // Probabilidad de hoy
+        let todayProbability = 0;
+        if (todayDay >= 1 && todayDay <= 10) {
+            todayProbability = strategyData.dayByDayStats[todayDay]?.percentage || 0;
+        }
+        
+        // Probabilidad de mañana
+        let tomorrowProbability = 0;
+        if (tomorrowDay >= 1 && tomorrowDay <= 10) {
+            tomorrowProbability = strategyData.dayByDayStats[tomorrowDay]?.percentage || 0;
+        }
+        
+        // Usar la probabilidad de hoy para categorizar el color del candidato
+        const dayPercentage = todayProbability;
+        
+        // Categorizar según porcentaje de hoy
+        if (dayPercentage >= 11) {
+            candidate.probabilityCategory = 'high';
+            candidate.probabilityColor = 'green';
+            candidate.probabilityText = 'Alta';
+        } else if (dayPercentage >= 6) {
+            candidate.probabilityCategory = 'medium';
+            candidate.probabilityColor = 'yellow';
+            candidate.probabilityText = 'Media';
+        } else {
+            candidate.probabilityCategory = 'low';
+            candidate.probabilityColor = 'red';
+            candidate.probabilityText = 'Baja';
+        }
+        
+        candidate.todayProbability = todayProbability;
+        candidate.tomorrowProbability = tomorrowProbability;
+        candidate.todayDay = todayDay;
+        candidate.tomorrowDay = tomorrowDay;
+    });
 }
 
 /**
@@ -242,8 +345,45 @@ function calculateFinalStatistics() {
  */
 function updateStrategyDisplay() {
     updateStatisticsDisplay();
+    updateDayByDayDisplay();
     updateActiveCandidatesDisplay();
     updatePredictionHistoryDisplay();
+}
+
+/**
+ * Actualizar estadísticas por día
+ */
+function updateDayByDayDisplay() {
+    // Buscar si existe el contenedor para estadísticas por día
+    const dayStatsContainer = document.getElementById('dayByDayStats');
+    if (!dayStatsContainer || !strategyData.dayByDayStats) return;
+    
+    // Crear HTML para estadísticas por día
+    let dayStatsHTML = '<div class="grid grid-cols-5 md:grid-cols-10 gap-2">';
+    
+    for (let day = 1; day <= 10; day++) {
+        const stats = strategyData.dayByDayStats[day];
+        const percentage = stats.percentage;
+        
+        // Determinar color basado en porcentaje
+        let colorClass = 'bg-red-100 border-red-300 text-red-700'; // Baja
+        if (percentage >= 11) {
+            colorClass = 'bg-green-100 border-green-300 text-green-700'; // Alta
+        } else if (percentage >= 6) {
+            colorClass = 'bg-yellow-100 border-yellow-300 text-yellow-700'; // Media
+        }
+        
+        dayStatsHTML += `
+            <div class="${colorClass} border rounded-lg p-2 text-center text-xs">
+                <div class="font-bold">Día ${day}</div>
+                <div>${percentage}%</div>
+                <div class="text-xs">(${stats.count})</div>
+            </div>
+        `;
+    }
+    
+    dayStatsHTML += '</div>';
+    dayStatsContainer.innerHTML = dayStatsHTML;
 }
 
 /**
@@ -296,24 +436,47 @@ function updateActiveCandidatesDisplay() {
     if (noCandidatesMessage) noCandidatesMessage.classList.add('hidden');
     
     // Crear HTML para cada candidato
-    candidatesList.innerHTML = strategyData.activeCandidates.map(candidate => `
-        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-warning rounded-lg p-4">
-            <div class="flex justify-between items-start mb-3">
-                <span class="text-2xl font-bold text-gray-800">${candidate.number}</span>
-                <span class="text-xs bg-warning text-white px-2 py-1 rounded-full">
-                    ${candidate.daysRemaining} días restantes
-                </span>
+    candidatesList.innerHTML = strategyData.activeCandidates.map(candidate => {
+        // Determinar clases de color según la probabilidad
+        let borderColor = 'border-red-400';
+        let bgGradient = 'from-red-50 to-red-100';
+        let badgeColor = 'bg-red-500';
+        
+        if (candidate.probabilityColor === 'green') {
+            borderColor = 'border-green-400';
+            bgGradient = 'from-green-50 to-green-100';
+            badgeColor = 'bg-green-500';
+        } else if (candidate.probabilityColor === 'yellow') {
+            borderColor = 'border-yellow-400';
+            bgGradient = 'from-yellow-50 to-yellow-100';
+            badgeColor = 'bg-yellow-500';
+        }
+        
+        return `
+            <div class="bg-gradient-to-r ${bgGradient} border-l-4 ${borderColor} rounded-lg p-4">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="text-2xl font-bold text-gray-800">${candidate.number}</span>
+                    <div class="flex flex-col items-end space-y-1">
+                        <span class="text-xs ${badgeColor} text-white px-2 py-1 rounded-full">
+                            ${candidate.daysRemaining} días restantes
+                        </span>
+                        <span class="text-xs ${badgeColor} text-white px-2 py-1 rounded-full">
+                            Hoy: ${candidate.todayProbability}%
+                        </span>
+                    </div>
+                </div>
+                <div class="text-sm text-gray-700 space-y-1 mb-3">
+                    <div>• Salió por <strong>primera vez</strong> el <strong>${candidate.firstDate}</strong></div>
+                    <div>• Salió por <strong>segunda vez</strong> el <strong>${candidate.secondDate}</strong></div>
+                    <div class="text-blue-600">• <strong>Esperando 3ra aparición</strong> (${candidate.daysSinceSecond} días desde la 2da vez)</div>
+                    <div class="text-purple-600 font-medium">• Probabilidad para mañana: <strong>${candidate.tomorrowProbability}%</strong></div>
+                </div>
+                <div class="mt-3 w-full bg-gray-200 rounded-full h-2">
+                    <div class="${badgeColor} h-2 rounded-full" style="width: ${((10 - candidate.daysRemaining) / 10) * 100}%"></div>
+                </div>
             </div>
-            <div class="text-sm text-gray-700 space-y-1 mb-3">
-                <div>• Salió por <strong>primera vez</strong> el <strong>${candidate.firstDate}</strong></div>
-                <div>• Salió por <strong>segunda vez</strong> el <strong>${candidate.secondDate}</strong></div>
-                <div class="text-blue-600">• <strong>Esperando 3ra aparición</strong> (${candidate.daysSinceSecond} días desde la 2da vez)</div>
-            </div>
-            <div class="mt-3 w-full bg-gray-200 rounded-full h-2">
-                <div class="bg-warning h-2 rounded-full" style="width: ${((7 - candidate.daysRemaining) / 7) * 100}%"></div>
-            </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 /**
@@ -365,7 +528,7 @@ function updatePredictionHistoryDisplay() {
                     ${isSuccess ? `
                         <div class="text-green-700">• <strong>Salió por tercera vez para completar el patrón</strong> el <strong>${entry.thirdDate}</strong> (${daysAfterSecond})</div>
                     ` : `
-                        <div class="text-red-600">• <strong>No completó el patrón</strong> - No salió en los siguientes 7 días</div>
+                        <div class="text-red-600">• <strong>No completó el patrón</strong> - No salió en los siguientes 10 días</div>
                     `}
                 </div>
             </div>

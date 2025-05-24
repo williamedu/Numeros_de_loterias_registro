@@ -41,6 +41,73 @@ if not os.path.exists(JSON_DIR):
     except Exception as e:
         print(f"Error al crear carpeta {JSON_DIR}: {e}")
 
+def format_time_period(days):
+    """Convertir días a formato legible (años, meses, días)"""
+    if days <= 0:
+        return "0 días"
+    
+    years = days // 365
+    remaining_days = days % 365
+    months = remaining_days // 30
+    final_days = remaining_days % 30
+    
+    parts = []
+    
+    if years > 0:
+        if years == 1:
+            parts.append("1 año")
+        else:
+            parts.append(f"{years} años")
+    
+    if months > 0:
+        if months == 1:
+            parts.append("1 mes")
+        else:
+            parts.append(f"{months} meses")
+    
+    if final_days > 0:
+        if final_days == 1:
+            parts.append("1 día")
+        else:
+            parts.append(f"{final_days} días")
+    
+    if not parts:  # Si todo es 0, mostrar 0 días
+        return "0 días"
+    
+    if len(parts) == 1:
+        return parts[0]
+    elif len(parts) == 2:
+        return f"{parts[0]} y {parts[1]}"
+    else:
+        return f"{parts[0]}, {parts[1]} y {parts[2]}"
+
+def calculate_analysis_period(numbers_data, today):
+    """Calcular el período real de análisis basado en los datos históricos"""
+    oldest_date = None
+    newest_date = None
+    
+    for num_data in numbers_data.values():
+        if num_data.get("history") and len(num_data["history"]) > 0:
+            for entry in num_data["history"]:
+                try:
+                    entry_date = datetime.strptime(entry["date"], "%d-%m-%Y")
+                    
+                    if oldest_date is None or entry_date < oldest_date:
+                        oldest_date = entry_date
+                    
+                    if newest_date is None or entry_date > newest_date:
+                        newest_date = entry_date
+                        
+                except ValueError:
+                    continue  # Saltar fechas con formato inválido
+    
+    if oldest_date and newest_date:
+        analysis_days = (newest_date - oldest_date).days + 1  # +1 para incluir ambos días
+        return analysis_days, oldest_date, newest_date
+    else:
+        # Si no hay datos históricos, usar un valor predeterminado
+        return 0, None, None
+
 def configure_webdriver():
     """Configurar y devolver una instancia de WebDriver"""
     chrome_options = Options()
@@ -345,6 +412,15 @@ def update_lottery_data(existing_data, days_to_update, today):
                 last_seen_date = datetime.strptime(numbers_data[num]["lastSeen"], "%d-%m-%Y")
                 numbers_data[num]["daysSinceSeen"] = (today - last_seen_date).days
         
+        # RECALCULAR EL PERÍODO DE ANÁLISIS basado en los datos actualizados
+        analysis_days, oldest_date, newest_date = calculate_analysis_period(numbers_data, today)
+        analysis_period_formatted = format_time_period(analysis_days)
+        
+        print(f"\n--- PERÍODO DE ANÁLISIS RECALCULADO ---")
+        print(f"Período total: {analysis_days} días ({analysis_period_formatted})")
+        if oldest_date and newest_date:
+            print(f"Desde: {oldest_date.strftime('%d-%m-%Y')} hasta: {newest_date.strftime('%d-%m-%Y')}")
+        
         # Crear estructura para repeticiones en los últimos 30 días
         repeated_numbers = {}
         for num, dates in last_30_days_occurrences.items():
@@ -359,6 +435,15 @@ def update_lottery_data(existing_data, days_to_update, today):
         existing_data["lastUpdated"] = today.strftime("%d-%m-%Y %H:%M:%S")
         existing_data["totalProcessed"] += total_numbers_found
         existing_data["repeatedInLast30Days"] = repeated_numbers
+        
+        # ACTUALIZAR EL PERÍODO DE ANÁLISIS en el JSON
+        existing_data["analysisPeriod"] = analysis_days
+        existing_data["analysisPeriodFormatted"] = analysis_period_formatted
+        if oldest_date and newest_date:
+            existing_data["analysisDateRange"] = {
+                "startDate": oldest_date.strftime("%d-%m-%Y"),
+                "endDate": newest_date.strftime("%d-%m-%Y")
+            }
         
         # Calcular y actualizar números fríos y calientes
         numbers_with_values = [(num, data["daysSinceSeen"]) 
@@ -421,6 +506,11 @@ def main():
     existing_data = load_existing_data()
     print(f"Datos cargados del archivo: '{JSON_FILE}'")
     
+    # Mostrar período actual antes de la actualización
+    current_period = existing_data.get("analysisPeriod", 0)
+    current_formatted = existing_data.get("analysisPeriodFormatted", "No disponible")
+    print(f"Período de análisis actual: {current_formatted}")
+    
     # Calcular días a actualizar
     days_to_update, today = calculate_days_to_update(existing_data)
     
@@ -437,6 +527,7 @@ def main():
             json.dump(updated_data, f, indent=2, ensure_ascii=False)
         
         print(f"\nSe agregaron {new_numbers} nuevos resultados de números.")
+        print(f"Período de análisis actualizado: {updated_data.get('analysisPeriodFormatted', 'No disponible')}")
         print(f"Datos actualizados guardados en '{JSON_FILE}'")
         print(f"¡Actualización de {LOTTERY_DISPLAY_NAME} completada con éxito!")
         

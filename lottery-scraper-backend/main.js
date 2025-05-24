@@ -327,7 +327,9 @@ function showNumberDetails(number) {
     }
     
     // Usar el período de análisis directamente del JSON
-    let analysisPeriod = lotteryData.analysisPeriod || 0;
+    // Usar el período de análisis formateado si está disponible, sino usar el número
+    let analysisPeriod = lotteryData.analysisPeriodFormatted || 
+                        (lotteryData.analysisPeriod ? `${lotteryData.analysisPeriod} días` : '0 días');
     
     // Verificar si el número es ganador actual
     let winnerInfo = '';
@@ -396,7 +398,7 @@ function showNumberDetails(number) {
     // Construir el HTML de detalles
     numberDetails.innerHTML = `
         <div class="fade-in overflow-y-auto">
-            <div class="text-lg text-gray-600 mb-2">Análisis de los últimos ${analysisPeriod} días</div>
+            <div class="text-lg text-gray-600 mb-2">Análisis de los últimos ${analysisPeriod} </div>
             <div class="text-5xl font-bold mb-2">${number.number}</div>
             <div class="text-lg mb-6">
                 ${frequency === 0 ? 'Nunca ha salido' : 
