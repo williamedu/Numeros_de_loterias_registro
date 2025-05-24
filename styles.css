@@ -6,6 +6,8 @@
     transform: scale(1.05);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
+
+/* Heatmap para diferentes rangos de días */
 .heatmap-0 { background-color: #f0fff4; } /* 0-10 días */
 .heatmap-1 { background-color: #c6f6d5; } /* 11-20 días */
 .heatmap-2 { background-color: #9ae6b4; } /* 21-30 días */
@@ -18,8 +20,20 @@
 .heatmap-9 { background-color: #1c4532; color: white; } /* 91-100 días */
 .heatmap-10 { background-color: #1a365d; color: white; } /* 100+ días */
 
+/* Heatmap para modo oscuro */
+.dark .heatmap-0 { background-color: #064e3b; color: white; }
+.dark .heatmap-1 { background-color: #065f46; color: white; }
+.dark .heatmap-2 { background-color: #047857; color: white; }
+.dark .heatmap-3 { background-color: #059669; color: white; }
+.dark .heatmap-4 { background-color: #10b981; color: white; }
+.dark .heatmap-5 { background-color: #34d399; color: black; }
+.dark .heatmap-6 { background-color: #6ee7b7; color: black; }
+.dark .heatmap-7 { background-color: #9decbc; color: black; }
+.dark .heatmap-8 { background-color: #c6f6d5; color: black; }
+.dark .heatmap-9 { background-color: #dcfce7; color: black; }
+.dark .heatmap-10 { background-color: #f0fdf4; color: black; }
+
 /* Estilos para el indicador de carga */
-/* Si no está ya en tu styles.css, añade esto */
 .loading-spinner {
     display: inline-block;
     width: 20px;
@@ -29,6 +43,11 @@
     border-top-color: #4299e1;
     animation: spin 1s ease-in-out infinite;
     margin: 0 auto;
+}
+
+.dark .loading-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #60a5fa;
 }
 
 @keyframes spin {
@@ -44,6 +63,7 @@
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
 /* Estilos para el panel de detalles con altura fija */
 .fixed-height-panel {
     transition: all 0.3s ease;
@@ -59,20 +79,55 @@
     border-radius: 3px;
 }
 
+.dark .fixed-height-panel::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+}
+
 .fixed-height-panel::-webkit-scrollbar-track {
     background-color: #f7fafc;
 }
 
-/* Estilos para el banner de lotería */
+.dark .fixed-height-panel::-webkit-scrollbar-track {
+    background-color: #374151;
+}
+
+/* Estilos mejorados para las tarjetas de lotería - Cards cuadradas más grandes */
 .lottery-card {
     transition: all 0.3s ease;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    min-height: 280px;
     max-width: 320px;
-    margin: 2rem auto;
+    margin: 0 auto;
 }
+
 .lottery-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
+
+/* Efectos de hover para modo oscuro */
+.dark .lottery-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para los números en las bolas - Más grandes */
+.number-ball {
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    margin: 0 4px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .lottery-number {
     width: 3rem;
     height: 3rem;
@@ -85,6 +140,7 @@
     color: white;
     font-size: 1.25rem;
 }
+
 .title-button {
     cursor: pointer;
     transition: transform 0.2s;
@@ -135,46 +191,9 @@
     transform: rotate(45deg);
 }
 
-/* Estilos para las tarjetas de lotería */
-.lottery-card {
-    transition: all 0.3s ease;
-}
-.lottery-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
 /* Estilos para los contenedores de gráficos */
 .chart-container {
     height: 300px;
-}
-
-/* Estilos para los números en las bolas */
-.number-ball {
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-weight: bold;
-    margin: 0 5px;
-}
-
-/* Estilos para el modo oscuro */
-.dark-mode {
-    background-color: #1e293b;
-    color: #f8fafc;
-}
-.dark-mode .bg-white {
-    background-color: #334155 !important;
-    color: #f8fafc !important;
-}
-.dark-mode .text-gray-800 {
-    color: #f8fafc !important;
-}
-.dark-mode .border-gray-200 {
-    border-color: #475569 !important;
 }
 
 /* Estilos para las pestañas de contenido */
@@ -185,19 +204,81 @@
     display: block;
 }
 
-/* Estilos para las estrellas de favoritos */
+/* Estilos mejorados para las estrellas de favoritos */
 .favorite-star {
     cursor: pointer;
     transition: all 0.3s ease;
 }
 .favorite-star:hover {
     transform: scale(1.2);
+    color: #f59e0b !important;
 }
 
-/* Estilos para elementos activos */
+/* Estilos mejorados para la navegación */
+.nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
 .nav-link.active {
+    background-color: #f59e0b;
+    color: white;
     font-weight: bold;
-    color: #f59e0b;
-    border-bottom: 2px solid #f59e0b;
-    padding-bottom: 4px;
+}
+
+/* Transiciones suaves para el modo oscuro */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilos específicos para modo oscuro */
+.dark .bg-white {
+    background-color: #374151 !important;
+}
+
+.dark .text-gray-800 {
+    color: #f9fafb !important;
+}
+
+.dark .text-gray-600 {
+    color: #d1d5db !important;
+}
+
+.dark .text-gray-500 {
+    color: #9ca3af !important;
+}
+
+.dark .border-gray-200 {
+    border-color: #4b5563 !important;
+}
+
+.dark .border-gray-700 {
+    border-color: #374151 !important;
+}
+
+/* Estilos para el header en modo oscuro */
+.dark .bg-primary {
+    background-color: #1f2937 !important;
+}
+
+/* Mejoras para el grid responsivo */
+@media (min-width: 640px) {
+    .lottery-card {
+        max-width: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .lottery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
 }

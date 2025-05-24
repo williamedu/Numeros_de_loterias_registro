@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="styles.css">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#15803d', // verde
-                        secondary: '#f59e0b', // dorado
-                        accent: '#dc2626', // rojo
+                        primary: '#15803d',
+                        secondary: '#f59e0b',
+                        accent: '#dc2626',
                         dark: '#1e293b',
                         light: '#f8fafc'
                     }
@@ -23,13 +24,13 @@
         }
     </script>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-50 dark:bg-gray-900 font-sans transition-colors duration-300">
     <!-- Header -->
-    <header class="bg-primary text-white shadow-lg">
+    <header class="bg-primary dark:bg-gray-800 text-white shadow-lg">
         <div class="container mx-auto px-4 py-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="flex items-center mb-4 md:mb-0">
-                    <div class="bg-white text-primary rounded-full w-16 h-16 flex items-center justify-center mr-4">
+                    <div class="bg-white text-primary rounded-full w-16 h-16 flex items-center justify-center mr-4 shadow-lg">
                         <i class="fas fa-chart-line text-3xl"></i>
                     </div>
                     <div>
@@ -39,7 +40,7 @@
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <button id="themeToggle" class="bg-secondary text-white p-2 rounded-full hover:bg-yellow-600 transition">
+                    <button id="themeToggle" class="bg-secondary hover:bg-yellow-600 text-white p-2 rounded-full transition">
                         <i class="fas fa-moon"></i>
                     </button>
                     
@@ -69,179 +70,166 @@
         <!-- Home Tab -->
         <div id="home" class="tab-content active">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-primary mb-4">Analiza las Loterías Dominicanas</h2>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Utiliza nuestro sistema de análisis estadístico para tomar decisiones más informadas sobre tus apuestas.</p>
+                <h2 class="text-4xl font-bold text-primary dark:text-green-400 mb-4">Analiza las Loterías Dominicanas</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Utiliza nuestro sistema de análisis estadístico para tomar decisiones más informadas sobre tus apuestas.</p>
             </div>
-            <!---->
+            
             <!-- Lottery Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                
-                <!-- Gana Más Card -->
-                <!--
-                <div class="lottery-card bg-white rounded-lg shadow-md p-4 border border-gray-200 relative">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-ticket-alt text-2xl text-primary"></i>
-                        </div>
-                        <i class="far fa-star favorite-star text-2xl text-gray-300"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Gana Más</h3>
-                    <p class="text-sm text-gray-500 mb-3 last-updated">Cargando...</p>
-                    
-                    <div class="mb-4">
-                        <div class="flex justify-center space-x-1 mb-2 winning-numbers" data-lottery="Gana_mas" data-positions="3">
-                            <span class="loading-spinner"></span>
-                        </div>
-                    </div>
-                    
-                    <a href="gana_mas.html" class="w-full bg-secondary hover:bg-yellow-600 text-white py-2 rounded-lg transition duration-300 block text-center">
-                        Ver Análisis
-                    </a>
-                </div>
-                -->
-                
-                <!-- Lotería Nacional Card -->
-                <!--
-                <div class="lottery-card bg-white rounded-lg shadow-md p-4 border border-gray-200 relative">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-ticket-alt text-2xl text-accent"></i>
-                        </div>
-                        <i class="far fa-star favorite-star text-2xl text-gray-300"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Lotería Nacional</h3>
-                    <p class="text-sm text-gray-500 mb-3 last-updated">Cargando...</p>
-                    
-                    <div class="mb-4">
-                        <div class="flex justify-center space-x-1 mb-2 winning-numbers" data-lottery="Loteria_Nacional" data-positions="3">
-                            <span class="loading-spinner"></span>
-                        </div>
-                    </div>
-                    
-                    <a href="loteria_nacional.html" class="w-full bg-accent hover:bg-red-700 text-white py-2 rounded-lg transition duration-300 block text-center">
-                        Ver Análisis
-                    </a>
-                </div>
-                -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 
                 <!-- Lotería Pega 3 Más -->
-                <div class="lottery-card bg-white rounded-lg shadow-md p-4 border border-gray-200 relative">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-ticket-alt text-2xl text-accent"></i>
-                        </div>
-                        <i class="far fa-star favorite-star text-2xl text-gray-300"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Pega 3 Más</h3>
-                    <p class="text-sm text-gray-500 mb-3 last-updated">Cargando...</p>
+                <div class="lottery-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 relative h-40 w-full">
                     
-                    <div class="mb-4">
-                        <div class="flex justify-center space-x-1 mb-2 winning-numbers" data-lottery="Pega_3_Mas" data-positions="3">
-                            <!-- Números ganadores serán cargados dinámicamente -->
-                            <span class="loading-spinner"></span>
+                    <!-- Layout vertical organizado -->
+                    <div class="flex flex-col h-full">
+                        
+                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+                        <div class="mb-2">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                                <!-- Fecha se cargará dinámicamente -->
+                            </div>
                         </div>
+                        
+                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+                        <div class="flex justify-between items-center mb-4">
+                            <!-- Nombre de la lotería - Izquierda -->
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Pega 3 Más</h3>
+                            
+                            <!-- Imagen de la lotería - Derecha -->
+                            <div class="w-48 h-100 rounded-lg overflow-hidden shadow-md">
+                                <img src="imaguenes_loterias/pega3mas.png" 
+                                     alt="Logo Pega 3 Más" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <!-- Fallback si la imagen no carga -->
+                                <div class="w-full h-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
+                                    P3M
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 3. Números ganadores - Centro -->
+                        <div class="flex justify-center mb-4">
+                            <div class="flex space-x-2 winning-numbers" data-lottery="Pega_3_Mas" data-positions="3">
+                                <!-- Números ganadores serán cargados dinámicamente -->
+                                <span class="loading-spinner"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- 4. Botón - Abajo centro con padding -->
+                        <div class="mt-auto pt-2">
+                            <div class="flex justify-center">
+                                <a href="pega_3_mas.html" class="bg-accent hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                                    Ver Análisis
+                                </a>
+                            </div>
+                        </div>
+                        
                     </div>
-                    
-                    <a href="pega_3_mas.html" class="w-full bg-accent hover:bg-red-700 text-white py-2 rounded-lg transition duration-300 block text-center">
-                        Ver Análisis
-                    </a>
                 </div>
 
-                <!-- Quiniela Leidsa Card -->
-                <!--
-                <div class="lottery-card bg-white rounded-lg shadow-md p-4 border border-gray-200 relative">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                            <i class="fas fa-ticket-alt text-2xl text-accent"></i>
-                        </div>
-                        <i class="far fa-star favorite-star text-2xl text-gray-300"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Quiniela Leidsa de</h3>
-                    <p class="text-sm text-gray-500 mb-3 last-updated">Cargando...</p>
-                    
-                    <div class="mb-4">
-                        <div class="flex justify-center space-x-1 mb-2 winning-numbers" data-lottery="Quiniela_Leidsa" data-positions="3">
-                            <span class="loading-spinner"></span>
-                        </div>
-                    </div>
-                    
-                    <a href="Quiniela_Leidsa.html" class="w-full bg-accent hover:bg-red-700 text-white py-2 rounded-lg transition duration-300 block text-center">
-                        Ver Análisis
-                    </a>
-                </div>
-                -->
+                
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-8">
+    <footer class="bg-dark dark:bg-gray-950 text-white py-12 mt-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">LoteDom Stats</h3>
-                    <p class="text-gray-300">La herramienta de análisis estadístico más completa para las loterías dominicanas.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-white">LoteDom Stats</h3>
+                    <p class="text-gray-300 dark:text-gray-400 mb-4">La herramienta de análisis estadístico más completa para las loterías dominicanas.</p>
                     <div class="flex space-x-4 mt-4">
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300 text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300 text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-secondary transition-colors duration-300 text-xl"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4">Enlaces Rápidos</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white">Inicio</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white">Estadísticas</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white">Tutorial</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white">Blog</a></li>
+                    <h4 class="font-bold mb-4 text-lg">Enlaces Rápidos</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">Inicio</a></li>
+                        <li><a href="#" class="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">Estadísticas</a></li>
+                        <li><a href="#" class="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">Tutorial</a></li>
+                        <li><a href="#" class="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">Blog</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4">Legal</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white">Términos de Servicio</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white">Política de Privacidad</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white">Juego Responsable</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white">Descargo de Responsabilidad</a></li>
+                    <h4 class="font-bold mb-4 text-lg">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">Términos de Servicio</a></li>
+                        <li><a href="#" class="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">Política de Privacidad</a></li>
+                        <li><a href="#" class="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">Juego Responsable</a></li>
+                        <li><a href="#" class="text-gray-300 dark:text-gray-400 hover:text-white transition-colors duration-300">Descargo de Responsabilidad</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4">Suscríbete</h4>
-                    <p class="text-gray-300 mb-2">Recibe alertas y análisis exclusivos.</p>
+                    <h4 class="font-bold mb-4 text-lg">Suscríbete</h4>
+                    <p class="text-gray-300 dark:text-gray-400 mb-4">Recibe alertas y análisis exclusivos.</p>
                     <div class="flex">
-                        <input type="email" placeholder="Tu correo" class="px-4 py-2 rounded-l-lg w-full text-gray-800">
-                        <button class="bg-primary hover:bg-green-700 px-4 py-2 rounded-r-lg">
+                        <input type="email" placeholder="Tu correo" class="px-4 py-2 rounded-l-lg w-full text-gray-800 dark:text-white dark:bg-gray-700 border dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary">
+                        <button class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 px-6 py-2 rounded-r-lg transition-colors duration-300">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+            <div class="border-t border-gray-700 dark:border-gray-800 mt-8 pt-6 text-center text-gray-400">
                 <p>&copy; 2023 LoteDom Stats. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Script para cargar los datos de las loterías -->
+    <!-- Scripts -->
     <script>
+        // Funcionalidad del tema oscuro
         document.addEventListener('DOMContentLoaded', function() {
-            // Seleccionar todos los contenedores de números ganadores
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            const icon = themeToggle.querySelector('i');
+            
+            // Verificar si hay una preferencia guardada
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                html.classList.toggle('dark', savedTheme === 'dark');
+                updateIcon();
+            } else {
+                // Usar preferencia del sistema
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                html.classList.toggle('dark', prefersDark);
+                updateIcon();
+            }
+            
+            // Toggle del tema
+            themeToggle.addEventListener('click', function() {
+                html.classList.toggle('dark');
+                const isDark = html.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateIcon();
+            });
+            
+            function updateIcon() {
+                const isDark = html.classList.contains('dark');
+                icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            
+            // Cargar datos de loterías
+            loadLotteryData();
+        });
+        
+        function loadLotteryData() {
             const winningNumbersContainers = document.querySelectorAll('.winning-numbers');
             
-            // Para cada contenedor, cargar los datos de su lotería correspondiente
             winningNumbersContainers.forEach(container => {
                 const lotteryName = container.getAttribute('data-lottery');
                 const positions = parseInt(container.getAttribute('data-positions'));
-                
-                // URL del archivo JSON específico de la lotería
                 const jsonUrl = `json_Datos/lottery_data_${lotteryName}.json`;
-
                 
-                // Cargar datos desde el JSON
                 fetch(jsonUrl)
                     .then(response => {
                         if (!response.ok) {
@@ -250,66 +238,48 @@
                         return response.json();
                     })
                     .then(data => {
-                        // Actualizar la fecha de última actualización
                         const card = container.closest('.lottery-card');
-                        const lastUpdatedElement = card.querySelector('.last-updated');
-                        if (lastUpdatedElement && data.lastUpdated) {
-                            lastUpdatedElement.textContent = `Última actualización: ${data.lastUpdated.split(' ')[0]}`;
-                        }
+                        const sorteoDateElement = card.querySelector('.sorteo-date');
                         
-                        // Limpiar el contenedor de números
                         container.innerHTML = '';
                         
-                        // CAMBIO AQUÍ: Primero comprobar si existen números ganadores
                         if (data.winningNumbers && data.winningNumbers.length > 0) {
-                            // Mostrar los números ganadores más recientes
                             data.winningNumbers.forEach(numData => {
-                                // Determinar el color a usar (mantener consistencia con la tarjeta)
                                 const bgColorClass = card.querySelector('a').classList.contains('bg-accent') 
-                                    ? 'bg-accent' : 'bg-primary';
+                                    ? 'bg-accent dark:bg-red-600' : 'bg-primary dark:bg-green-600';
                                 
-                                // Crear el elemento para el número
                                 const numberElement = document.createElement('span');
                                 numberElement.className = `number-ball ${bgColorClass} text-white`;
                                 numberElement.textContent = numData.number;
                                 container.appendChild(numberElement);
                             });
                             
-                            // Opcional: Mostrar la fecha del sorteo
-                            if (data.winningNumbers[0].date) {
-                                const dateElement = document.createElement('div');
-                                dateElement.className = 'text-xs text-gray-500 mt-2';
-                                dateElement.textContent = `Sorteo: ${data.winningNumbers[0].date}`;
-                                container.parentNode.appendChild(dateElement);
+                            // Mostrar fecha del sorteo arriba a la izquierda
+                            if (data.winningNumbers[0].date && sorteoDateElement) {
+                                sorteoDateElement.textContent = `Sorteo: ${data.winningNumbers[0].date}`;
                             }
-                        } 
-                        // Si no hay números ganadores, mostrar los "números calientes" como fallback
-                        else if (data.hottestNumbers && data.hottestNumbers.length > 0) {
-                            // Mostrar solo los primeros 'positions' números (ej: 3 para Gana Más)
+                        } else if (data.hottestNumbers && data.hottestNumbers.length > 0) {
                             const hotNumbers = data.hottestNumbers.slice(0, positions);
                             
                             hotNumbers.forEach(numData => {
-                                // Determinar el color a usar (mantener consistencia con la tarjeta)
                                 const bgColorClass = card.querySelector('a').classList.contains('bg-accent') 
-                                    ? 'bg-accent' : 'bg-primary';
+                                    ? 'bg-accent dark:bg-red-600' : 'bg-primary dark:bg-green-600';
                                 
-                                // Crear el elemento para el número
                                 const numberElement = document.createElement('span');
                                 numberElement.className = `number-ball ${bgColorClass} text-white`;
                                 numberElement.textContent = numData.number;
                                 container.appendChild(numberElement);
                             });
                         } else {
-                            // Si no hay datos, mostrar mensaje
-                            container.innerHTML = '<p class="text-gray-500">No hay datos disponibles</p>';
+                            container.innerHTML = '<p class="text-gray-500 dark:text-gray-400">No hay datos disponibles</p>';
                         }
                     })
                     .catch(error => {
                         console.error('Error al cargar los datos:', error);
-                        container.innerHTML = '<p class="text-red-500">Error al cargar datos</p>';
+                        container.innerHTML = '<p class="text-red-500 dark:text-red-400">Error al cargar datos</p>';
                     });
             });
-        });
+        }
     </script>
 </body>
 </html>
