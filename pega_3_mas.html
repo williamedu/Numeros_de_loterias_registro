@@ -198,7 +198,7 @@
         </div>
         
         <!-- Charts Section -->
-        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+       <!--        <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
             <h2 class="text-xl font-bold text-gray-800 mb-6">Estadísticas Visuales</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -212,7 +212,8 @@
                 </div>
             </div>
         </div>
-        
+        -->
+
 
 
 <!-- Sección de Estrategia de 3 Números (solo visible si positionsCount = 3) -->
@@ -300,6 +301,94 @@
         </div>
     </div>
     
+
+    <!-- Estadísticas generales -->
+<!-- Sección de Coincidencias Múltiples -->
+<div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4 mb-6 border border-purple-200">
+    <h3 class="font-medium text-gray-800 mb-3">
+        <i class="fas fa-users text-purple-600 mr-2"></i>
+        Análisis de Coincidencias Múltiples
+    </h3>
+    
+    <!-- Estadísticas generales -->
+    <div class="grid grid-cols-2 gap-4 mb-4">
+        <div class="text-center">
+            <div class="text-xl font-bold text-purple-600" id="twoNumberCoincidences">--</div>
+            <div class="text-sm text-gray-600">Coincidencias de 2 números</div>
+            <div class="text-xs text-purple-500" id="twoNumberRate">--%</div>
+        </div>
+        <div class="text-center">
+            <div class="text-xl font-bold text-purple-600" id="threeNumberCoincidences">--</div>
+            <div class="text-sm text-gray-600">Coincidencias de 3 números</div>
+            <div class="text-xs text-purple-500" id="threeNumberRate">--%</div>
+        </div>
+    </div>
+    
+    <!-- NUEVO: Filtros de Coincidencias -->
+    <div class="bg-white bg-opacity-50 rounded-lg p-4 mb-4 border border-purple-300">
+        <h4 class="font-medium text-gray-800 mb-3 flex items-center">
+            <i class="fas fa-filter text-purple-600 mr-2"></i>
+            Filtrar Coincidencias
+        </h4>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <label class="flex items-center cursor-pointer">
+                <input type="radio" name="coincidenceFilter" value="all" class="mr-2 text-purple-600 focus:ring-purple-500" checked>
+                <span class="text-sm">Todas</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input type="radio" name="coincidenceFilter" value="0" class="mr-2 text-purple-600 focus:ring-purple-500">
+                <span class="text-sm">0 coincidencias</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input type="radio" name="coincidenceFilter" value="1" class="mr-2 text-purple-600 focus:ring-purple-500">
+                <span class="text-sm">1 coincidencia</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input type="radio" name="coincidenceFilter" value="2" class="mr-2 text-purple-600 focus:ring-purple-500">
+                <span class="text-sm">2 coincidencias</span>
+            </label>
+            <label class="flex items-center cursor-pointer">
+                <input type="radio" name="coincidenceFilter" value="3" class="mr-2 text-purple-600 focus:ring-purple-500">
+                <span class="text-sm">3 coincidencias</span>
+            </label>
+        </div>
+        
+        <!-- Contador de resultados filtrados -->
+        <div class="mt-3 text-center">
+            <span class="text-sm text-gray-600">
+                Mostrando <span id="filteredCoincidencesCount" class="font-medium text-purple-600">--</span> de <span id="totalCoincidencesCount" class="font-medium">--</span> sorteos
+            </span>
+        </div>
+    </div>
+    
+    <!-- NUEVO: Contenedor con Slider para las coincidencias -->
+    <div class="bg-white bg-opacity-30 rounded-lg border border-purple-300">
+        <div class="p-3 border-b border-purple-200">
+            <h4 class="font-medium text-gray-800 flex items-center justify-between">
+                <span>
+                    <i class="fas fa-list text-purple-600 mr-2"></i>
+                    Lista de Sorteos
+                </span>
+                <span class="text-xs text-gray-500">Desplázate para ver más</span>
+            </h4>
+        </div>
+        
+        <!-- Contenedor con scroll -->
+        <div id="coincidencesScrollContainer" class="max-h-96 overflow-y-auto p-3">
+            <div id="coincidencesList" class="space-y-3">
+                <!-- Se llena dinámicamente -->
+            </div>
+            
+            <!-- Mensaje cuando no hay resultados -->
+            <div id="noCoincidencesMessage" class="text-center py-8 text-gray-500 hidden">
+                <i class="fas fa-search text-4xl mb-2"></i>
+                <p>No se encontraron sorteos con el filtro seleccionado</p>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- Historial de predicciones -->
     <div>
         <h3 class="font-medium text-gray-800 mb-4 flex items-center">

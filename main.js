@@ -62,9 +62,9 @@ async function initApp() {
         setupEventListeners();
         
         // Inicializar los gráficos usando las funciones de charts.js
-        if (window.chartFunctions && window.chartFunctions.initCharts) {
-            window.chartFunctions.initCharts(lotteryData);
-        }
+        //if (window.chartFunctions && window.chartFunctions.initCharts) {
+           // window.chartFunctions.initCharts(lotteryData);
+      //  }
         
         // AÑADIR ESTAS LÍNEAS JUSTO DESPUÉS:
 // Inicializar la estrategia de 3 números
