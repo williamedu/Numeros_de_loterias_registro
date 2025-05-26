@@ -1,9 +1,7 @@
 // strategy.js - Lógica para la Estrategia de los 3 Números
-
 // Variables globales para la estrategia
 let strategyData = {
     activeCandidates: [],
-    predictionHistory: [],
     statistics: {
         totalPredictions: 0,
         successfulPredictions: 0,
@@ -21,7 +19,6 @@ let strategyData = {
             totalSorteosAnalyzed: 0
         }
     },
-    // AGREGAR ESTAS NUEVAS PROPIEDADES:
     allSorteos: [], // Todos los sorteos analizados
     filteredCoincidences: [] // Coincidencias filtradas
 };
@@ -66,9 +63,8 @@ function hideStrategySection() {
  * Analizar el patrón de 3 números en los datos históricos
  */
 function analyzeThreeNumberPattern(lotteryData) {
-    // Resetear datos de estrategia (solo la parte básica)
+    // Resetear datos de estrategia
     strategyData.activeCandidates = [];
-    strategyData.predictionHistory = [];
     strategyData.statistics = {
         totalPredictions: 0,
         successfulPredictions: 0,
@@ -163,6 +159,9 @@ function daysDifference(date1, date2) {
 function analyzeNumberPattern(number, appearances, today) {
     if (appearances.length < 2) return; // Necesitamos al menos 2 apariciones
     
+    // Lista de patrones completados para evitar superposiciones
+    const completedPatterns = [];
+    
     // Buscar grupos de 2 apariciones dentro de 10 días
     for (let i = 0; i < appearances.length - 1; i++) {
         const firstAppearance = appearances[i];
@@ -177,6 +176,14 @@ function analyzeNumberPattern(number, appearances, today) {
                 const chronoFirst = firstAppearance.dateObj > secondAppearance.dateObj ? secondAppearance : firstAppearance;
                 const chronoSecond = firstAppearance.dateObj > secondAppearance.dateObj ? firstAppearance : secondAppearance;
                 
+                // Verificar si este par ya fue usado en un patrón completado
+                const isAlreadyUsed = completedPatterns.some(pattern => 
+                    (pattern.firstDate === chronoFirst.date && pattern.secondDate === chronoSecond.date) ||
+                    isOverlappingPattern(pattern, chronoFirst, chronoSecond)
+                );
+                
+                if (isAlreadyUsed) continue;
+                
                 // Encontramos 2 apariciones en 10 días
                 const pattern = {
                     number: number,
@@ -187,72 +194,105 @@ function analyzeNumberPattern(number, appearances, today) {
                     secondDateObj: chronoSecond.dateObj
                 };
                 
-                // Buscar si hay una tercera aparición en los siguientes 7 días después de la segunda
-                const thirdAppearance = findThirdAppearance(appearances, chronoSecond.dateObj, 0);
+                // Buscar si hay una tercera aparición en los siguientes 10 días después de la segunda
+                const thirdAppearance = findThirdAppearanceExcludingUsed(appearances, chronoSecond.dateObj, completedPatterns);
                 
                 if (thirdAppearance) {
                     // Patrón completado exitosamente
                     const daysToThird = daysDifference(chronoFirst.dateObj, thirdAppearance.dateObj);
-                    strategyData.predictionHistory.push({
+                    
+                    const completedPattern = {
                         ...pattern,
                         thirdDate: thirdAppearance.date,
+                        thirdDateObj: thirdAppearance.dateObj,
                         daysToThird: daysToThird,
                         success: true,
                         status: 'completed'
-                    });
+                    };
+                    
                     strategyData.statistics.successfulPredictions++;
+                    
+                    // Agregar a patrones completados para evitar superposiciones futuras
+                    completedPatterns.push(completedPattern);
+                    
                 } else {
                     // Verificar si ya pasaron más de 10 días desde la segunda aparición
                     const daysSinceSecond = daysDifference(chronoSecond.dateObj, today);
                     if (daysSinceSecond > 10) {
                         // Patrón falló
-                        strategyData.predictionHistory.push({
+                        strategyData.statistics.failedPredictions++;
+                        
+                        // Agregar a patrones completados (fallidos) para evitar reutilización
+                        completedPatterns.push({
                             ...pattern,
                             thirdDate: null,
-                            daysToThird: null,
                             success: false,
                             status: 'failed'
                         });
-                        strategyData.statistics.failedPredictions++;
+                        
                     } else {
-                        // Patrón activo - candidato actual
-                        strategyData.activeCandidates.push({
-                            ...pattern,
-                            daysSinceSecond: daysSinceSecond,
-                            daysRemaining: Math.max(0, 10 - daysSinceSecond),
-                            status: 'active'
-                        });
+                        // Patrón activo - candidato actual (solo si no se superpone con patrones completados)
+                        const isOverlapping = completedPatterns.some(completedPattern => 
+                            isOverlappingPattern(completedPattern, chronoFirst, chronoSecond)
+                        );
+                        
+                        if (!isOverlapping) {
+                            strategyData.activeCandidates.push({
+                                ...pattern,
+                                daysSinceSecond: daysSinceSecond,
+                                daysRemaining: Math.max(0, 10 - daysSinceSecond),
+                                status: 'active'
+                            });
+                        }
                     }
                 }
                 
                 strategyData.statistics.totalPredictions++;
-                break; // Solo contar el primer patrón válido para este número
+                break; // Solo contar el primer patrón válido para este índice i
             }
         }
     }
 }
 
 /**
- * Buscar tercera aparición dentro de 10 días después de la segunda
+ * Verificar si dos patrones se superponen temporalmente
  */
-function findThirdAppearance(appearances, secondDate, startIndex) {
+function isOverlappingPattern(completedPattern, newFirst, newSecond) {
+    if (!completedPattern.thirdDateObj) return false;
+    
+    // Un patrón se superpone si cualquiera de las nuevas fechas está dentro del rango del patrón completado
+    const completedStart = completedPattern.firstDateObj;
+    const completedEnd = new Date(completedPattern.thirdDateObj.getTime() + (10 * 24 * 60 * 60 * 1000)); // +10 días después del tercero
+    
+    return (newFirst.dateObj >= completedStart && newFirst.dateObj <= completedEnd) ||
+           (newSecond.dateObj >= completedStart && newSecond.dateObj <= completedEnd);
+}
+
+/**
+ * Buscar tercera aparición excluyendo las que están en patrones completados
+ */
+function findThirdAppearanceExcludingUsed(appearances, secondDate, completedPatterns) {
     for (let k = 0; k < appearances.length; k++) {
         const potentialThird = appearances[k];
         const daysFromSecond = daysDifference(secondDate, potentialThird.dateObj);
         
         // La tercera aparición debe ser DESPUÉS de la segunda fecha (más reciente)
         if (potentialThird.dateObj > secondDate && daysFromSecond <= 10) {
-            return potentialThird;
+            // Verificar que esta aparición no esté ya usada en un patrón completado
+            const isUsedInCompleted = completedPatterns.some(pattern => 
+                pattern.thirdDate === potentialThird.date
+            );
+            
+            if (!isUsedInCompleted) {
+                return potentialThird;
+            }
         }
     }
     return null;
 }
 
 /**
- * NUEVA FUNCIÓN: Analizar coincidencias múltiples
- */
-/**
- * NUEVA FUNCIÓN: Analizar coincidencias múltiples
+ * Analizar coincidencias múltiples
  */
 function analyzeMultipleCoincidences(lotteryData) {
     // Resetear datos de coincidencias múltiples
@@ -311,7 +351,7 @@ function analyzeMultipleCoincidences(lotteryData) {
         // Verificar coincidencias (incluir todos los sorteos, incluso con 0 candidatos)
         const coincidences = checkCoincidencesInDraw(winningNumbers, activeCandidatesAtDate);
         
-        // NUEVO: Crear registro completo del sorteo
+        // Crear registro completo del sorteo
         const sorteoData = {
             date: sorteoDate,
             dateObj: sorteoDateObj,
@@ -356,11 +396,12 @@ function analyzeMultipleCoincidences(lotteryData) {
     strategyData.allSorteos.sort((a, b) => b.dateObj - a.dateObj);
     
     // Inicializar con todos los sorteos
-    strategyData.filteredCoincidences = [...strategyData.allSorteos];
-    
+    strategyData.filteredCoincidences = strategyData.allSorteos.slice(0, 45);
+
     console.log('Análisis de coincidencias múltiples completado:', strategyData.multipleCoincidences.statistics);
     console.log('Total sorteos analizados:', strategyData.allSorteos.length);
 }
+
 /**
  * Obtener números ganadores para una fecha específica
  */
@@ -389,34 +430,74 @@ function getCandidatesAtDate(targetDate, numberAppearances) {
     for (const [number, appearances] of Object.entries(numberAppearances)) {
         if (appearances.length < 2) continue;
         
-        // Buscar patrones de 2 apariciones dentro de 10 días que estén activos en la fecha objetivo
-        for (let i = 0; i < appearances.length - 1; i++) {
-            const firstAppearance = appearances[i];
+        // Aplicar la misma lógica de patrones independientes que en analyzeNumberPattern
+        const candidatesForThisNumber = findValidCandidatesForNumber(number, appearances, targetDate);
+        activeCandidates.push(...candidatesForThisNumber);
+    }
+    
+    return activeCandidates;
+}
+
+/**
+ * Encontrar candidatos válidos para un número específico en una fecha objetivo
+ */
+function findValidCandidatesForNumber(number, appearances, targetDate) {
+    const candidates = [];
+    const completedPatterns = [];
+    
+    // Primero, identificar todos los patrones completados hasta la fecha objetivo
+    for (let i = 0; i < appearances.length - 1; i++) {
+        const firstAppearance = appearances[i];
+        
+        for (let j = i + 1; j < appearances.length; j++) {
+            const secondAppearance = appearances[j];
+            const daysBetween = daysDifference(firstAppearance.dateObj, secondAppearance.dateObj);
             
-            for (let j = i + 1; j < appearances.length; j++) {
-                const secondAppearance = appearances[j];
-                const daysBetween = daysDifference(firstAppearance.dateObj, secondAppearance.dateObj);
+            if (daysBetween <= 10) {
+                // Ordenar cronológicamente
+                const chronoFirst = firstAppearance.dateObj > secondAppearance.dateObj ? secondAppearance : firstAppearance;
+                const chronoSecond = firstAppearance.dateObj > secondAppearance.dateObj ? firstAppearance : secondAppearance;
                 
-                if (daysBetween <= 10) {
-                    // Ordenar cronológicamente
-                    const chronoFirst = firstAppearance.dateObj > secondAppearance.dateObj ? secondAppearance : firstAppearance;
-                    const chronoSecond = firstAppearance.dateObj > secondAppearance.dateObj ? firstAppearance : secondAppearance;
+                // Verificar si este par ya fue usado en un patrón completado
+                const isAlreadyUsed = completedPatterns.some(pattern => 
+                    (pattern.firstDate === chronoFirst.date && pattern.secondDate === chronoSecond.date) ||
+                    isOverlappingPatternForCandidate(pattern, chronoFirst, chronoSecond)
+                );
+                
+                if (isAlreadyUsed) continue;
+                
+                // Buscar si hay una tercera aparición que complete el patrón ANTES O EN la fecha objetivo
+                const thirdAppearance = findThirdAppearanceBeforeDate(appearances, chronoSecond.dateObj, targetDate, completedPatterns);
+                
+                if (thirdAppearance) {
+                    // Patrón completado antes de la fecha objetivo
+                    const completedPattern = {
+                        number: number,
+                        firstDate: chronoFirst.date,
+                        secondDate: chronoSecond.date,
+                        thirdDate: thirdAppearance.date,
+                        firstDateObj: chronoFirst.dateObj,
+                        secondDateObj: chronoSecond.dateObj,
+                        thirdDateObj: thirdAppearance.dateObj,
+                        completed: true
+                    };
                     
-                    // Verificar si en la fecha objetivo, este número era candidato activo
+                    completedPatterns.push(completedPattern);
+                } else {
+                    // Verificar si este patrón estaba activo en la fecha objetivo
                     const daysSinceSecond = daysDifference(chronoSecond.dateObj, targetDate);
                     
                     // El número es candidato activo si:
                     // 1. La fecha objetivo es DESPUÉS de la segunda aparición
                     // 2. Han pasado menos de 10 días desde la segunda aparición
-                    // 3. No ha salido una tercera vez aún
-                    if (targetDate >= chronoSecond.dateObj && daysSinceSecond <= 10) {
-                        // Verificar que no haya salido una tercera vez antes de la fecha objetivo
-                        const hasThirdAppearance = appearances.some(app => 
-                            app.dateObj > chronoSecond.dateObj && app.dateObj <= targetDate
+                    // 3. No se superpone con patrones completados
+                    if (targetDate > chronoSecond.dateObj && daysSinceSecond <= 10) {
+                        const isOverlapping = completedPatterns.some(completedPattern => 
+                            isOverlappingPatternForCandidate(completedPattern, chronoFirst, chronoSecond)
                         );
                         
-                        if (!hasThirdAppearance) {
-                            activeCandidates.push({
+                        if (!isOverlapping) {
+                            candidates.push({
                                 number: number,
                                 firstDate: chronoFirst.date,
                                 secondDate: chronoSecond.date,
@@ -427,14 +508,57 @@ function getCandidatesAtDate(targetDate, numberAppearances) {
                             });
                         }
                     }
-                    
-                    break; // Solo considerar el primer patrón válido para este número
                 }
+                
+                break; // Solo el primer patrón válido para este índice i
             }
         }
     }
     
-    return activeCandidates;
+    return candidates;
+}
+
+/**
+ * Buscar tercera aparición que complete el patrón antes de la fecha objetivo
+ */
+function findThirdAppearanceBeforeDate(appearances, secondDate, targetDate, completedPatterns) {
+    for (let k = 0; k < appearances.length; k++) {
+        const potentialThird = appearances[k];
+        const daysFromSecond = daysDifference(secondDate, potentialThird.dateObj);
+        
+        // La tercera aparición debe ser:
+        // 1. DESPUÉS de la segunda fecha
+        // 2. ANTES O EN la fecha objetivo
+        // 3. Dentro de 10 días de la segunda aparición
+        if (potentialThird.dateObj > secondDate && 
+            potentialThird.dateObj < targetDate && 
+            daysFromSecond <= 10) {
+            
+            // Verificar que esta aparición no esté ya usada en un patrón completado
+            const isUsedInCompleted = completedPatterns.some(pattern => 
+                pattern.thirdDate === potentialThird.date
+            );
+            
+            if (!isUsedInCompleted) {
+                return potentialThird;
+            }
+        }
+    }
+    return null;
+}
+
+/**
+ * Verificar si dos patrones se superponen temporalmente (versión para candidatos)
+ */
+function isOverlappingPatternForCandidate(completedPattern, newFirst, newSecond) {
+    if (!completedPattern.thirdDateObj) return false;
+    
+    // Un patrón se superpone si cualquiera de las nuevas fechas está dentro del rango del patrón completado
+    const completedStart = completedPattern.firstDateObj;
+    const completedEnd = new Date(completedPattern.thirdDateObj.getTime() + (10 * 24 * 60 * 60 * 1000)); // +10 días después del tercero
+    
+    return (newFirst.dateObj >= completedStart && newFirst.dateObj <= completedEnd) ||
+           (newSecond.dateObj >= completedStart && newSecond.dateObj <= completedEnd);
 }
 
 /**
@@ -491,87 +615,43 @@ function calculateFinalStatistics() {
     
     // Asignar categorías de probabilidad a candidatos activos
     assignProbabilityCategories();
-    
-    // Ordenar historial por fecha (más reciente primero)
-    strategyData.predictionHistory.sort((a, b) => b.firstDateObj - a.firstDateObj);
 }
 
 /**
- * Calcular estadísticas de qué día aparece el tercer número
+ * Calcular estadísticas de qué día aparece el tercer número (DESHABILITADO)
  */
 function calculateDayByDayStatistics() {
-    const dayStats = {};
-    
-    // Inicializar estadísticas para días 1-10
-    for (let day = 1; day <= 10; day++) {
-        dayStats[day] = { count: 0, percentage: 0 };
-    }
-    
-    // Contar en qué día apareció cada tercer número exitoso
-    const successfulPatterns = strategyData.predictionHistory.filter(entry => entry.success);
-    
-    successfulPatterns.forEach(pattern => {
-        const daysAfterSecond = daysDifference(pattern.secondDateObj, parseDate(pattern.thirdDate));
-        if (daysAfterSecond >= 1 && daysAfterSecond <= 10) {
-            dayStats[daysAfterSecond].count++;
-        }
-    });
-    
-    // Calcular porcentajes
-    const totalSuccessful = successfulPatterns.length;
-    if (totalSuccessful > 0) {
-        for (let day = 1; day <= 10; day++) {
-            dayStats[day].percentage = Math.round((dayStats[day].count / totalSuccessful) * 100);
-        }
-    }
-    
-    strategyData.dayByDayStats = dayStats;
+    // Función deshabilitada - requiere historial de predicciones
+    // Se puede reimplementar en el futuro si se necesita
+    strategyData.dayByDayStats = null;
 }
 
 /**
- * Asignar categorías de probabilidad a candidatos activos
+ * Asignar categorías de color basadas SOLO en días restantes
  */
 function assignProbabilityCategories() {
-    if (!strategyData.dayByDayStats) return;
-    
     strategyData.activeCandidates.forEach(candidate => {
-        const todayDay = candidate.daysSinceSecond; // Día de hoy
-        const tomorrowDay = candidate.daysSinceSecond + 1; // Día de mañana
+        const daysRemaining = candidate.daysRemaining;
         
-        // Probabilidad de hoy
-        let todayProbability = 0;
-        if (todayDay >= 1 && todayDay <= 10) {
-            todayProbability = strategyData.dayByDayStats[todayDay]?.percentage || 0;
-        }
-        
-        // Probabilidad de mañana
-        let tomorrowProbability = 0;
-        if (tomorrowDay >= 1 && tomorrowDay <= 10) {
-            tomorrowProbability = strategyData.dayByDayStats[tomorrowDay]?.percentage || 0;
-        }
-        
-        // Usar la probabilidad de hoy para categorizar el color del candidato
-        const dayPercentage = todayProbability;
-        
-        // Categorizar según porcentaje de hoy
-        if (dayPercentage >= 11) {
-            candidate.probabilityCategory = 'high';
-            candidate.probabilityColor = 'green';
-            candidate.probabilityText = 'Alta';
-        } else if (dayPercentage >= 6) {
-            candidate.probabilityCategory = 'medium';
-            candidate.probabilityColor = 'yellow';
-            candidate.probabilityText = 'Media';
-        } else {
-            candidate.probabilityCategory = 'low';
+        // Sistema de colores simplificado basado en urgencia
+        if (daysRemaining <= 3) {
+            // CRÍTICO - Quedan pocos días (0-3 días)
             candidate.probabilityColor = 'red';
-            candidate.probabilityText = 'Baja';
+            candidate.urgencyLevel = 'critical';
+            candidate.urgencyText = 'Crítico';
+        } else if (daysRemaining <= 6) {
+            // MEDIO - A mitad del período (4-6 días)
+            candidate.probabilityColor = 'yellow';
+            candidate.urgencyLevel = 'medium';
+            candidate.urgencyText = 'Medio';
+        } else {
+            // RECIENTE - Acaba de empezar el período (7-10 días)
+            candidate.probabilityColor = 'green';
+            candidate.urgencyLevel = 'recent';
+            candidate.urgencyText = 'Reciente';
         }
         
-        candidate.todayProbability = todayProbability;
-        candidate.tomorrowProbability = tomorrowProbability;
-        candidate.todayDay = todayDay;
-        candidate.tomorrowDay = tomorrowDay;
+        candidate.todayDay = candidate.daysSinceSecond;
     });
 }
 
@@ -582,17 +662,16 @@ function updateStrategyDisplay() {
     updateStatisticsDisplay();
     updateDayByDayDisplay();
     updateActiveCandidatesDisplay();
-    updatePredictionHistoryDisplay();
     updateMultipleCoincidencesDisplay();
     
-    // AGREGAR ESTAS LÍNEAS:
+    // Configurar filtros y actualizar listas
     setupCoincidenceFilters();
     updateCoincidencesCounter();
     updateFilteredCoincidencesList();
 }
 
 /**
- * NUEVA FUNCIÓN: Actualizar visualización de coincidencias múltiples
+ * Actualizar visualización de coincidencias múltiples
  */
 function updateMultipleCoincidencesDisplay() {
     // Actualizar estadísticas de coincidencias múltiples
@@ -624,49 +703,28 @@ function updateMultipleCoincidencesDisplay() {
     }
 }
 
-
 /**
- * Actualizar lista de coincidencias (ahora usa la versión filtrada)
+ * Actualizar lista de coincidencias (delega a la versión filtrada)
  */
 function updateCoincidencesList() {
-    // Esta función ahora delega a la nueva función de filtrado
     updateFilteredCoincidencesList();
 }
 
 /**
- * Actualizar estadísticas por día
+ * Actualizar estadísticas por día (OCULTAR SECCIÓN COMPLETAMENTE)
  */
 function updateDayByDayDisplay() {
-    // Buscar si existe el contenedor para estadísticas por día
     const dayStatsContainer = document.getElementById('dayByDayStats');
-    if (!dayStatsContainer || !strategyData.dayByDayStats) return;
+    if (!dayStatsContainer) return;
     
-    // Crear HTML para estadísticas por día
-    let dayStatsHTML = '<div class="grid grid-cols-5 md:grid-cols-10 gap-2">';
-    
-    for (let day = 1; day <= 10; day++) {
-        const stats = strategyData.dayByDayStats[day];
-        const percentage = stats.percentage;
-        
-        // Determinar color basado en porcentaje
-        let colorClass = 'bg-red-100 border-red-300 text-red-700'; // Baja
-        if (percentage >= 11) {
-            colorClass = 'bg-green-100 border-green-300 text-green-700'; // Alta
-        } else if (percentage >= 6) {
-            colorClass = 'bg-yellow-100 border-yellow-300 text-yellow-700'; // Media
-        }
-        
-        dayStatsHTML += `
-            <div class="${colorClass} border rounded-lg p-2 text-center text-xs">
-                <div class="font-bold">Día ${day}</div>
-                <div>${percentage}%</div>
-                <div class="text-xs">(${stats.count})</div>
-            </div>
-        `;
+    // Ocultar completamente la sección padre de estadísticas por día
+    const parentSection = dayStatsContainer.closest('.bg-gradient-to-r');
+    if (parentSection) {
+        parentSection.style.display = 'none';
     }
     
-    dayStatsHTML += '</div>';
-    dayStatsContainer.innerHTML = dayStatsHTML;
+    // También vaciar el contenedor por si acaso
+    dayStatsContainer.innerHTML = '';
 }
 
 /**
@@ -698,7 +756,7 @@ function updateStatisticsDisplay() {
 }
 
 /**
- * Actualizar lista de candidatos activos
+ * Actualizar lista de candidatos activos (VERSIÓN SIMPLIFICADA)
  */
 function updateActiveCandidatesDisplay() {
     const candidatesList = document.getElementById('activeCandidatesList');
@@ -720,19 +778,27 @@ function updateActiveCandidatesDisplay() {
     
     // Crear HTML para cada candidato
     candidatesList.innerHTML = strategyData.activeCandidates.map(candidate => {
-        // Determinar clases de color según la probabilidad
-        let borderColor = 'border-red-400';
-        let bgGradient = 'from-red-50 to-red-100';
-        let badgeColor = 'bg-red-500';
+        // Determinar colores según urgencia (días restantes)
+        let borderColor, bgGradient, badgeColor, statusText;
         
-        if (candidate.probabilityColor === 'green') {
-            borderColor = 'border-green-400';
-            bgGradient = 'from-green-50 to-green-100';
-            badgeColor = 'bg-green-500';
+        if (candidate.probabilityColor === 'red') {
+            // CRÍTICO - Quedan pocos días
+            borderColor = 'border-red-500';
+            bgGradient = 'from-red-50 to-red-100';
+            badgeColor = 'bg-red-500';
+            statusText = 'CRÍTICO';
         } else if (candidate.probabilityColor === 'yellow') {
-            borderColor = 'border-yellow-400';
+            // MEDIO - A mitad del período
+            borderColor = 'border-yellow-500';
             bgGradient = 'from-yellow-50 to-yellow-100';
             badgeColor = 'bg-yellow-500';
+            statusText = 'MEDIO';
+        } else {
+            // RECIENTE - Acaba de empezar
+            borderColor = 'border-green-500';
+            bgGradient = 'from-green-50 to-green-100';
+            badgeColor = 'bg-green-500';
+            statusText = 'RECIENTE';
         }
         
         return `
@@ -740,11 +806,11 @@ function updateActiveCandidatesDisplay() {
                 <div class="flex justify-between items-start mb-3">
                     <span class="text-2xl font-bold text-gray-800">${candidate.number}</span>
                     <div class="flex flex-col items-end space-y-1">
-                        <span class="text-xs ${badgeColor} text-white px-2 py-1 rounded-full">
-                            ${candidate.daysRemaining} días restantes
+                        <span class="text-xs ${badgeColor} text-white px-2 py-1 rounded-full font-medium">
+                            ${statusText}
                         </span>
                         <span class="text-xs ${badgeColor} text-white px-2 py-1 rounded-full">
-                            Hoy: ${candidate.todayProbability}%
+                            ${candidate.daysRemaining} días restantes
                         </span>
                     </div>
                 </div>
@@ -752,67 +818,14 @@ function updateActiveCandidatesDisplay() {
                     <div>• Salió por <strong>primera vez</strong> el <strong>${candidate.firstDate}</strong></div>
                     <div>• Salió por <strong>segunda vez</strong> el <strong>${candidate.secondDate}</strong></div>
                     <div class="text-blue-600">• <strong>Esperando 3ra aparición</strong> (${candidate.daysSinceSecond} días desde la 2da vez)</div>
-                    <div class="text-purple-600 font-medium">• Probabilidad para mañana: <strong>${candidate.tomorrowProbability}%</strong></div>
                 </div>
                 <div class="mt-3 w-full bg-gray-200 rounded-full h-2">
                     <div class="${badgeColor} h-2 rounded-full" style="width: ${((10 - candidate.daysRemaining) / 10) * 100}%"></div>
                 </div>
-            </div>
-        `;
-    }).join('');
-}
-
-/**
- * Actualizar historial de predicciones
- */
-function updatePredictionHistoryDisplay() {
-    const historyList = document.getElementById('predictionHistoryList');
-    const noHistoryMessage = document.getElementById('noHistoryMessage');
-    
-    if (!historyList) return;
-    
-    if (strategyData.predictionHistory.length === 0) {
-        historyList.innerHTML = '';
-        if (noHistoryMessage) noHistoryMessage.classList.remove('hidden');
-        return;
-    }
-    
-    if (noHistoryMessage) noHistoryMessage.classList.add('hidden');
-    
-    // Crear HTML para el historial
-    historyList.innerHTML = strategyData.predictionHistory.map(entry => {
-        const isSuccess = entry.success;
-        const statusClass = isSuccess ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200';
-        const iconClass = isSuccess ? 'fas fa-check-circle text-green-600' : 'fas fa-times-circle text-red-600';
-        const statusText = isSuccess ? 'ÉXITO' : 'FALLO';
-        
-        // Calcular días después de la segunda aparición para el patrón exitoso
-        let daysAfterSecond = '';
-        if (isSuccess && entry.thirdDate) {
-            const daysFromSecondToThird = daysDifference(entry.secondDateObj, parseDate(entry.thirdDate));
-            daysAfterSecond = `${daysFromSecondToThird} días después de salir por segunda vez`;
-        }
-        
-        return `
-            <div class="${statusClass} border rounded-lg p-4">
-                <div class="flex justify-between items-start mb-3">
-                    <div class="flex items-center">
-                        <span class="text-xl font-bold text-gray-800 mr-3">${entry.number}</span>
-                        <span class="flex items-center text-sm">
-                            <i class="${iconClass} mr-1"></i>
-                            ${statusText}
-                        </span>
-                    </div>
-                    <span class="text-xs text-gray-500">Días totales: ${isSuccess ? entry.daysToThird : '--'}</span>
-                </div>
-                <div class="text-sm text-gray-700 space-y-1">
-                    <div>• Salió por <strong>primera vez</strong> el <strong>${entry.firstDate}</strong></div>
-                    <div>• Salió por <strong>segunda vez</strong> el <strong>${entry.secondDate}</strong></div>
-                    ${isSuccess ? `
-                        <div class="text-green-700">• <strong>Salió por tercera vez para completar el patrón</strong> el <strong>${entry.thirdDate}</strong> (${daysAfterSecond})</div>
-                    ` : `
-                        <div class="text-red-600">• <strong>No completó el patrón</strong> - No salió en los siguientes 10 días</div>
-                    `}
+                <div class="mt-2 text-center">
+                    <span class="text-xs text-gray-600">
+                        Progreso: ${10 - candidate.daysRemaining}/10 días
+                    </span>
                 </div>
             </div>
         `;
@@ -820,7 +833,7 @@ function updatePredictionHistoryDisplay() {
 }
 
 /**
- * NUEVA FUNCIÓN: Configurar eventos de filtros
+ * Configurar eventos de filtros
  */
 function setupCoincidenceFilters() {
     const filterRadios = document.querySelectorAll('input[name="coincidenceFilter"]');
@@ -835,27 +848,26 @@ function setupCoincidenceFilters() {
 }
 
 /**
- * NUEVA FUNCIÓN: Filtrar coincidencias
+ * Filtrar coincidencias
  */
 function filterCoincidences(filterValue) {
     const allSorteos = strategyData.allSorteos;
     
-    if (filterValue === 'all') {
-        strategyData.filteredCoincidences = [...allSorteos];
-    } else {
-        const targetCount = parseInt(filterValue);
-        strategyData.filteredCoincidences = allSorteos.filter(sorteo => 
-            sorteo.coincidenceCount === targetCount
-        );
-    }
+if (filterValue === 'all') {
+    strategyData.filteredCoincidences = allSorteos.slice(0, 45);
+} else {
+    const targetCount = parseInt(filterValue);
+    const filtered = allSorteos.filter(sorteo => sorteo.coincidenceCount === targetCount);
+    strategyData.filteredCoincidences = filtered.slice(0, 45);
+}
     
-    // Actualizar la visualización
-    updateFilteredCoincidencesList();
+    // Actualizar visualización
     updateCoincidencesCounter();
+    updateFilteredCoincidencesList();
 }
 
 /**
- * NUEVA FUNCIÓN: Actualizar contador de coincidencias filtradas
+ * Actualizar contador de coincidencias filtradas
  */
 function updateCoincidencesCounter() {
     const filteredCountElement = document.getElementById('filteredCoincidencesCount');
@@ -871,7 +883,7 @@ function updateCoincidencesCounter() {
 }
 
 /**
- * NUEVA FUNCIÓN: Actualizar lista de coincidencias filtradas
+ * Actualizar lista de coincidencias filtradas (MÁXIMO 45 ELEMENTOS)
  */
 function updateFilteredCoincidencesList() {
     const coincidencesList = document.getElementById('coincidencesList');
@@ -887,14 +899,34 @@ function updateFilteredCoincidencesList() {
     
     if (noCoincidencesMessage) noCoincidencesMessage.classList.add('hidden');
     
-    // Crear HTML para cada sorteo filtrado
-    coincidencesList.innerHTML = strategyData.filteredCoincidences.map(sorteo => {
+    // LIMITAR A 45 ELEMENTOS MÁXIMO
+    const maxItems = 45;
+    const itemsToShow = strategyData.filteredCoincidences.slice(0, maxItems);
+    
+    // Mostrar los elementos limitados
+    coincidencesList.innerHTML = itemsToShow.map(sorteo => {
         return createSorteoHTML(sorteo);
     }).join('');
+    
+    // Si hay más de 45 elementos, agregar un mensaje indicativo
+    if (strategyData.filteredCoincidences.length > maxItems) {
+        const remainingCount = strategyData.filteredCoincidences.length - maxItems;
+        coincidencesList.innerHTML += `
+            <div class="text-center p-4 bg-purple-50 rounded-lg border-2 border-purple-200">
+                <p class="text-purple-700 font-medium">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Mostrando los primeros ${maxItems} sorteos más recientes
+                </p>
+                <p class="text-purple-600 text-sm mt-1">
+                    (${remainingCount} sorteos adicionales no mostrados)
+                </p>
+            </div>
+        `;
+    }
 }
 
 /**
- * NUEVA FUNCIÓN: Crear HTML para un sorteo
+ * Crear HTML para un sorteo
  */
 function createSorteoHTML(sorteo) {
     const coincidenceCount = sorteo.coincidenceCount;
@@ -995,3 +1027,8 @@ window.strategyFunctions = {
     showStrategySection,
     hideStrategySection
 };
+
+console.log("Sistema de visualización actualizado:");
+console.log("- Máximo 45 elementos por categoría");
+console.log("- Sin paginación");
+console.log("- Mensaje indicativo cuando hay más de 45 elementos");
