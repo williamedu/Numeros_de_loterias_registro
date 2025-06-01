@@ -20,7 +20,7 @@ LOTTERY_DISPLAY_NAME = "Pega 3 Más"  # Nombre para mostrar en la salida (puede 
 NUMBER_OF_POSITIONS = 3  # Número de posiciones (ej: 3 para Gana Más)
 
 # Configuración del scraping
-TOTAL_ITERATIONS = 80  # Número de iteraciones (páginas a visitar)
+TOTAL_ITERATIONS = 200  # Número de iteraciones (páginas a visitar)
 DAYS_TO_GO_BACK = 8  # Días a retroceder entre cada iteración
 WAIT_TIMEOUT = 15  # Tiempo máximo de espera para elementos (segundos)
 PAUSE_AFTER_PAGE_LOAD = 2  # Segundos de pausa después de cargar cada página
