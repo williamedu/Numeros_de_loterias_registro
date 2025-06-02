@@ -133,12 +133,56 @@ function updateLastUpdatedInfo() {
 
 // Función para actualizar el resumen de estadísticas
 function updateStatsSummary() {
-    // Actualizar el número de sorteos
-    const totalDraws = document.getElementById('totalDraws');
-    if (totalDraws) {
-        // Usar el número de posiciones de la lotería para calcular el total de sorteos
-        const positions = lotteryData.positionsCount || 3; // Default a 3 si no está definido
-        totalDraws.textContent = Math.round(lotteryData.totalProcessed / positions);
+    // Encontrar números ganadores (los que aparecieron en el último sorteo)
+    const winningNumbers = [];
+    if (lotteryData && lotteryData.numbers && lotteryData.lastUpdated) {
+        // Obtener la fecha del último sorteo (solo la fecha, sin la hora)
+        const lastDrawDate = lotteryData.lastUpdated.split(' ')[0];
+        
+        for (const [number, data] of Object.entries(lotteryData.numbers)) {
+            // Verificar si el número apareció en la fecha del último sorteo
+            if (data.lastSeen === lastDrawDate) {
+                winningNumbers.push(number);
+            }
+        }
+    }
+    
+    // Actualizar tarjeta del último sorteo conocido
+    const lastKnownDrawDate = document.getElementById('lastKnownDrawDate');
+    const winningNumbersDisplay = document.getElementById('winningNumbersDisplay');
+    
+    if (lastKnownDrawDate && lotteryData.lastUpdated) {
+        const lastDrawDate = lotteryData.lastUpdated.split(' ')[0];
+        lastKnownDrawDate.textContent = lastDrawDate;
+    }
+    
+    if (winningNumbersDisplay) {
+        if (winningNumbers.length > 0) {
+            winningNumbersDisplay.innerHTML = winningNumbers.map(number => 
+                `<span class="bg-purple-500 text-white text-xs px-2 py-1 rounded-full font-bold">${number}</span>`
+            ).join('');
+        } else {
+            winningNumbersDisplay.innerHTML = '<span class="text-gray-400 text-xs">No disponibles</span>';
+        }
+    }
+    
+    // Actualizar período de análisis en formato años/meses/días
+    const analysisPeriod = document.getElementById('analysisPeriod');
+    if (analysisPeriod && lotteryData.analysisPeriod) {
+        const days = lotteryData.analysisPeriod;
+        const years = Math.floor(days / 365);
+        const remainingDaysAfterYears = days % 365;
+        const months = Math.floor(remainingDaysAfterYears / 30);
+        const remainingDays = remainingDaysAfterYears % 30;
+        
+        let periodText = '';
+        if (years > 0) periodText += `${years} año${years > 1 ? 's' : ''} `;
+        if (months > 0) periodText += `${months} mes${months > 1 ? 'es' : ''} `;
+        if (remainingDays > 0 || (years === 0 && months === 0)) {
+            periodText += `${remainingDays} día${remainingDays !== 1 ? 's' : ''}`;
+        }
+        
+        analysisPeriod.textContent = periodText.trim();
     }
     
     // Actualizar el número más frío
@@ -195,8 +239,24 @@ function renderNumbersGrid() {
     // Aplicar filtro de posición
     if (positionFilter !== 'any') {
         filteredNumbers = filteredNumbers.filter(num => {
+            // Mapear los valores españoles a los valores internos del JSON
+            let internalPosition;
+            switch(positionFilter) {
+                case '1ra':
+                    internalPosition = 'first';
+                    break;
+                case '2da':
+                    internalPosition = 'second';
+                    break;
+                case '3ra':
+                    internalPosition = 'third';
+                    break;
+                default:
+                    internalPosition = positionFilter;
+            }
+            
             // Verificar si la propiedad positions existe y si el valor para esa posición es mayor que 0
-            return num.positions && num.positions[positionFilter] > 0;
+            return num.positions && num.positions[internalPosition] > 0;
         });
     }
     
@@ -262,39 +322,40 @@ function renderNumbersGrid() {
         filteredCount.textContent = filteredNumbers.length;
     }
     
-    // Comprobar si algún número es ganador para resaltarlo
-    const winningNumbersSet = new Set();
-    if (lotteryData.winningNumbers && lotteryData.winningNumbers.length > 0) {
-        lotteryData.winningNumbers.forEach(numData => {
-            winningNumbersSet.add(numData.number);
-        });
-    }
-    
     // Renderizar cada número en la cuadrícula
     filteredNumbers.forEach(num => {
-        // Determinar la clase de color basada en días sin salir
-        const days = num.daysSinceSeen !== null ? num.daysSinceSeen : 1000;
-        const heatLevel = Math.min(Math.floor(days / 10), 10);
-        let heatClass = `heatmap-${heatLevel}`;
+        // Determinar si es un número ganador (apareció en el último sorteo)
+        const lastDrawDate = lotteryData.lastUpdated ? lotteryData.lastUpdated.split(' ')[0] : null;
+        const isWinningNumber = lastDrawDate && num.lastSeen === lastDrawDate;
         
-        // Si el número es un número ganador actual, aplicar clase especial
-        const isWinningNumber = winningNumbersSet.has(num.number);
+        let heatClass;
         if (isWinningNumber) {
-            heatClass = 'winner-highlight'; // Esta clase debe estar definida en CSS
+            // Color morado para números ganadores
+            heatClass = 'bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg border-2 border-purple-300';
+        } else {
+            // Determinar la clase de color basada en días sin salir
+            const days = num.daysSinceSeen !== null ? num.daysSinceSeen : 1000;
+            const heatLevel = Math.min(Math.floor(days / 10), 10);
+            heatClass = `heatmap-${heatLevel}`;
         }
         
         // Crear el elemento div para el número
         const numElement = document.createElement('div');
-        numElement.className = `number-cell ${heatClass} rounded-lg p-2 text-center cursor-pointer flex flex-col items-center justify-center`;
+        numElement.className = `number-cell ${heatClass} rounded-lg p-2 text-center cursor-pointer flex flex-col items-center justify-center transition-all duration-300`;
         numElement.id = `num-${num.number}`;
         
         // Determinar el texto de días
-        const daysText = num.daysSinceSeen !== null ? `${num.daysSinceSeen} días` : 'Nunca';
+        let daysText;
+        if (isWinningNumber) {
+            daysText = '¡GANADOR!';
+        } else {
+            daysText = num.daysSinceSeen !== null ? `${num.daysSinceSeen} días` : 'Nunca';
+        }
         
         // Añadir contenido HTML
         numElement.innerHTML = `
             <span class="text-lg font-bold">${num.number}</span>
-            <span class="text-xs">${daysText}</span>
+            <span class="text-xs ${isWinningNumber ? 'font-semibold' : ''}">${daysText}</span>
         `;
         
         // Añadir evento de clic para mostrar detalles
@@ -322,7 +383,15 @@ function showNumberDetails(number) {
         const posName = i < positions.length ? positions[i] : `position_${i+1}`;
         if (number.positions && number.positions[posName] !== undefined) {
             frequency += number.positions[posName];
-            positionsText.push(`${number.positions[posName]}/${posName}`);
+            // Convertir nombre de posición para mostrar
+            let displayName;
+            switch(posName) {
+                case 'first': displayName = '1ra'; break;
+                case 'second': displayName = '2da'; break;
+                case 'third': displayName = '3ra'; break;
+                default: displayName = posName;
+            }
+            positionsText.push(`${number.positions[posName]}/${displayName}`);
         }
     }
     
@@ -331,9 +400,25 @@ function showNumberDetails(number) {
     let analysisPeriod = lotteryData.analysisPeriodFormatted || 
                         (lotteryData.analysisPeriod ? `${lotteryData.analysisPeriod} días` : '0 días');
     
-    // Verificar si el número es ganador actual
+    // Verificar si el número es ganador actual (apareció en el último sorteo)
     let winnerInfo = '';
-    if (lotteryData.winningNumbers && lotteryData.winningNumbers.some(n => n.number === number.number)) {
+    const lastDrawDate = lotteryData.lastUpdated ? lotteryData.lastUpdated.split(' ')[0] : null;
+    const isCurrentWinner = lastDrawDate && number.lastSeen === lastDrawDate;
+    
+    if (isCurrentWinner) {
+        winnerInfo = `
+            <div class="bg-gradient-to-r from-purple-100 to-purple-200 border-2 border-purple-500 text-purple-800 rounded-lg p-4 max-w-xs mx-auto mt-4">
+                <div class="flex items-center justify-center mb-2">
+                    <i class="fas fa-trophy text-2xl text-purple-600 mr-2"></i>
+                    <div class="font-bold text-lg">¡NÚMERO GANADOR!</div>
+                </div>
+                <div class="text-sm text-center">
+                    Este número salió en el último sorteo (${lastDrawDate})
+                </div>
+            </div>
+        `;
+    } else if (lotteryData.winningNumbers && lotteryData.winningNumbers.some(n => n.number === number.number)) {
+        // Verificación adicional con el array de números ganadores si existe
         const winningNumber = lotteryData.winningNumbers.find(n => n.number === number.number);
         winnerInfo = `
             <div class="bg-green-200 text-green-800 rounded-lg p-4 max-w-xs mx-auto mt-4">
@@ -363,13 +448,22 @@ function showNumberDetails(number) {
         // Ordenar el historial por fecha (de más reciente a más antiguo)
         const sortedHistory = [...number.history].sort((a, b) => a.daysAgo - b.daysAgo);
         
-        const historyItems = sortedHistory.map(item => 
-            `<div class="grid grid-cols-3 text-sm border-b border-gray-100 py-1">
+        const historyItems = sortedHistory.map(item => {
+            // Convertir posición numérica a formato español
+            let positionDisplay;
+            switch(item.position) {
+                case 1: positionDisplay = '1ra'; break;
+                case 2: positionDisplay = '2da'; break;
+                case 3: positionDisplay = '3ra'; break;
+                default: positionDisplay = `${item.position}ª`;
+            }
+            
+            return `<div class="grid grid-cols-3 text-sm border-b border-gray-100 py-1">
                 <div>${item.date}</div>
-                <div>${item.position}ª posición</div>
+                <div>${positionDisplay} posición</div>
                 <div>Hace ${item.daysAgo} días</div>
-            </div>`
-        ).join('');
+            </div>`;
+        }).join('');
         
         historyInfo = `
             <div class="bg-gray-50 rounded-lg p-4 max-w-md mx-auto mt-4">
@@ -517,6 +611,16 @@ function setupEventListeners() {
     if (positionFilter) {
         // Actualizar opciones de filtro según las posiciones de la lotería
         if (lotteryData.positionsCount > 0) {
+            // Mapeo de posiciones internas a nombres en español
+            const positionMapping = {
+                'first': { value: '1ra', label: 'Primera' },
+                'second': { value: '2da', label: 'Segunda' },
+                'third': { value: '3ra', label: 'Tercera' },
+                'fourth': { value: '4ta', label: 'Cuarta' },
+                'fifth': { value: '5ta', label: 'Quinta' },
+                'sixth': { value: '6ta', label: 'Sexta' }
+            };
+            
             const positions = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth'];
             
             // Asegurarse de que el selector solo tiene la opción "any"
@@ -525,14 +629,19 @@ function setupEventListeners() {
             // Añadir opciones para cada posición
             for (let i = 0; i < lotteryData.positionsCount; i++) {
                 const posName = i < positions.length ? positions[i] : `position_${i+1}`;
-                const posLabel = i < positions.length 
-                    ? ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta'][i] 
-                    : `Posición ${i+1}`;
+                const mapping = positionMapping[posName];
                 
-                const option = document.createElement('option');
-                option.value = posName;
-                option.textContent = `${posLabel} posición`;
-                positionFilter.appendChild(option);
+                if (mapping) {
+                    const option = document.createElement('option');
+                    option.value = mapping.value;
+                    option.textContent = `${mapping.label} posición`;
+                    positionFilter.appendChild(option);
+                } else {
+                    const option = document.createElement('option');
+                    option.value = posName;
+                    option.textContent = `Posición ${i+1}`;
+                    positionFilter.appendChild(option);
+                }
             }
         }
         

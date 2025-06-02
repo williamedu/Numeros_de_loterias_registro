@@ -56,8 +56,8 @@ function analyzeColdHotNumbers(lotteryData) {
     // Ordenar por días sin salir
     numbersWithData.sort((a, b) => b.daysSinceSeen - a.daysSinceSeen);
     
-    // Separar en números fríos (más días sin salir) y calientes (menos días sin salir)
-    simplifiedData.coldNumbers = numbersWithData.slice(0, 15); // Top 15 más fríos
+    // LIMITAR A MÁXIMO 5 NÚMEROS FRÍOS
+    simplifiedData.coldNumbers = numbersWithData.slice(0, 5); // Solo los TOP 5 más fríos
     simplifiedData.hotNumbers = numbersWithData.slice(-20).reverse(); // Top 20 más calientes
     
     // Calcular estadísticas
@@ -93,6 +93,7 @@ function analyzeRepeatedNumbers(lotteryData) {
     const repeatedData = lotteryData.repeatedInLast30Days;
     
     // Convertir a array y ordenar por número de ocurrencias
+    // FILTRAR SOLO LOS QUE SE HAN REPETIDO MÁS DE 1 VEZ Y LIMITAR A 5
     simplifiedData.repeatedNumbers = Object.entries(repeatedData)
         .map(([number, data]) => ({
             number: number,
@@ -100,7 +101,9 @@ function analyzeRepeatedNumbers(lotteryData) {
             dates: data.dates,
             lastOccurrence: data.dates[0] // La primera fecha es la más reciente
         }))
-        .sort((a, b) => b.occurrences - a.occurrences);
+        .filter(item => item.occurrences > 1) // SOLO LOS QUE SE HAN REPETIDO MÁS DE 1 VEZ
+        .sort((a, b) => b.occurrences - a.occurrences)
+        .slice(0, 5); // LIMITAR A MÁXIMO 5 NÚMEROS
     
     console.log('Análisis de números repetidos completado:', {
         totalRepetidos: simplifiedData.repeatedNumbers.length,
@@ -131,7 +134,7 @@ function updateRepeatedNumbersDisplay() {
         return;
     }
     
-    // Actualizar contador
+    // Actualizar contador - MOSTRAR EL NÚMERO REAL DE ELEMENTOS (MÁXIMO 5)
     if (repeatedCount) {
         repeatedCount.textContent = simplifiedData.repeatedNumbers.length;
     }
@@ -152,10 +155,20 @@ function updateRepeatedNumbersDisplay() {
     
     // Crear HTML para números repetidos con diseño compacto
     repeatedNumbersList.innerHTML = simplifiedData.repeatedNumbers.map((numberData, index) => {
-        // Determinar color según frecuencia de repetición
+        // Verificar si es número ganador (apareció en el último sorteo)
+        const lastDrawDate = window.lotteryData && window.lotteryData.lastUpdated ? 
+                            window.lotteryData.lastUpdated.split(' ')[0] : null;
+        const isWinner = lastDrawDate && numberData.dates.includes(lastDrawDate);
+        
+        // Determinar color según frecuencia de repetición o si es ganador
         let bgGradient, borderColor, badgeColor;
         
-        if (numberData.occurrences >= 5) {
+        if (isWinner) {
+            // Color morado para números ganadores
+            bgGradient = 'from-purple-100 to-purple-200';
+            borderColor = 'border-purple-500';
+            badgeColor = 'bg-purple-500';
+        } else if (numberData.occurrences >= 5) {
             bgGradient = 'from-purple-50 to-purple-100';
             borderColor = 'border-purple-500';
             badgeColor = 'bg-purple-500';
@@ -169,26 +182,21 @@ function updateRepeatedNumbersDisplay() {
             badgeColor = 'bg-blue-500';
         }
         
+        const rankText = isWinner ? '🏆' : `#${index + 1}`;
+        
         return `
-            <div class="bg-gradient-to-r ${bgGradient} border-l-4 ${borderColor} rounded-lg p-3">
+            <div class="bg-gradient-to-r ${bgGradient} border-l-4 ${borderColor} rounded-lg p-3 ${isWinner ? 'shadow-lg' : ''}">
                 <div class="flex justify-between items-center mb-2">
                     <div class="flex items-center space-x-2">
-                        <span class="text-sm text-purple-600 font-bold w-6">#${index + 1}</span>
-                        <span class="text-xl font-bold text-gray-800">${numberData.number}</span>
+                        <span class="text-sm ${isWinner ? 'text-purple-600' : 'text-purple-600'} font-bold w-6">${rankText}</span>
+                        <span class="text-xl font-bold ${isWinner ? 'text-purple-800' : 'text-gray-800'}">${numberData.number}</span>
                     </div>
                     <span class="text-xs ${badgeColor} text-white px-2 py-1 rounded-full font-medium">
                         ${numberData.occurrences}x
                     </span>
                 </div>
-                <div class="text-sm text-gray-700 space-y-1">
-                    <div><strong>Última aparición:</strong> ${numberData.lastOccurrence}</div>
-                </div>
-                <div class="bg-white bg-opacity-50 rounded p-2 mt-2">
-                    <div class="text-xs text-gray-600 mb-1">Fechas recientes:</div>
-                    <div class="text-xs text-gray-700">
-                        ${numberData.dates.slice(0, 3).join(', ')}
-                        ${numberData.dates.length > 3 ? '...' : ''}
-                    </div>
+                <div class="text-sm ${isWinner ? 'text-purple-700' : 'text-gray-700'} space-y-1">
+                    <div><strong>Apariciones:</strong> ${numberData.dates.slice(0, 3).join(', ')}${numberData.dates.length > 3 ? '...' : ''}</div>
                 </div>
             </div>
         `;
@@ -207,7 +215,7 @@ function updateColdNumbersDisplay() {
         return;
     }
     
-    // Actualizar contador
+    // Actualizar contador - MOSTRAR EL NÚMERO REAL DE ELEMENTOS (MÁXIMO 5)
     if (coldCount) {
         coldCount.textContent = simplifiedData.coldNumbers.length;
     }
@@ -219,13 +227,22 @@ function updateColdNumbersDisplay() {
     
     // Crear HTML para números fríos con diseño compacto
     coldNumbersList.innerHTML = simplifiedData.coldNumbers.map((numberData, index) => {
-        // Determinar color según el ranking
+        // Verificar si es número ganador (apareció en el último sorteo)
+        const lastDrawDate = window.lotteryData && window.lotteryData.lastUpdated ? 
+                            window.lotteryData.lastUpdated.split(' ')[0] : null;
+        const isWinner = lastDrawDate && numberData.lastSeen === lastDrawDate;
+        
+        // Determinar color según el ranking o si es ganador
         let bgGradient, borderColor;
         
-        if (index < 5) {
+        if (isWinner) {
+            // Color morado para números ganadores
+            bgGradient = 'from-purple-100 to-purple-200';
+            borderColor = 'border-purple-500';
+        } else if (index < 2) {
             bgGradient = 'from-red-50 to-red-100';
             borderColor = 'border-red-500';
-        } else if (index < 10) {
+        } else if (index < 4) {
             bgGradient = 'from-orange-50 to-orange-100';
             borderColor = 'border-orange-500';
         } else {
@@ -233,25 +250,24 @@ function updateColdNumbersDisplay() {
             borderColor = 'border-yellow-500';
         }
         
+        // Texto especial para números ganadores
+        const daysText = isWinner ? '¡GANADOR!' : `${numberData.daysSinceSeen}d`;
+        const rankText = isWinner ? '🏆' : `#${index + 1}`;
+        const lastSeenText = isWinner ? `${lastDrawDate} (ÚLTIMO SORTEO)` : numberData.lastSeen;
+        
         return `
-            <div class="bg-gradient-to-r ${bgGradient} border-l-4 ${borderColor} rounded-lg p-3">
+            <div class="bg-gradient-to-r ${bgGradient} border-l-4 ${borderColor} rounded-lg p-3 ${isWinner ? 'shadow-lg' : ''}">
                 <div class="flex justify-between items-center mb-2">
                     <div class="flex items-center space-x-2">
-                        <span class="text-sm text-blue-600 font-bold w-6">#${index + 1}</span>
-                        <span class="text-xl font-bold text-gray-800">${numberData.number}</span>
+                        <span class="text-sm ${isWinner ? 'text-purple-600' : 'text-blue-600'} font-bold w-6">${rankText}</span>
+                        <span class="text-xl font-bold ${isWinner ? 'text-purple-800' : 'text-gray-800'}">${numberData.number}</span>
                     </div>
-                    <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded-full">
-                        ${numberData.daysSinceSeen}d
+                    <span class="text-xs ${isWinner ? 'bg-purple-500' : 'bg-blue-500'} text-white px-2 py-1 rounded-full">
+                        ${daysText}
                     </span>
                 </div>
-                <div class="text-sm text-gray-700 space-y-1">
-                    <div><strong>Última aparición:</strong> ${numberData.lastSeen}</div>
-                    <div><strong>Total apariciones:</strong> ${numberData.totalAppearances}</div>
-                </div>
-                <div class="mt-2 w-full bg-gray-200 rounded-full h-2">
-                    <div class="bg-red-500 h-2 rounded-full" 
-                         style="width: ${Math.min((numberData.daysSinceSeen / simplifiedData.statistics.maxDaysSinceSeen) * 100, 100)}%">
-                    </div>
+                <div class="text-sm ${isWinner ? 'text-purple-700' : 'text-gray-700'}">
+                    <div><strong>Última aparición:</strong> ${lastSeenText}</div>
                 </div>
             </div>
         `;
