@@ -68,9 +68,9 @@ async function initApp() {
         
         // AÑADIR ESTAS LÍNEAS JUSTO DESPUÉS:
 // Inicializar la estrategia de 3 números
-        if (window.strategyFunctions && window.strategyFunctions.initThreeNumberStrategy) {
-             window.strategyFunctions.initThreeNumberStrategy(lotteryData);
-        }       
+        if (window.simplifiedFunctions && window.simplifiedFunctions.initSimplifiedAnalysis) {
+            window.simplifiedFunctions.initSimplifiedAnalysis(lotteryData);
+        }    
         // Ocultar indicador de carga
         hideLoading();
         

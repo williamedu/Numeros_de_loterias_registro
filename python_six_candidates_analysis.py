@@ -365,15 +365,15 @@ def analyze_lottery_data():
     # ============================================================
     # 🎯 VARIABLES CONFIGURABLES
     # ============================================================
-    BET_AMOUNT = 100          # Monto de apuesta por combinación (RD$)
-    MAX_CANDIDATES = 6    # Número máximo de candidatos activos para simulación
+    BET_AMOUNT = 1000          # Monto de apuesta por combinación (RD$)
+    MAX_CANDIDATES = 20    # Número máximo de candidatos activos para simulación
     DEBUG_MODE = False       # Activar para ver análisis detallado de algunos sorteos
     # Ejemplos MAX_CANDIDATES: 6, 8, 10, 12, etc.
     # NOTA: Con más candidatos, habrá más combinaciones y mayor inversión
     # ============================================================
     
     # Ruta directa al archivo JSON
-    json_file = r"C:\Users\Admin\Desktop\New_Loterry\Numeros_de_loterias_registro\json_Datos\lottery_data_Pega_3_Mas.json"
+    json_file = r"C:\Users\willi\OneDrive\Escritorio\New_Loteria_Resultados\Numeros_de_loterias_registro\json_Datos\lottery_data_Pega_3_Mas.json"
     
     # Verificar que el archivo existe
     if not os.path.exists(json_file):
