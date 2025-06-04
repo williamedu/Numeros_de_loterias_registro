@@ -14,9 +14,9 @@ import time
 import random
 
 # Configuración de la lotería
-LOTTERY_NAME = "Pega_3_Mas"  # Nombre para el archivo (sin espacios ni caracteres especiales)
-LOTTERY_URL_PARAM = "leidsa/pega-3-mas"  # Parámetro para la URL en loteriasdominicanas.com
-LOTTERY_DISPLAY_NAME = "Pega 3 Más"  # Nombre para mostrar en la salida (puede tener espacios)
+LOTTERY_NAME = "Quiniela_Pale"  # Nombre para el archivo (sin espacios ni caracteres especiales)
+LOTTERY_URL_PARAM = "leidsa/quiniela-pale"  # Parámetro para la URL en loteriasdominicanas.com
+LOTTERY_DISPLAY_NAME = "Quiniela Pale"  # Nombre para mostrar en la salida (puede tener espacios)
 NUMBER_OF_POSITIONS = 3  # Número de posiciones (ej: 3 para Gana Más)
 
 # Configuración del scraping
@@ -25,12 +25,15 @@ DAYS_TO_GO_BACK = 8  # Días a retroceder entre cada iteración
 WAIT_TIMEOUT = 15  # Tiempo máximo de espera para elementos (segundos)
 PAUSE_AFTER_PAGE_LOAD = 2  # Segundos de pausa después de cargar cada página
 MIN_NUMBER = 0  # Número mínimo (algunas loterías comienzan desde 1 en lugar de 0)
-MAX_NUMBER = 50  # Número máximo
+MAX_NUMBER = 99  # Número máximo
 
 # Definir la ruta absoluta a la carpeta del proyecto
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-JSON_DIR = os.path.join(SCRIPT_DIR, "json_Datos")
-OUTPUT_FILE = os.path.join(JSON_DIR, f"lottery_data_{LOTTERY_NAME}.json")
+PARENT_DIR = os.path.dirname(SCRIPT_DIR)  # Carpeta padre
+JSON_DIR = os.path.join(PARENT_DIR, "json_Datos")
+JSON_FILE = os.path.join(JSON_DIR, f"lottery_data_{LOTTERY_NAME}.json")
+OUTPUT_FILE = JSON_FILE  # ← AGREGAR ESTA LÍNEA
+
 
 if not os.path.exists(JSON_DIR):
     try:

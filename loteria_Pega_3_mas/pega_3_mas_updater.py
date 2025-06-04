@@ -30,7 +30,8 @@ MAX_NUMBER = 50  # Número máximo
 
 # Definir la ruta absoluta a la carpeta del proyecto
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-JSON_DIR = os.path.join(SCRIPT_DIR, "json_Datos")
+PARENT_DIR = os.path.dirname(SCRIPT_DIR)  # Carpeta padre
+JSON_DIR = os.path.join(PARENT_DIR, "json_Datos")
 JSON_FILE = os.path.join(JSON_DIR, f"lottery_data_{LOTTERY_NAME}.json")
 
 # Y agregar esta verificación para crear la carpeta si no existe:

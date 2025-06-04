@@ -25,7 +25,8 @@ async function initApp() {
         showLoading('Cargando datos de la lotería...');
         
         // Cargar los datos JSON específicos para esta lotería
-        const jsonFileName = `json_Datos/lottery_data_${lotteryName}.json`;
+        const jsonFileName = `../json_Datos/lottery_data_${lotteryName}.json`;
+
 
         const response = await fetch(jsonFileName);
         if (!response.ok) {
@@ -49,8 +50,11 @@ async function initApp() {
         // Mostrar los números ganadores en el encabezado si existe el contenedor
         displayWinningNumbers();
         
-        // Actualizar estadísticas generales
-        updateStatsSummary();
+        // Actualizar período de análisis
+        updateAnalysisPeriod();
+        
+        // Actualizar card de último sorteo
+        updateLastDrawInfo();
         
         // Renderizar la cuadrícula de números
         renderNumbersGrid();
@@ -131,42 +135,8 @@ function updateLastUpdatedInfo() {
     }
 }
 
-// Función para actualizar el resumen de estadísticas
-function updateStatsSummary() {
-    // Encontrar números ganadores (los que aparecieron en el último sorteo)
-    const winningNumbers = [];
-    if (lotteryData && lotteryData.numbers && lotteryData.lastUpdated) {
-        // Obtener la fecha del último sorteo (solo la fecha, sin la hora)
-        const lastDrawDate = lotteryData.lastUpdated.split(' ')[0];
-        
-        for (const [number, data] of Object.entries(lotteryData.numbers)) {
-            // Verificar si el número apareció en la fecha del último sorteo
-            if (data.lastSeen === lastDrawDate) {
-                winningNumbers.push(number);
-            }
-        }
-    }
-    
-    // Actualizar tarjeta del último sorteo conocido
-    const lastKnownDrawDate = document.getElementById('lastKnownDrawDate');
-    const winningNumbersDisplay = document.getElementById('winningNumbersDisplay');
-    
-    if (lastKnownDrawDate && lotteryData.lastUpdated) {
-        const lastDrawDate = lotteryData.lastUpdated.split(' ')[0];
-        lastKnownDrawDate.textContent = lastDrawDate;
-    }
-    
-    if (winningNumbersDisplay) {
-        if (winningNumbers.length > 0) {
-            winningNumbersDisplay.innerHTML = winningNumbers.map(number => 
-                `<span class="bg-purple-500 text-white text-xs px-2 py-1 rounded-full font-bold">${number}</span>`
-            ).join('');
-        } else {
-            winningNumbersDisplay.innerHTML = '<span class="text-gray-400 text-xs">No disponibles</span>';
-        }
-    }
-    
-    // Actualizar período de análisis en formato años/meses/días
+// Función para actualizar el período de análisis
+function updateAnalysisPeriod() {
     const analysisPeriod = document.getElementById('analysisPeriod');
     if (analysisPeriod && lotteryData.analysisPeriod) {
         const days = lotteryData.analysisPeriod;
@@ -184,42 +154,100 @@ function updateStatsSummary() {
         
         analysisPeriod.textContent = periodText.trim();
     }
+}
+
+// Función para actualizar la información del último sorteo
+function updateLastDrawInfo() {
+    // Encontrar números ganadores (los que aparecieron en el último sorteo)
+    const winningNumbers = [];
     
-    // Actualizar el número más frío
-    const coldestNumber = document.getElementById('coldestNumber');
-    if (coldestNumber && lotteryData.coldestNumbers && lotteryData.coldestNumbers.length > 0) {
-        const coldest = lotteryData.coldestNumbers[0];
-        coldestNumber.textContent = `${coldest.number} (${coldest.daysSinceSeen} días)`;
-    }
+    console.log('=== DEBUG: updateLastDrawInfo ===');
+    console.log('lotteryData.lastUpdated:', lotteryData?.lastUpdated);
     
-    // Actualizar el número más repetido en los últimos 30 días
-    const mostRepeatedNumber = document.getElementById('mostRepeatedNumber');
-    if (mostRepeatedNumber) {
-        // Encontrar el número más repetido
-        let maxRepeated = { number: '--', occurrences: 0 };
-        for (const [num, data] of Object.entries(lotteryData.repeatedInLast30Days)) {
-            if (data.occurrences > maxRepeated.occurrences) {
-                maxRepeated = { number: num, occurrences: data.occurrences };
+    if (lotteryData && lotteryData.numbers && lotteryData.lastUpdated) {
+        // Obtener la fecha del último sorteo (solo la fecha, sin la hora)
+        const lastDrawDate = lotteryData.lastUpdated.split(' ')[0];
+        console.log('lastDrawDate extraído:', lastDrawDate);
+        
+        // Revisar algunos números para debug
+        let debugCount = 0;
+        for (const [number, data] of Object.entries(lotteryData.numbers)) {
+            if (debugCount < 5) {
+                console.log(`Número ${number}:`, {
+                    lastSeen: data.lastSeen,
+                    daysSinceSeen: data.daysSinceSeen
+                });
+                debugCount++;
+            }
+            
+            // Verificar si el número apareció en la fecha del último sorteo
+            if (data.lastSeen === lastDrawDate) {
+                winningNumbers.push(number);
+                console.log(`¡Número ganador encontrado: ${number}!`);
             }
         }
         
-        mostRepeatedNumber.textContent = `${maxRepeated.number} (${maxRepeated.occurrences} veces)`;
+        console.log('Números ganadores encontrados:', winningNumbers);
     }
     
-    // Actualizar números ganadores en la sección de resumen si existe
-    const winningNumbersSummary = document.getElementById('winningNumbersSummary');
-    if (winningNumbersSummary && lotteryData.winningNumbers && lotteryData.winningNumbers.length > 0) {
-        const numbersStr = lotteryData.winningNumbers.map(n => n.number).join(', ');
-        winningNumbersSummary.textContent = numbersStr;
-        
-        // Mostrar la fecha del sorteo si existe
-        const winningDateSummary = document.getElementById('winningDateSummary');
-        if (winningDateSummary && lotteryData.winningNumbers[0].date) {
-            winningDateSummary.textContent = lotteryData.winningNumbers[0].date;
+    // Si no encontramos números ganadores con lastSeen, intentemos otra estrategia
+    if (winningNumbers.length === 0 && lotteryData?.numbers) {
+        console.log('No se encontraron ganadores con lastSeen, probando con daysSinceSeen = 0');
+        for (const [number, data] of Object.entries(lotteryData.numbers)) {
+            if (data.daysSinceSeen === 0) {
+                winningNumbers.push(number);
+                console.log(`Número con 0 días encontrado: ${number}`);
+            }
         }
     }
+    
+    // Si aún no encontramos números, usar el array winningNumbers del JSON
+    if (winningNumbers.length === 0 && lotteryData?.winningNumbers) {
+        console.log('Usando array winningNumbers del JSON:', lotteryData.winningNumbers);
+        for (const winnerData of lotteryData.winningNumbers) {
+            if (winnerData.number) {
+                winningNumbers.push(winnerData.number);
+                console.log(`Número del array winningNumbers: ${winnerData.number}`);
+            }
+        }
+    }
+    
+    // Actualizar tarjeta del último sorteo conocido
+    const lastKnownDrawDate = document.getElementById('lastKnownDrawDate');
+    const winningNumbersDisplay = document.getElementById('winningNumbersDisplay');
+    
+    if (lastKnownDrawDate && lotteryData.lastUpdated) {
+        const lastDrawDate = lotteryData.lastUpdated.split(' ')[0];
+        lastKnownDrawDate.textContent = lastDrawDate;
+    }
+    
+    if (winningNumbersDisplay) {
+        if (winningNumbers.length > 0) {
+            // Obtener fecha de hoy para determinar el color
+            const today = new Date();
+            const todayFormatted = `${today.getDate().toString().padStart(2, '0')}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getFullYear()}`;
+            const lastDrawDate = lotteryData.lastUpdated.split(' ')[0];
+            
+            console.log('Fecha de hoy:', todayFormatted);
+            console.log('Fecha último sorteo:', lastDrawDate);
+            
+            // Determinar color según si es de hoy o anterior
+            const isToday = lastDrawDate === todayFormatted;
+            const bgColor = isToday ? 'bg-green-500' : 'bg-gray-500';
+            
+            console.log('Es hoy?', isToday, '- Color:', bgColor);
+            
+            winningNumbersDisplay.innerHTML = winningNumbers.map(number => 
+                `<span class="${bgColor} text-white text-xl px-5 py-3 rounded-full font-bold shadow-lg border-2 border-white">${number}</span>`
+            ).join('');
+        } else {
+            console.log('No se encontraron números ganadores, mostrando "No disponibles"');
+            winningNumbersDisplay.innerHTML = '<span class="text-gray-400 text-sm">No disponibles</span>';
+        }
+    }
+    
+    console.log('=== FIN DEBUG ===');
 }
-
 // Función para renderizar la cuadrícula de números
 function renderNumbersGrid() {
     const numbersGrid = document.getElementById('numbersGrid');
@@ -328,12 +356,22 @@ function renderNumbersGrid() {
         const lastDrawDate = lotteryData.lastUpdated ? lotteryData.lastUpdated.split(' ')[0] : null;
         const isWinningNumber = lastDrawDate && num.lastSeen === lastDrawDate;
         
+        // Obtener fecha de hoy en formato DD-MM-YYYY
+        const today = new Date();
+        const todayFormatted = `${today.getDate().toString().padStart(2, '0')}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getFullYear()}`;
+        
         let heatClass;
         if (isWinningNumber) {
-            // Color morado para números ganadores
-            heatClass = 'bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg border-2 border-purple-300';
+            // Verificar si el último sorteo es de hoy
+            if (lastDrawDate === todayFormatted) {
+                // Verde circular - números ganadores de hoy
+                heatClass = 'winner-today';
+            } else {
+                // Gris circular - números ganadores de días anteriores
+                heatClass = 'winner-old';
+            }
         } else {
-            // Determinar la clase de color basada en días sin salir
+            // Determinar la clase de color basada en días sin salir (heatmap normal)
             const days = num.daysSinceSeen !== null ? num.daysSinceSeen : 1000;
             const heatLevel = Math.min(Math.floor(days / 10), 10);
             heatClass = `heatmap-${heatLevel}`;
@@ -347,7 +385,11 @@ function renderNumbersGrid() {
         // Determinar el texto de días
         let daysText;
         if (isWinningNumber) {
-            daysText = '¡GANADOR!';
+            if (lastDrawDate === todayFormatted) {
+                daysText = '¡HOY!';
+            } else {
+                daysText = '¡GANADOR!';
+            }
         } else {
             daysText = num.daysSinceSeen !== null ? `${num.daysSinceSeen} días` : 'Nunca';
         }
@@ -366,7 +408,7 @@ function renderNumbersGrid() {
     });
 }
 
-// Función para mostrar detalles de un número
+// Función para mostrar detalles de un número - TEMA OSCURO COMPLETO
 function showNumberDetails(number) {
     const numberDetails = document.getElementById('numberDetails');
     if (!numberDetails) return;
@@ -391,7 +433,10 @@ function showNumberDetails(number) {
                 case 'third': displayName = '3ra'; break;
                 default: displayName = posName;
             }
-            positionsText.push(`${number.positions[posName]}/${displayName}`);
+            // Nuevo formato: "X veces en Yra"
+            if (number.positions[posName] > 0) {
+                positionsText.push(`${number.positions[posName]} veces en ${displayName}`);
+            }
         }
     }
     
@@ -406,43 +451,63 @@ function showNumberDetails(number) {
     const isCurrentWinner = lastDrawDate && number.lastSeen === lastDrawDate;
     
     if (isCurrentWinner) {
-        winnerInfo = `
-            <div class="bg-gradient-to-r from-purple-100 to-purple-200 border-2 border-purple-500 text-purple-800 rounded-lg p-4 max-w-xs mx-auto mt-4">
-                <div class="flex items-center justify-center mb-2">
-                    <i class="fas fa-trophy text-2xl text-purple-600 mr-2"></i>
-                    <div class="font-bold text-lg">¡NÚMERO GANADOR!</div>
+        // Obtener fecha de hoy en formato DD-MM-YYYY
+        const today = new Date();
+        const todayFormatted = `${today.getDate().toString().padStart(2, '0')}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getFullYear()}`;
+        
+        if (lastDrawDate === todayFormatted) {
+            // Número ganador de hoy - TEMA OSCURO
+            winnerInfo = `
+                <div class="bg-gradient-to-r from-green-800 to-green-700 border-2 border-green-500 text-green-100 rounded-lg p-4 max-w-xs mx-auto mt-4 shadow-lg shadow-green-500/20">
+                    <div class="flex items-center justify-center mb-2">
+                        <i class="fas fa-trophy text-2xl text-green-400 mr-2"></i>
+                        <div class="font-bold text-lg">¡GANADOR DE HOY!</div>
+                    </div>
+                    <div class="text-sm text-center text-green-200">
+                        Este número salió en el sorteo de hoy (${lastDrawDate})
+                    </div>
                 </div>
-                <div class="text-sm text-center">
-                    Este número salió en el último sorteo (${lastDrawDate})
+            `;
+        } else {
+            // Número ganador de días anteriores - TEMA OSCURO
+            winnerInfo = `
+                <div class="bg-gradient-to-r from-gray-800 to-gray-700 border-2 border-gray-500 text-gray-100 rounded-lg p-4 max-w-xs mx-auto mt-4 shadow-lg shadow-gray-500/20">
+                    <div class="flex items-center justify-center mb-2">
+                        <i class="fas fa-trophy text-2xl text-gray-400 mr-2"></i>
+                        <div class="font-bold text-lg">¡ÚLTIMO GANADOR!</div>
+                    </div>
+                    <div class="text-sm text-center text-gray-200">
+                        Este número salió en el último sorteo (${lastDrawDate})
+                    </div>
                 </div>
-            </div>
-        `;
+            `;
+        }
     } else if (lotteryData.winningNumbers && lotteryData.winningNumbers.some(n => n.number === number.number)) {
-        // Verificación adicional con el array de números ganadores si existe
+        // Verificación adicional con el array de números ganadores si existe - TEMA OSCURO
         const winningNumber = lotteryData.winningNumbers.find(n => n.number === number.number);
         winnerInfo = `
-            <div class="bg-green-200 text-green-800 rounded-lg p-4 max-w-xs mx-auto mt-4">
-                <div class="font-medium mb-1">¡Número Ganador Actual!</div>
-                <div class="text-sm">Posición: ${winningNumber.position}</div>
-                <div class="text-sm">Fecha: ${winningNumber.date}</div>
+            <div class="bg-gradient-to-r from-green-800 to-green-700 border border-green-600 text-green-100 rounded-lg p-4 max-w-xs mx-auto mt-4 shadow-lg">
+                <div class="font-medium mb-1 text-green-200">¡Número Ganador Actual!</div>
+                <div class="text-sm text-green-300">Posición: ${winningNumber.position}</div>
+                <div class="text-sm text-green-300">Fecha: ${winningNumber.date}</div>
             </div>
         `;
     }
     
-    // Verificar si el número está repetido en los últimos 30 días
+    // Verificar si el número está repetido en los últimos 30 días - TEMA OSCURO
     let repeatedInfo = '';
     if (lotteryData.repeatedInLast30Days && lotteryData.repeatedInLast30Days[number.number]) {
         const repeated = lotteryData.repeatedInLast30Days[number.number];
         repeatedInfo = `
-            <div class="bg-green-100 rounded-lg p-4 max-w-xs mx-auto mt-4">
-                <div class="font-medium mb-1">Repetido en los últimos 30 días:</div>
-                <div class="text-sm">${repeated.occurrences} veces</div>
-                <div class="text-xs mt-1">Fechas: ${repeated.dates.join(', ')}</div>
+            <div class="bg-gradient-to-r from-blue-800 to-blue-700 border border-blue-600 text-blue-100 rounded-lg p-4 max-w-xs mx-auto mt-4 shadow-lg">
+                <div class="font-medium mb-1 text-blue-200">Repetido en los últimos 30 días:</div>
+                <div class="text-sm text-blue-300">${repeated.occurrences} veces</div>
+                <div class="text-xs mt-1 text-blue-400">Fechas: ${repeated.dates.join(', ')}</div>
             </div>
         `;
     }
     
-    // Crear sección de historial de apariciones
+    // Crear sección de historial de apariciones - TEMA OSCURO
     let historyInfo = '';
     if (number.history && number.history.length > 0) {
         // Ordenar el historial por fecha (de más reciente a más antiguo)
@@ -458,29 +523,29 @@ function showNumberDetails(number) {
                 default: positionDisplay = `${item.position}ª`;
             }
             
-            return `<div class="grid grid-cols-3 text-sm border-b border-gray-100 py-1">
-                <div>${item.date}</div>
-                <div>${positionDisplay} posición</div>
-                <div>Hace ${item.daysAgo} días</div>
+            return `<div class="grid grid-cols-3 text-sm border-b border-slate-600 py-1 text-gray-300">
+                <div class="text-blue-300">${item.date}</div>
+                <div class="text-purple-300">${positionDisplay} posición</div>
+                <div class="text-gray-400">Hace ${item.daysAgo} días</div>
             </div>`;
         }).join('');
         
         historyInfo = `
-            <div class="bg-gray-50 rounded-lg p-4 max-w-md mx-auto mt-4">
-                <div class="font-medium mb-2">Historial completo:</div>
-                <div class="max-h-48 overflow-y-auto">
+            <div class="bg-gradient-to-br from-slate-800 to-slate-700 border border-slate-600 rounded-lg p-4 max-w-md mx-auto mt-4 shadow-lg">
+                <div class="font-medium mb-2 text-gray-200">Historial completo:</div>
+                <div class="max-h-48 overflow-y-auto bg-slate-900 rounded p-2 border border-slate-600">
                     ${historyItems}
                 </div>
             </div>
         `;
     } else {
-        // Si no tenemos historial en la estructura de datos, mostrar mensaje
+        // Si no tenemos historial en la estructura de datos, mostrar mensaje - TEMA OSCURO
         if (number.lastSeen) {
             historyInfo = `
-                <div class="bg-gray-50 rounded-lg p-4 max-w-md mx-auto mt-4">
-                    <div class="font-medium mb-2">Historial de apariciones:</div>
-                    <p class="text-sm text-gray-600 mb-2">Este número ha salido ${frequency} veces en los últimos ${analysisPeriod} días.</p>
-                    <p class="text-sm">
+                <div class="bg-gradient-to-br from-slate-800 to-slate-700 border border-slate-600 rounded-lg p-4 max-w-md mx-auto mt-4 shadow-lg">
+                    <div class="font-medium mb-2 text-gray-200">Historial de apariciones:</div>
+                    <p class="text-sm text-gray-300 mb-2">Este número ha salido ${frequency} veces en los últimos ${analysisPeriod}.</p>
+                    <p class="text-sm text-gray-400">
                         Para ver el historial detallado, actualice los datos con el botón "Actualizar Datos" 
                         en la parte superior de la página.
                     </p>
@@ -489,22 +554,25 @@ function showNumberDetails(number) {
         }
     }
     
-    // Construir el HTML de detalles
+    // Construir el HTML de detalles - TEMA OSCURO COMPLETO
     numberDetails.innerHTML = `
         <div class="fade-in overflow-y-auto">
-            <div class="text-lg text-gray-600 mb-2">Análisis de los últimos ${analysisPeriod} </div>
-            <div class="text-5xl font-bold mb-2">${number.number}</div>
-            <div class="text-lg mb-6">
-                ${frequency === 0 ? 'Nunca ha salido' : 
-                  `Ha salido ${frequency} veces (${positionsText.join('/')})`}
+            <div class="text-lg text-gray-400 mb-2">Análisis de los últimos ${analysisPeriod}</div>
+            <div class="text-5xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">${number.number}</div>
+            <div class="text-lg mb-6 text-gray-200">
+                ${frequency === 0 ? 
+                    '<span class="text-red-400">Nunca ha salido</span>' : 
+                    `<span class="text-green-400">Ha salido ${frequency} veces:</span><br><span class="text-gray-300">${positionsText.join('<br>')}</span>`
+                }
             </div>
             
             ${winnerInfo}
             
             ${number.lastSeen ? `
-                <div class="bg-gray-100 rounded-lg p-4 max-w-xs mx-auto">
-                    <div class="font-medium mb-1">Última vez:</div>
-                    <div class="text-sm">${number.lastSeen} (hace ${number.daysSinceSeen} días)</div>
+                <div class="bg-gradient-to-r from-slate-800 to-slate-700 border border-slate-600 rounded-lg p-4 max-w-xs mx-auto mt-4 shadow-lg">
+                    <div class="font-medium mb-1 text-gray-200">Última vez:</div>
+                    <div class="text-sm text-blue-300">${number.lastSeen}</div>
+                    <div class="text-xs text-gray-400">(hace ${number.daysSinceSeen} días)</div>
                 </div>
             ` : ''}
             
@@ -515,8 +583,8 @@ function showNumberDetails(number) {
     `;
     
     // Asegurarse de que el contenedor principal tiene altura fija
-    const detailsPanel = numberDetails.closest('.bg-white.rounded-lg.shadow-lg.p-6');
-    const numbersPanel = document.querySelector('.lg\\:col-span-2 .bg-white.rounded-lg.shadow-lg.p-6');
+    const detailsPanel = numberDetails.closest('.bg-gradient-to-br');
+    const numbersPanel = document.querySelector('.lg\\:col-span-2 .bg-gradient-to-br');
     
     if (detailsPanel && !detailsPanel.classList.contains('fixed-height-panel')) {
         detailsPanel.classList.add('fixed-height-panel');
@@ -539,20 +607,20 @@ function showNumberDetails(number) {
     }
 }
 
-// Función para actualizar las listas de números fríos y repetidos
+// Función para actualizar las listas de números fríos y repetidos - TEMA OSCURO
 function updateNumbersLists() {
-    // Actualizar lista de números fríos
+    // Actualizar lista de números fríos - TEMA OSCURO
     const coldNumbersList = document.getElementById('coldNumbersList');
     if (coldNumbersList && lotteryData.coldestNumbers) {
         coldNumbersList.innerHTML = lotteryData.coldestNumbers.slice(0, 5).map(num => `
-            <div class="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
-                <span class="font-medium">${num.number}</span>
-                <span class="text-sm text-gray-600">${num.daysSinceSeen} días</span>
+            <div class="flex justify-between items-center p-2 bg-gradient-to-r from-red-900 to-red-800 border border-red-700 rounded-lg shadow-md hover:shadow-lg transition-all">
+                <span class="font-medium text-red-100">${num.number}</span>
+                <span class="text-sm text-red-300 bg-red-700 px-2 py-1 rounded-full">${num.daysSinceSeen} días</span>
             </div>
         `).join('');
     }
     
-    // Actualizar lista de números repetidos
+    // Actualizar lista de números repetidos - TEMA OSCURO
     const repeatedNumbersList = document.getElementById('repeatedNumbersList');
     if (repeatedNumbersList && lotteryData.repeatedInLast30Days) {
         // Convertir objeto a array y ordenar por número de ocurrencias
@@ -560,34 +628,34 @@ function updateNumbersLists() {
             .map(([num, data]) => ({ number: num, ...data }))
             .sort((a, b) => b.occurrences - a.occurrences);
         
-        // Mostrar los primeros 5 números repetidos
+        // Mostrar los primeros 5 números repetidos - TEMA OSCURO
         repeatedNumbersList.innerHTML = repeatedNumbers.slice(0, 5).map(num => `
-            <div class="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
-                <span class="font-medium">${num.number}</span>
-                <span class="text-sm text-gray-600">${num.occurrences} veces</span>
+            <div class="flex justify-between items-center p-2 bg-gradient-to-r from-green-900 to-green-800 border border-green-700 rounded-lg shadow-md hover:shadow-lg transition-all">
+                <span class="font-medium text-green-100">${num.number}</span>
+                <span class="text-sm text-green-300 bg-green-700 px-2 py-1 rounded-full">${num.occurrences} veces</span>
             </div>
         `).join('');
     }
     
-    // Actualizar lista de números ganadores actuales
+    // Actualizar lista de números ganadores actuales - TEMA OSCURO
     const currentWinnersList = document.getElementById('currentWinnersList');
     if (currentWinnersList && lotteryData.winningNumbers && lotteryData.winningNumbers.length > 0) {
         currentWinnersList.innerHTML = lotteryData.winningNumbers.map(num => `
-            <div class="flex justify-between items-center p-2 bg-green-50 rounded-lg">
-                <span class="font-medium">${num.number}</span>
-                <span class="text-sm text-gray-600">Pos. ${num.position}</span>
+            <div class="flex justify-between items-center p-2 bg-gradient-to-r from-purple-900 to-purple-800 border border-purple-700 rounded-lg shadow-md hover:shadow-lg transition-all">
+                <span class="font-medium text-purple-100">${num.number}</span>
+                <span class="text-sm text-purple-300 bg-purple-700 px-2 py-1 rounded-full">Pos. ${num.position}</span>
             </div>
         `).join('');
         
-        // Mostrar la fecha del sorteo si existe
+        // Mostrar la fecha del sorteo si existe - TEMA OSCURO
         if (lotteryData.winningNumbers[0].date) {
             const dateDisplay = document.createElement('div');
-            dateDisplay.className = 'text-sm text-gray-500 mt-2 text-center';
+            dateDisplay.className = 'text-sm text-gray-400 mt-2 text-center';
             dateDisplay.textContent = `Sorteo: ${lotteryData.winningNumbers[0].date}`;
             currentWinnersList.appendChild(dateDisplay);
         }
     } else if (currentWinnersList) {
-        currentWinnersList.innerHTML = '<p class="text-sm text-gray-500 text-center">No hay datos disponibles</p>';
+        currentWinnersList.innerHTML = '<p class="text-sm text-gray-400 text-center bg-slate-800 p-3 rounded-lg">No hay datos disponibles</p>';
     }
 }
 

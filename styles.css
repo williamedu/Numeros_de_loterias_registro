@@ -1,284 +1,383 @@
-/* Estilos para los números y el mapa de calor */
-.number-cell {
+/* =================================
+   TEMA OSCURO MODERNO Y ATRACTIVO
+   ================================= */
+
+/* Estilos base para el tema oscuro */
+* {
     transition: all 0.3s ease;
 }
-.number-cell:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    background-attachment: fixed;
 }
 
-/* Heatmap para diferentes rangos de días */
-.heatmap-0 { background-color: #f0fff4; } /* 0-10 días */
-.heatmap-1 { background-color: #c6f6d5; } /* 11-20 días */
-.heatmap-2 { background-color: #9ae6b4; } /* 21-30 días */
-.heatmap-3 { background-color: #68d391; } /* 31-40 días */
-.heatmap-4 { background-color: #48bb78; } /* 41-50 días */
-.heatmap-5 { background-color: #38a169; } /* 51-60 días */
-.heatmap-6 { background-color: #2f855a; } /* 61-70 días */
-.heatmap-7 { background-color: #276749; } /* 71-80 días */
-.heatmap-8 { background-color: #22543d; } /* 81-90 días */
-.heatmap-9 { background-color: #1c4532; color: white; } /* 91-100 días */
-.heatmap-10 { background-color: #1a365d; color: white; } /* 100+ días */
+/* =================================
+   ESTILOS PARA NÚMEROS Y HEATMAP
+   ================================= */
 
-/* Heatmap para modo oscuro */
-.dark .heatmap-0 { background-color: #064e3b; color: white; }
-.dark .heatmap-1 { background-color: #065f46; color: white; }
-.dark .heatmap-2 { background-color: #047857; color: white; }
-.dark .heatmap-3 { background-color: #059669; color: white; }
-.dark .heatmap-4 { background-color: #10b981; color: white; }
-.dark .heatmap-5 { background-color: #34d399; color: black; }
-.dark .heatmap-6 { background-color: #6ee7b7; color: black; }
-.dark .heatmap-7 { background-color: #9decbc; color: black; }
-.dark .heatmap-8 { background-color: #c6f6d5; color: black; }
-.dark .heatmap-9 { background-color: #dcfce7; color: black; }
-.dark .heatmap-10 { background-color: #f0fdf4; color: black; }
+.number-cell {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-/* Estilos para el indicador de carga */
+.number-cell:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* NUEVA PALETA OPTIMIZADA PARA TEMA OSCURO */
+.heatmap-0 { 
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: 1px solid #047857;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+} /* Verde brillante - 0-10 días */
+
+.heatmap-1 { 
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    border: 1px solid #15803d;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+} /* Verde - 11-20 días */
+
+.heatmap-2 { 
+    background: linear-gradient(135deg, #84cc16, #65a30d);
+    color: white;
+    border: 1px solid #4d7c0f;
+    box-shadow: 0 4px 15px rgba(132, 204, 22, 0.3);
+} /* Verde lima - 21-30 días */
+
+.heatmap-3 { 
+    background: linear-gradient(135deg, #eab308, #ca8a04);
+    color: #1f2937;
+    border: 1px solid #a16207;
+    box-shadow: 0 4px 15px rgba(234, 179, 8, 0.3);
+} /* Amarillo - 31-40 días */
+
+.heatmap-4 { 
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    border: 1px solid #b45309;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+} /* Naranja claro - 41-50 días */
+
+.heatmap-5 { 
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+    border: 1px solid #c2410c;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+} /* Naranja - 51-60 días */
+
+.heatmap-6 { 
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    border: 1px solid #b91c1c;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+} /* Rojo claro - 61-70 días */
+
+.heatmap-7 { 
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    border: 1px solid #991b1b;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+} /* Rojo - 71-80 días */
+
+.heatmap-8 { 
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+    color: white;
+    border: 1px solid #7f1d1d;
+    box-shadow: 0 4px 15px rgba(185, 28, 28, 0.3);
+} /* Rojo oscuro - 81-90 días */
+
+.heatmap-9 { 
+    background: linear-gradient(135deg, #991b1b, #7f1d1d);
+    color: white;
+    border: 1px solid #450a0a;
+    box-shadow: 0 4px 15px rgba(153, 27, 27, 0.3);
+} /* Rojo muy oscuro - 91-100 días */
+
+.heatmap-10 { 
+    background: linear-gradient(135deg, #7f1d1d, #450a0a);
+    color: white;
+    border: 1px solid #1c0606;
+    box-shadow: 0 4px 15px rgba(127, 29, 29, 0.4);
+} /* Rojo extremo - 100+ días */
+
+/* =================================
+   NÚMEROS GANADORES CIRCULARES
+   ================================= */
+
+.winner-today {
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    border: 3px solid #047857 !important;
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.6), 
+                0 8px 20px rgba(0, 0, 0, 0.3) !important;
+    animation: pulse-green 2s infinite;
+}
+
+.winner-old {
+    background: linear-gradient(135deg, #6b7280, #4b5563) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    border: 3px solid #374151 !important;
+    box-shadow: 0 0 20px rgba(107, 114, 128, 0.4),
+                0 8px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Animación mejorada para números ganadores de hoy */
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 25px rgba(16, 185, 129, 0.6), 
+                    0 8px 20px rgba(0, 0, 0, 0.3);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(16, 185, 129, 0.9), 
+                    0 12px 25px rgba(0, 0, 0, 0.4);
+        transform: scale(1.03);
+    }
+    100% {
+        box-shadow: 0 0 25px rgba(16, 185, 129, 0.6), 
+                    0 8px 20px rgba(0, 0, 0, 0.3);
+        transform: scale(1);
+    }
+}
+
+/* =================================
+   ESTILOS DE LOADING MEJORADOS
+   ================================= */
+
 .loading-spinner {
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid rgba(0, 0, 0, 0.1);
+    width: 32px;
+    height: 32px;
+    border: 4px solid rgba(59, 130, 246, 0.2);
     border-radius: 50%;
-    border-top-color: #4299e1;
-    animation: spin 1s ease-in-out infinite;
+    border-top-color: #3b82f6;
+    animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
     margin: 0 auto;
-}
-
-.dark .loading-spinner {
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    border-top-color: #60a5fa;
 }
 
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
 
-/* Animación de fundido para detalles */
+/* =================================
+   ANIMACIONES Y TRANSICIONES
+   ================================= */
+
 .fade-in {
-    animation: fadeIn 0.5s ease-in;
+    animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { 
+        opacity: 0; 
+        transform: translateY(10px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
 }
 
-/* Estilos para el panel de detalles con altura fija */
+/* =================================
+   PANEL DE DETALLES MEJORADO
+   ================================= */
+
 .fixed-height-panel {
     transition: all 0.3s ease;
-    scrollbar-width: thin; /* Para Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #475569 #1e293b;
 }
 
 .fixed-height-panel::-webkit-scrollbar {
-    width: 6px; /* Para Chrome, Safari, etc. */
+    width: 8px;
 }
 
 .fixed-height-panel::-webkit-scrollbar-thumb {
-    background-color: #cbd5e0;
-    border-radius: 3px;
+    background: linear-gradient(135deg, #475569, #334155);
+    border-radius: 4px;
+    border: 1px solid #1e293b;
 }
 
-.dark .fixed-height-panel::-webkit-scrollbar-thumb {
-    background-color: #4b5563;
+.fixed-height-panel::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #64748b, #475569);
 }
 
 .fixed-height-panel::-webkit-scrollbar-track {
-    background-color: #f7fafc;
+    background: #1e293b;
+    border-radius: 4px;
 }
 
-.dark .fixed-height-panel::-webkit-scrollbar-track {
-    background-color: #374151;
+/* =================================
+   BOTONES Y CONTROLES MEJORADOS
+   ================================= */
+
+button {
+    position: relative;
+    overflow: hidden;
 }
 
-/* Estilos mejorados para las tarjetas de lotería - Cards cuadradas más grandes */
-.lottery-card {
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+/* =================================
+   INPUTS Y SELECTS MEJORADOS
+   ================================= */
+
+input, select {
+    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.5rem;
-    min-height: 280px;
-    max-width: 320px;
-    margin: 0 auto;
 }
 
-.lottery-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+input:focus, select:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2),
+                0 4px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
 }
 
-/* Efectos de hover para modo oscuro */
-.dark .lottery-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+/* =================================
+   TARJETAS Y CONTENEDORES
+   ================================= */
+
+.bg-gradient-to-br {
+    backdrop-filter: blur(10px);
+    position: relative;
 }
 
-/* Estilos para los números en las bolas - Más grandes */
+.bg-gradient-to-br::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(255,255,255,0.05) 0%, 
+        rgba(255,255,255,0.02) 50%, 
+        rgba(255,255,255,0.05) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* =================================
+   NÚMEROS EN BOLAS MEJORADOS
+   ================================= */
+
 .number-ball {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     font-weight: bold;
-    margin: 0 4px;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 6px;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: 2px solid #1e40af;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3),
+                0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
-.lottery-number {
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    border-radius: 50%;
-    background-color: #4299e1;
-    color: white;
-    font-size: 1.25rem;
+.number-ball:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4),
+                0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-.title-button {
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-.title-button:hover {
-    transform: scale(1.05);
-}
-.title-button:active {
-    transform: scale(0.98);
+/* =================================
+   EFECTOS DE GLASSMORPHISM
+   ================================= */
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos para múltiples banners */
-.lottery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-    padding: 1.5rem;
+/* =================================
+   RESPONSIVE IMPROVEMENTS
+   ================================= */
+
+@media (max-width: 768px) {
+    .number-cell {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .number-ball {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
 }
 
-/* Variantes para diferentes tipos de loterías */
-.lottery-type-3 .lottery-number {
-    background-color: #4299e1; /* Azul para loterías de 3 números */
-}
-.lottery-type-6 .lottery-number {
-    background-color: #38a169; /* Verde para loterías de 6 números */
-}
-.lottery-type-many .lottery-number {
-    background-color: #dd6b20; /* Naranja para loterías con muchos números */
-    width: 2rem;
-    height: 2rem;
-    font-size: 0.875rem;
+/* =================================
+   MICRO-ANIMACIONES
+   ================================= */
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Efectos para resultados recientes */
-.recent-result {
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* =================================
+   BORDES NEÓN SUTILES
+   ================================= */
+
+.neon-border {
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, #1e293b, #334155) padding-box,
+                linear-gradient(135deg, #3b82f6, #8b5cf6) border-box;
+}
+
+/* =================================
+   EFECTOS ESPECIALES PARA HEADER
+   ================================= */
+
+header {
     position: relative;
     overflow: hidden;
 }
-.recent-result::after {
-    content: "Reciente";
+
+header::after {
+    content: '';
     position: absolute;
-    top: 0.75rem;
-    right: -2rem;
-    background-color: #e53e3e;
-    color: white;
-    font-size: 0.75rem;
-    padding: 0.25rem 2rem;
-    transform: rotate(45deg);
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(59, 130, 246, 0.1) 45deg, transparent 90deg);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
 }
 
-/* Estilos para los contenedores de gráficos */
-.chart-container {
-    height: 300px;
-}
-
-/* Estilos para las pestañas de contenido */
-.tab-content {
-    display: none;
-}
-.tab-content.active {
-    display: block;
-}
-
-/* Estilos mejorados para las estrellas de favoritos */
-.favorite-star {
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.favorite-star:hover {
-    transform: scale(1.2);
-    color: #f59e0b !important;
-}
-
-/* Estilos mejorados para la navegación */
-.nav-link {
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-}
-
-.nav-link.active {
-    background-color: #f59e0b;
-    color: white;
-    font-weight: bold;
-}
-
-/* Transiciones suaves para el modo oscuro */
-* {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Estilos específicos para modo oscuro */
-.dark .bg-white {
-    background-color: #374151 !important;
-}
-
-.dark .text-gray-800 {
-    color: #f9fafb !important;
-}
-
-.dark .text-gray-600 {
-    color: #d1d5db !important;
-}
-
-.dark .text-gray-500 {
-    color: #9ca3af !important;
-}
-
-.dark .border-gray-200 {
-    border-color: #4b5563 !important;
-}
-
-.dark .border-gray-700 {
-    border-color: #374151 !important;
-}
-
-/* Estilos para el header en modo oscuro */
-.dark .bg-primary {
-    background-color: #1f2937 !important;
-}
-
-/* Mejoras para el grid responsivo */
-@media (min-width: 640px) {
-    .lottery-card {
-        max-width: none;
-    }
-}
-
-@media (min-width: 1024px) {
-    .lottery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2rem;
-    }
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

@@ -1,4 +1,4 @@
-// updated_strategy.js - Adaptado para la nueva estructura HTML de Pega 3 Más
+// updated_strategy.js - Adaptado para la nueva estructura HTML de Pega 3 Más con TEMA OSCURO
 // Variables globales simplificadas
 let simplifiedData = {
     coldNumbers: [],
@@ -122,7 +122,7 @@ function updateSimplifiedDisplay() {
 }
 
 /**
- * Actualizar visualización de números repetidos - NUEVA UBICACIÓN
+ * Actualizar visualización de números repetidos - TEMA OSCURO
  */
 function updateRepeatedNumbersDisplay() {
     const repeatedNumbersList = document.getElementById('repeatedNumbersList');
@@ -153,50 +153,54 @@ function updateRepeatedNumbersDisplay() {
         noRepeatedMessage.classList.add('hidden');
     }
     
-    // Crear HTML para números repetidos con diseño compacto
+    // Crear HTML para números repetidos con diseño TEMA OSCURO
     repeatedNumbersList.innerHTML = simplifiedData.repeatedNumbers.map((numberData, index) => {
         // Verificar si es número ganador (apareció en el último sorteo)
         const lastDrawDate = window.lotteryData && window.lotteryData.lastUpdated ? 
                             window.lotteryData.lastUpdated.split(' ')[0] : null;
         const isWinner = lastDrawDate && numberData.dates.includes(lastDrawDate);
         
-        // Determinar color según frecuencia de repetición o si es ganador
-        let bgGradient, borderColor, badgeColor;
+        // COLORES TEMA OSCURO - Determinar color según frecuencia de repetición o si es ganador
+        let bgGradient, borderColor, badgeColor, textColor;
         
         if (isWinner) {
-            // Color morado para números ganadores
-            bgGradient = 'from-purple-100 to-purple-200';
-            borderColor = 'border-purple-500';
+            // Color púrpura brillante para números ganadores
+            bgGradient = 'from-purple-800 to-purple-700';
+            borderColor = 'border-purple-400';
             badgeColor = 'bg-purple-500';
+            textColor = 'text-purple-200';
         } else if (numberData.occurrences >= 5) {
-            bgGradient = 'from-purple-50 to-purple-100';
+            bgGradient = 'from-purple-900 to-purple-800';
             borderColor = 'border-purple-500';
-            badgeColor = 'bg-purple-500';
+            badgeColor = 'bg-purple-600';
+            textColor = 'text-purple-200';
         } else if (numberData.occurrences >= 3) {
-            bgGradient = 'from-indigo-50 to-indigo-100';
+            bgGradient = 'from-indigo-900 to-indigo-800';
             borderColor = 'border-indigo-500';
-            badgeColor = 'bg-indigo-500';
+            badgeColor = 'bg-indigo-600';
+            textColor = 'text-indigo-200';
         } else {
-            bgGradient = 'from-blue-50 to-blue-100';
+            bgGradient = 'from-blue-900 to-blue-800';
             borderColor = 'border-blue-500';
-            badgeColor = 'bg-blue-500';
+            badgeColor = 'bg-blue-600';
+            textColor = 'text-blue-200';
         }
         
         const rankText = isWinner ? '🏆' : `#${index + 1}`;
         
         return `
-            <div class="bg-gradient-to-r ${bgGradient} border-l-4 ${borderColor} rounded-lg p-3 ${isWinner ? 'shadow-lg' : ''}">
+            <div class="bg-gradient-to-r ${bgGradient} border-l-4 ${borderColor} rounded-lg p-3 ${isWinner ? 'shadow-2xl shadow-purple-500/20' : 'shadow-lg'} backdrop-blur-sm border border-slate-600">
                 <div class="flex justify-between items-center mb-2">
                     <div class="flex items-center space-x-2">
-                        <span class="text-sm ${isWinner ? 'text-purple-600' : 'text-purple-600'} font-bold w-6">${rankText}</span>
-                        <span class="text-xl font-bold ${isWinner ? 'text-purple-800' : 'text-gray-800'}">${numberData.number}</span>
+                        <span class="text-sm ${isWinner ? 'text-purple-300' : 'text-blue-300'} font-bold w-6">${rankText}</span>
+                        <span class="text-xl font-bold ${isWinner ? 'text-purple-100' : 'text-gray-100'}">${numberData.number}</span>
                     </div>
-                    <span class="text-xs ${badgeColor} text-white px-2 py-1 rounded-full font-medium">
+                    <span class="text-xs ${badgeColor} text-white px-2 py-1 rounded-full font-medium shadow-md">
                         ${numberData.occurrences}x
                     </span>
                 </div>
-                <div class="text-sm ${isWinner ? 'text-purple-700' : 'text-gray-700'} space-y-1">
-                    <div><strong>Apariciones:</strong> ${numberData.dates.slice(0, 3).join(', ')}${numberData.dates.length > 3 ? '...' : ''}</div>
+                <div class="text-sm ${textColor} space-y-1">
+                    <div><strong class="text-gray-200">Apariciones:</strong> ${numberData.dates.slice(0, 3).join(', ')}${numberData.dates.length > 3 ? '...' : ''}</div>
                 </div>
             </div>
         `;
@@ -204,7 +208,7 @@ function updateRepeatedNumbersDisplay() {
 }
 
 /**
- * Actualizar visualización de números fríos - NUEVA UBICACIÓN
+ * Actualizar visualización de números fríos - TEMA OSCURO
  */
 function updateColdNumbersDisplay() {
     const coldNumbersList = document.getElementById('coldNumbersList');
@@ -221,33 +225,40 @@ function updateColdNumbersDisplay() {
     }
     
     if (simplifiedData.coldNumbers.length === 0) {
-        coldNumbersList.innerHTML = '<div class="text-center text-gray-500 p-4">No hay datos de números fríos</div>';
+        coldNumbersList.innerHTML = '<div class="text-center text-gray-400 p-4 bg-slate-800 rounded-lg">No hay datos de números fríos</div>';
         return;
     }
     
-    // Crear HTML para números fríos con diseño compacto
+    // Crear HTML para números fríos con diseño TEMA OSCURO
     coldNumbersList.innerHTML = simplifiedData.coldNumbers.map((numberData, index) => {
         // Verificar si es número ganador (apareció en el último sorteo)
         const lastDrawDate = window.lotteryData && window.lotteryData.lastUpdated ? 
                             window.lotteryData.lastUpdated.split(' ')[0] : null;
         const isWinner = lastDrawDate && numberData.lastSeen === lastDrawDate;
         
-        // Determinar color según el ranking o si es ganador
-        let bgGradient, borderColor;
+        // COLORES TEMA OSCURO - Determinar color según el ranking o si es ganador
+        let bgGradient, borderColor, textColor;
         
         if (isWinner) {
-            // Color morado para números ganadores
-            bgGradient = 'from-purple-100 to-purple-200';
-            borderColor = 'border-purple-500';
+            // Color púrpura brillante para números ganadores
+            bgGradient = 'from-purple-800 to-purple-700';
+            borderColor = 'border-purple-400';
+            textColor = 'text-purple-200';
         } else if (index < 2) {
-            bgGradient = 'from-red-50 to-red-100';
+            // Los 2 más fríos - rojo intenso
+            bgGradient = 'from-red-900 to-red-800';
             borderColor = 'border-red-500';
+            textColor = 'text-red-200';
         } else if (index < 4) {
-            bgGradient = 'from-orange-50 to-orange-100';
+            // Medianos - naranja
+            bgGradient = 'from-orange-900 to-orange-800';
             borderColor = 'border-orange-500';
+            textColor = 'text-orange-200';
         } else {
-            bgGradient = 'from-yellow-50 to-yellow-100';
+            // Menos fríos - amarillo
+            bgGradient = 'from-yellow-900 to-yellow-800';
             borderColor = 'border-yellow-500';
+            textColor = 'text-yellow-200';
         }
         
         // Texto especial para números ganadores
@@ -255,19 +266,22 @@ function updateColdNumbersDisplay() {
         const rankText = isWinner ? '🏆' : `#${index + 1}`;
         const lastSeenText = isWinner ? `${lastDrawDate} (ÚLTIMO SORTEO)` : numberData.lastSeen;
         
+        // Color del badge
+        const badgeColor = isWinner ? 'bg-purple-500' : 'bg-red-600';
+        
         return `
-            <div class="bg-gradient-to-r ${bgGradient} border-l-4 ${borderColor} rounded-lg p-3 ${isWinner ? 'shadow-lg' : ''}">
+            <div class="bg-gradient-to-r ${bgGradient} border-l-4 ${borderColor} rounded-lg p-3 ${isWinner ? 'shadow-2xl shadow-purple-500/20' : 'shadow-lg'} backdrop-blur-sm border border-slate-600">
                 <div class="flex justify-between items-center mb-2">
                     <div class="flex items-center space-x-2">
-                        <span class="text-sm ${isWinner ? 'text-purple-600' : 'text-blue-600'} font-bold w-6">${rankText}</span>
-                        <span class="text-xl font-bold ${isWinner ? 'text-purple-800' : 'text-gray-800'}">${numberData.number}</span>
+                        <span class="text-sm ${isWinner ? 'text-purple-300' : 'text-blue-300'} font-bold w-6">${rankText}</span>
+                        <span class="text-xl font-bold ${isWinner ? 'text-purple-100' : 'text-gray-100'}">${numberData.number}</span>
                     </div>
-                    <span class="text-xs ${isWinner ? 'bg-purple-500' : 'bg-blue-500'} text-white px-2 py-1 rounded-full">
+                    <span class="text-xs ${badgeColor} text-white px-2 py-1 rounded-full shadow-md">
                         ${daysText}
                     </span>
                 </div>
-                <div class="text-sm ${isWinner ? 'text-purple-700' : 'text-gray-700'}">
-                    <div><strong>Última aparición:</strong> ${lastSeenText}</div>
+                <div class="text-sm ${textColor}">
+                    <div><strong class="text-gray-200">Última aparición:</strong> ${lastSeenText}</div>
                 </div>
             </div>
         `;
@@ -308,5 +322,5 @@ window.simplifiedFunctions = {
     updateTopStatsDisplay
 };
 
-console.log("Script actualizado cargado - Adaptado para nueva estructura HTML");
+console.log("Script strategy.js actualizado con TEMA OSCURO cargado - Adaptado para nueva estructura HTML");
 console.log("Funciones disponibles:", Object.keys(window.simplifiedFunctions));

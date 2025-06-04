@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es" data-lottery="Pega_3_Mas">
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador Gana Más - Lotería Dominicana</title>
+    <link rel="stylesheet" href="../styles.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#3b82f6',
+                        danger: '#ef4444',
+                        success: '#10b981',
+                        warning: '#f59e0b',
+                        dark: {
+                            100: '#0f172a',
+                            200: '#1e293b',
+                            300: '#334155',
+                            400: '#475569',
+                            500: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 min-h-screen text-gray-100">
+    
+    <!-- Banner de Navegación Superior -->
+    <nav class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700 shadow-2xl sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo (espacio reservado) -->
+                <div class="flex items-center">
+                    <div class="h-10 w-32 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+                        <span class="text-white font-bold text-sm">LOGO AQUÍ</span>
+                    </div>
+                </div>
+                
+                <!-- Menú de Navegación -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <!-- Botón Inicio -->
+                    <a href="../index.html" class="nav-link px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-slate-700 transition-all duration-200 flex items-center">
+                        <i class="fas fa-home mr-2"></i>
+                        Inicio
+                    </a>
+                    
+                    <!-- Dropdown Loterías -->
+                    <div class="relative group">
+                        <button class="nav-link px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-slate-700 transition-all duration-200 flex items-center">
+                            <i class="fas fa-dice mr-2"></i>
+                            Loterías
+                            <i class="fas fa-chevron-down ml-2 text-xs transform group-hover:rotate-180 transition-transform duration-200"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div class="absolute top-full left-0 mt-1 w-56 bg-slate-800 border border-slate-600 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
+                            <div class="py-2">
+                                <a href="#" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150 border-b border-slate-700 last:border-b-0">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-yellow-400 mr-3"></i>
+                                        <div>
+                                            <div class="font-medium">Pega 3 Más</div>
+                                            <div class="text-xs text-gray-400">Lotería de 3 números</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150 border-b border-slate-700 last:border-b-0">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-flag text-blue-400 mr-3"></i>
+                                        <div>
+                                            <div class="font-medium">Lotería Nacional</div>
+                                            <div class="text-xs text-gray-400">Sorteo tradicional</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150 border-b border-slate-700 last:border-b-0">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-trophy text-green-400 mr-3"></i>
+                                        <div>
+                                            <div class="font-medium">Gana Más</div>
+                                            <div class="text-xs text-gray-400">Números especiales</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="border-t border-slate-600 mt-2 pt-2">
+                                    <a href="#" class="block px-4 py-2 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors duration-150">
+                                        <i class="fas fa-plus mr-2"></i>
+                                        Ver todas las loterías
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón Patrones -->
+                    <a href="#" class="nav-link px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-slate-700 transition-all duration-200 flex items-center">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Patrones
+                    </a>
+                </div>
+                
+                <!-- Menú Móvil - Hamburger -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white p-2 rounded-lg hover:bg-slate-700 transition-colors duration-200">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Menú Móvil Desplegable -->
+            <div id="mobile-menu" class="md:hidden hidden bg-slate-800 border-t border-slate-700 rounded-b-lg mb-4">
+                <div class="py-2">
+                    <a href="#" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150">
+                        <i class="fas fa-home mr-3"></i>Inicio
+                    </a>
+                    
+                    <!-- Loterías en móvil -->
+                    <div class="border-t border-slate-700">
+                        <div class="px-4 py-2 text-gray-400 text-xs font-semibold uppercase tracking-wider">Loterías</div>
+                        <a href="#" class="block px-6 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150">
+                            <i class="fas fa-star text-yellow-400 mr-3"></i>Pega 3 Más
+                        </a>
+                        <a href="#" class="block px-6 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150">
+                            <i class="fas fa-flag text-blue-400 mr-3"></i>Lotería Nacional
+                        </a>
+                        <a href="#" class="block px-6 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150">
+                            <i class="fas fa-trophy text-green-400 mr-3"></i>Gana Más
+                        </a>
+                    </div>
+                    
+                    <a href="#" class="block px-4 py-3 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150 border-t border-slate-700">
+                        <i class="fas fa-chart-line mr-3"></i>Patrones
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<!-- OPCIÓN 1: Fondo blanco simple -->
+<div class="container mx-auto px-4 py-8">
+    <!-- Header mantiene su color original -->
+    <header class="bg-gradient-to-r from-slate-800 to-slate-700 text-white rounded-lg shadow-2xl mb-8 p-6 border border-slate-600">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <!-- Imagen con fondo blanco -->
+            <div class="flex-1 flex justify-center mb-4 md:mb-0">
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <img src="../imaguenes_loterias/pega3mas.png" 
+                         alt="Pega 3 Más" 
+                         class="h-16 md:h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
+                         onerror="this.style.display='none'">
+                </div>
+            </div>
+            
+            <!-- Botón de ayuda (derecha) -->
+            <div class="flex items-center">
+                <button id="helpBtn" class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-4 py-2 rounded-lg flex items-center transition-all duration-200 shadow-lg hover:shadow-xl">
+                    <i class="fas fa-question-circle mr-2"></i> Ayuda
+                </button>
+            </div>
+        </div>
+    </header>
+
+        <!-- Sección Unificada: Último Sorteo + Histórico + Controles -->
+        <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg shadow-2xl mb-8 p-6 border border-slate-600">
+            <!-- Información del Último Sorteo -->
+            <div class="border-b border-slate-600 pb-6 mb-6">
+                <!-- Fecha con fondo gris oscuro -->
+                <div class="bg-gradient-to-r from-gray-800 to-gray-700 text-white rounded-lg p-4 mb-4 text-center border border-gray-600 shadow-inner">
+                    <p id="lastKnownDrawDate" class="text-xl font-bold text-blue-200">--/--/----</p>
+                </div>
+                
+                <div class="flex items-center justify-between mb-4">
+                    <!-- Sección Período de Análisis - Ahora ocupa todo el ancho -->
+                    
+                </div>
+                        
+                <!-- Números Ganadores - MÁS GRANDES -->
+                <div class="text-center">
+                    <p class="text-gray-300 mb-3">Números ganadores:</p>
+                    <div class="flex justify-center flex-wrap gap-3" id="winningNumbersDisplay">
+                        <!-- Los números ganadores se mostrarán aquí más grandes -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles de Filtrado y Búsqueda -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-gray-300 font-medium mb-2">Filtrar por posición</label>
+                    <select id="positionFilter" class="w-full p-2 border border-slate-600 rounded-lg bg-slate-700 text-gray-100 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="any">Cualquier posición</option>
+                        <option value="1ra">Primera posición</option>
+                        <option value="2da">Segunda posición</option>
+                        <option value="3ra">Tercera posición</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-300 font-medium mb-2">Ordenar por</label>
+                    <select id="sortBy" class="w-full p-2 border border-slate-600 rounded-lg bg-slate-700 text-gray-100 focus:ring-blue-500 focus:border-blue-500">
+                        <option value="days">Días sin salir</option>
+                            <option value="number" selected>Número</option>
+                        <option value="frequency">Frecuencia</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-300 font-medium mb-2">Buscar número</label>
+                    <div class="relative">
+                        <input id="numberSearch" type="text" placeholder="Ej: 05, 23, 77" class="w-full p-2 border border-slate-600 rounded-lg bg-slate-700 text-gray-100 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500">
+                        <button id="clearSearch" class="absolute right-2 top-2 text-gray-400 hover:text-gray-200">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+            <div class="bg-slate-800 p-8 rounded-lg shadow-xl text-center border border-slate-600">
+                <div class="loading-spinner mx-auto mb-4"></div>
+                <h3 class="text-lg font-medium text-gray-100">Analizando datos...</h3>
+                <p class="text-gray-300 mt-2" id="loadingMessage">Recopilando resultados históricos</p>
+                <div class="w-full bg-slate-700 rounded-full h-2.5 mt-4">
+                    <div id="progressBar" class="bg-blue-500 h-2.5 rounded-full" style="width: 0%"></div>
+                </div>
+                <p class="text-sm text-gray-400 mt-2" id="progressText">0% completado</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Numbers Grid -->
+            <div class="lg:col-span-2">
+                <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg shadow-2xl p-6 border border-slate-600">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-bold text-gray-100">Pega 3 Más</h2>
+                        <div class="flex items-center">
+                            <span class="text-sm mr-2 text-gray-300">Leyenda:</span>
+                            <div class="flex space-x-1">
+                                <div class="w-4 h-4 rounded-sm bg-green-200" title="0-10 días - Recientes"></div>
+                                <div class="w-4 h-4 rounded-sm bg-yellow-300" title="30-50 días - Medios"></div>
+                                <div class="w-4 h-4 rounded-sm bg-orange-400" title="60-80 días - Antiguos"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-500" title="90-100 días - Muy antiguos"></div>
+                                <div class="w-4 h-4 rounded-sm bg-red-700 text-white text-xs flex items-center justify-center" title="100+ días - Extremos">100+</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-5 sm:grid-cols-10 gap-2" id="numbersGrid">
+                        <!-- Los números se cargarán dinámicamente aquí -->
+                    </div>
+                    
+                    <div class="mt-6 flex justify-between items-center">
+                        <div class="text-sm text-gray-400">
+                            <span id="filteredCount">100</span> números mostrados
+                        </div>
+                        <button id="showAllBtn" class="text-blue-400 hover:text-blue-300 font-medium transition-colors">
+                            <i class="fas fa-eye mr-1"></i> Mostrar todos
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Details Panel -->
+            <div>
+                <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg shadow-2xl p-6 sticky top-4 border border-slate-600">
+                    <h2 class="text-xl font-bold text-gray-100 mb-6">Detalles del Número</h2>
+                    
+                    <div id="numberDetails" class="text-center py-8 bg-slate-700 rounded-lg border border-slate-600">
+                        <i class="fas fa-magic text-4xl text-gray-500 mb-4"></i>
+                        <p class="text-gray-400">Selecciona un número para ver sus detalles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIONES COMPACTAS DEBAJO DEL GRID PRINCIPAL -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+            
+            <!-- TOP 5 NÚMEROS MÁS FRÍOS -->
+            <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg shadow-2xl p-4 border border-slate-600">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold text-gray-100 flex items-center">
+                        <i class="fas fa-snowflake text-red-400 mr-2"></i>
+                        Top 5 Números Más Fríos
+                    </h3>
+                    <span class="bg-red-900 text-red-200 text-xs px-2 py-1 rounded-full font-medium">
+                        <span id="coldCount">0</span> números
+                    </span>
+                </div>
+                
+                <div id="coldNumbersList" class="space-y-2">
+                    <!-- Se llenarán dinámicamente con máximo 5 números -->
+                </div>
+                
+                <div id="noColdMessage" class="text-center py-4 text-gray-400 text-sm hidden">
+                    <i class="fas fa-thermometer-empty text-2xl mb-2"></i>
+                    <p>No hay datos disponibles</p>
+                </div>
+            </div>
+            
+            <!-- TOP 5 NÚMEROS MÁS REPETIDOS EN 30 DÍAS -->
+            <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg shadow-2xl p-4 border border-slate-600">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold text-gray-100 flex items-center">
+                        <i class="fas fa-repeat text-green-400 mr-2"></i>
+                        Top 5 Números Más Repetidos
+                    </h3>
+                    <span class="bg-green-900 text-green-200 text-xs px-2 py-1 rounded-full font-medium">
+                        30 días - <span id="repeatedCount">0</span> números
+                    </span>
+                </div>
+                
+                <div id="repeatedNumbersList" class="space-y-2">
+                    <!-- Se llenarán dinámicamente con máximo 5 números que se hayan repetido más de 1 vez -->
+                </div>
+                
+                <div id="noRepeatedMessage" class="text-center py-4 text-gray-400 text-sm hidden">
+                    <i class="fas fa-search text-2xl mb-2"></i>
+                    <p>No hay números repetidos más de 1 vez</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sección de Estrategia de 3 Números (solo visible si positionsCount = 3) -->
+        <div id="threeNumberStrategy" class="mt-8 bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg shadow-2xl p-6 hidden border border-slate-600">
+            <h2 class="text-xl font-bold text-gray-100 mb-4">
+                <i class="fas fa-brain text-blue-400 mr-2"></i>
+                Estrategia de los 3 Números
+            </h2>
+            <p class="text-gray-300 mb-6">
+            <strong>Análisis basado en patrones de repetición:</strong> Este patrón se basa en que un número que aparece dos veces en cualquier posición dentro de un período de 10 días consecutivos, tiene una alta probabilidad estadística de volver a salir por tercera vez en los siguientes 10 días. Esta estrategia identifica números "calientes" que están en una racha activa y pueden ser candidatos fuertes para futuras apuestas. <span class="text-blue-400 font-medium">Los números candidatos activos son aquellos que ya cumplieron la primera parte del patrón y están esperando completarlo.</span>
+            </p>
+            
+            <!-- Estadística de precisión -->
+            <div class="bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-lg p-4 mb-6 border border-blue-800">
+                <h3 class="font-medium text-gray-100 mb-3 flex items-center">
+                    <i class="fas fa-chart-pie text-blue-400 mr-2"></i>
+                    Precisión de la Estrategia
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-green-400" id="successRate">--%</div>
+                        <div class="text-sm text-gray-300">Tasa de Éxito</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-lg font-semibold text-green-300" id="totalSuccesses">--</div>
+                        <div class="text-sm text-gray-300">Predicciones Correctas</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-lg font-semibold text-red-300" id="totalFailures">--</div>
+                        <div class="text-sm text-gray-300">Predicciones Fallidas</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estadísticas por día -->
+            <div class="bg-gradient-to-r from-gray-800/50 to-blue-800/50 rounded-lg p-4 mb-6 border border-gray-700">
+                <div id="dayByDayStats">
+                    <!-- Las estadísticas por día se cargarán dinámicamente aquí -->
+                </div>
+            </div>
+
+            <!-- Números candidatos activos -->
+            <div class="mb-6">
+                <h3 class="font-medium text-gray-100 mb-4 flex items-center">
+                    <i class="fas fa-bullseye text-yellow-400 mr-2"></i>
+                    Números Candidatos Activos
+                    <span class="ml-2 bg-yellow-600 text-white text-xs px-2 py-1 rounded-full" id="activeCandidatesCount">0</span>
+                </h3>
+                <div id="activeCandidatesList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Los números candidatos se cargarán dinámicamente aquí -->
+                </div>
+                <div id="noCandidatesMessage" class="text-center py-8 text-gray-400 hidden">
+                    <i class="fas fa-search text-4xl mb-2"></i>
+                    <p>No hay números candidatos en este momento</p>
+                </div>
+            </div>
+
+            <!-- Sección de Coincidencias Múltiples -->
+            <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-lg p-4 mb-6 border border-purple-800">
+                <h3 class="font-medium text-gray-100 mb-3">
+                    <i class="fas fa-users text-purple-400 mr-2"></i>
+                    Análisis de Coincidencias Múltiples
+                </h3>
+                
+                <!-- Estadísticas generales -->
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="text-center">
+                        <div class="text-xl font-bold text-purple-400" id="twoNumberCoincidences">--</div>
+                        <div class="text-sm text-gray-300">Coincidencias de 2 números</div>
+                        <div class="text-xs text-purple-400" id="twoNumberRate">--%</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-xl font-bold text-purple-400" id="threeNumberCoincidences">--</div>
+                        <div class="text-sm text-gray-300">Coincidencias de 3 números</div>
+                        <div class="text-xs text-purple-400" id="threeNumberRate">--%</div>
+                    </div>
+                </div>
+                
+                <!-- Filtros de Coincidencias -->
+                <div class="bg-slate-800/50 rounded-lg p-4 mb-4 border border-purple-700">
+                    <h4 class="font-medium text-gray-100 mb-3 flex items-center">
+                        <i class="fas fa-filter text-purple-400 mr-2"></i>
+                        Filtrar Coincidencias
+                    </h4>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="coincidenceFilter" value="all" class="mr-2 text-purple-600 focus:ring-purple-500" checked>
+                            <span class="text-sm text-gray-300">Todas</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="coincidenceFilter" value="0" class="mr-2 text-purple-600 focus:ring-purple-500">
+                            <span class="text-sm text-gray-300">0 coincidencias</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="coincidenceFilter" value="1" class="mr-2 text-purple-600 focus:ring-purple-500">
+                            <span class="text-sm text-gray-300">1 coincidencia</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="coincidenceFilter" value="2" class="mr-2 text-purple-600 focus:ring-purple-500">
+                            <span class="text-sm text-gray-300">2 coincidencias</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="coincidenceFilter" value="3" class="mr-2 text-purple-600 focus:ring-purple-500">
+                            <span class="text-sm text-gray-300">3 coincidencias</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Contador de resultados filtrados -->
+                    <div class="mt-3 text-center">
+                        <span class="text-sm text-gray-300">
+                            Mostrando <span id="filteredCoincidencesCount" class="font-medium text-purple-400">--</span> de <span id="totalCoincidencesCount" class="font-medium">--</span> sorteos
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Contenedor con Slider para las coincidencias -->
+                <div class="bg-slate-800/30 rounded-lg border border-purple-700">
+                    <div class="p-3 border-b border-purple-600">
+                        <h4 class="font-medium text-gray-100 flex items-center justify-between">
+                            <span>
+                                <i class="fas fa-list text-purple-400 mr-2"></i>
+                                Lista de Sorteos
+                            </span>
+                            <span class="text-xs text-gray-400">Desplázate para ver más</span>
+                        </h4>
+                    </div>
+                    
+                    <!-- Contenedor con scroll -->
+                    <div id="coincidencesScrollContainer" class="max-h-96 overflow-y-auto p-3">
+                        <div id="coincidencesList" class="space-y-3">
+                            <!-- Se llena dinámicamente -->
+                        </div>
+                        
+                        <!-- Mensaje cuando no hay resultados -->
+                        <div id="noCoincidencesMessage" class="text-center py-8 text-gray-400 hidden">
+                            <i class="fas fa-search text-4xl mb-2"></i>
+                            <p>No se encontraron sorteos con el filtro seleccionado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-400 text-sm">
+            <p>© 2023 Analizador Gana Más - Todos los derechos reservados</p>
+            <p class="mt-1"></p>
+        </footer>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+        <div class="bg-slate-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-600">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-100">Ayuda - Cómo usar el analizador</h3>
+                    <button id="closeHelpModal" class="text-gray-400 hover:text-gray-200">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-medium text-gray-200 mb-2">1. Actualización de datos</h4>
+                        <p class="text-gray-300">Haz clic en el botón "Actualizar Datos" para obtener los resultados más recientes del sorteo Gana Más. La primera vez puede tardar unos minutos mientras recopila los datos históricos.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium text-gray-200 mb-2">2. Filtrado de números</h4>
+                        <p class="text-gray-300">Puedes filtrar los números según la posición en que aparecieron (primera, segunda o tercera), o ver todos los números sin importar la posición.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium text-gray-200 mb-2">3. Ordenamiento</h4>
+                        <p class="text-gray-300">Ordena los números por días sin salir (de mayor a menor), por número (de 00 a 99), o por frecuencia de aparición en los sorteos.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium text-gray-200 mb-2">4. Búsqueda</h4>
+                        <p class="text-gray-300">Escribe un número específico en el campo de búsqueda para encontrarlo rápidamente en la cuadrícula.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium text-gray-200 mb-2">5. Código de colores</h4>
+                        <p class="text-gray-300">Los números se colorean según los días que llevan sin salir en el sorteo. Los tonos más oscuros indican más días sin aparecer.</p>
+                        <div class="flex space-x-1 mt-2">
+                            <div class="w-6 h-6 rounded-sm bg-green-200 flex items-center justify-center text-xs">0-10</div>
+                            <div class="w-6 h-6 rounded-sm bg-yellow-300 flex items-center justify-center text-xs">30-50</div>
+                            <div class="w-6 h-6 rounded-sm bg-orange-400 flex items-center justify-center text-xs">60-80</div>
+                            <div class="w-6 h-6 rounded-sm bg-red-500 flex items-center justify-center text-xs text-white">90-100</div>
+                            <div class="w-6 h-6 rounded-sm bg-red-700 flex items-center justify-center text-xs text-white">100+</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium text-gray-200 mb-2">6. Detalles del número</h4>
+                        <p class="text-gray-300">Haz clic en cualquier número para ver información detallada sobre su historial en los sorteos.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 pt-4 border-t border-slate-600">
+                    <h4 class="font-medium text-gray-200 mb-2">Nota importante</h4>
+                    <p class="text-gray-300">Este análisis se basa en datos históricos y no garantiza resultados futuros. El juego responsable es importante.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para el menú móvil -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Cerrar menú móvil al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="charts.js"></script>
+    <script src="../main.js"></script>
+<script src="../strategy.js"></script>
+</body>
+</html>
