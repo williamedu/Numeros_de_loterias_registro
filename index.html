@@ -224,7 +224,57 @@
             </div>
         </div>
     </div>
+    
 
+    <!-- Espacio para el tercer card (se agregará después) -->
+<!-- Lotería nacional -->
+    <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
+        <!-- Layout vertical organizado -->
+        <div class="flex flex-col h-full">
+            
+            <!-- 1. Fecha del sorteo - Arriba izquierda -->
+            <div class="mb-2">
+                <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                    <!-- Fecha se cargará dinámicamente -->
+                </div>
+            </div>
+            
+            <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+            <div class="flex justify-between items-center mb-4">
+                <!-- Nombre de la lotería - Izquierda -->
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white">Lotería Nacional</h3>
+                
+                <!-- Imagen de la lotería - Derecha -->
+                <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                    <img src="imaguenes_loterias/loteria_nacional.png" 
+                         alt="Logo Quiniela Pale" 
+                         class="w-full h-full object-cover"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <!-- Fallback si la imagen no carga -->
+                    <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
+                        QP
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3. Números ganadores - Centro -->
+            <div class="flex justify-center mb-6">
+                <div class="flex space-x-2 winning-numbers" data-lottery="nacional" data-positions="3">
+                    <!-- Números ganadores serán cargados dinámicamente -->
+                    <span class="loading-spinner"></span>
+                </div>
+            </div>
+            
+            <!-- 4. Botón - Abajo centro con padding -->
+            <div class="mt-auto pt-4">
+                <div class="flex justify-center">
+                    <a href="loteria_nacional/nacional.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                        Ver Análisis
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Aquí irá la próxima lotería cuando la agregues -->
