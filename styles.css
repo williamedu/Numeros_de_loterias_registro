@@ -381,3 +381,134 @@ header::after {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* =================================
+   SUPER KINO TV - ESTILOS COMPACTOS CORREGIDOS
+   ================================= */
+
+/* Grid para Super Kino con números centrados */
+.winning-numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.125rem;
+    max-width: 420px; /* ajustado para bolas grandes */
+    margin: 0 auto;
+    height: auto;
+    justify-items: center; /* AÑADIDO: centra cada elemento en su celda */
+    align-items: center;   /* AÑADIDO: centra verticalmente también */
+}
+
+/* Burbujas compactas para Super Kino */
+.winning-numbers-grid .number-ball {
+    width: 2.5rem;          /* CAMBIADO: de 1.5rem a 2.5rem */
+    height: 2.5rem;         /* CAMBIADO: de 1.5rem a 2.5rem */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;        /* CAMBIADO: de 0.625rem a 1rem */
+    font-weight: bold;
+    margin: 0.125rem;       /* CAMBIADO: de 0.0625rem a 0.125rem */
+    background: linear-gradient(135deg, #15803d, #166534);
+    border: 1px solid #14532d;
+    box-shadow: 0 4px 12px rgba(21, 128, 61, 0.3),
+                0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.winning-numbers-grid .number-ball:hover {
+    transform: translateY(-2px) scale(1.1);
+    box-shadow: 0 6px 18px rgba(21, 128, 61, 0.4),
+                0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Distribución 7-7-6: */
+/* Fila 1: números 1-7 */
+.winning-numbers-grid .number-ball:nth-child(1) { grid-column: 1; grid-row: 1; }
+.winning-numbers-grid .number-ball:nth-child(2) { grid-column: 2; grid-row: 1; }
+.winning-numbers-grid .number-ball:nth-child(3) { grid-column: 3; grid-row: 1; }
+.winning-numbers-grid .number-ball:nth-child(4) { grid-column: 4; grid-row: 1; }
+.winning-numbers-grid .number-ball:nth-child(5) { grid-column: 5; grid-row: 1; }
+.winning-numbers-grid .number-ball:nth-child(6) { grid-column: 6; grid-row: 1; }
+.winning-numbers-grid .number-ball:nth-child(7) { grid-column: 7; grid-row: 1; }
+
+/* Fila 2: números 8-14 */
+.winning-numbers-grid .number-ball:nth-child(8) { grid-column: 1; grid-row: 2; }
+.winning-numbers-grid .number-ball:nth-child(9) { grid-column: 2; grid-row: 2; }
+.winning-numbers-grid .number-ball:nth-child(10) { grid-column: 3; grid-row: 2; }
+.winning-numbers-grid .number-ball:nth-child(11) { grid-column: 4; grid-row: 2; }
+.winning-numbers-grid .number-ball:nth-child(12) { grid-column: 5; grid-row: 2; }
+.winning-numbers-grid .number-ball:nth-child(13) { grid-column: 6; grid-row: 2; }
+.winning-numbers-grid .number-ball:nth-child(14) { grid-column: 7; grid-row: 2; }
+
+/* Fila 3: números 15-20 (solo 6, centrados) */
+.winning-numbers-grid .number-ball:nth-child(15) { grid-column: 1; grid-row: 3; }
+.winning-numbers-grid .number-ball:nth-child(16) { grid-column: 2; grid-row: 3; }
+.winning-numbers-grid .number-ball:nth-child(17) { grid-column: 3; grid-row: 3; }
+.winning-numbers-grid .number-ball:nth-child(18) { grid-column: 4; grid-row: 3; }
+.winning-numbers-grid .number-ball:nth-child(19) { grid-column: 5; grid-row: 3; }
+.winning-numbers-grid .number-ball:nth-child(20) { grid-column: 6; grid-row: 3; }
+
+/* Card compacto específico para Super Kino */
+.lottery-card:has(.winning-numbers-grid) {
+    min-height: 280px;
+    padding: 1rem;
+}
+
+.lottery-card:has(.winning-numbers-grid) h3 {
+    font-size: 1.125rem;
+}
+
+
+
+.lottery-card:has(.winning-numbers-grid) .flex.justify-center.mb-6 {
+    margin-bottom: 1rem;
+}
+
+/* Efecto especial para alternar colores */
+.winning-numbers-grid .number-ball:nth-child(odd) {
+    background: linear-gradient(135deg, #15803d, #166534);
+    border-color: #14532d;
+}
+
+.winning-numbers-grid .number-ball:nth-child(even) {
+    background: linear-gradient(135deg, #059669, #047857);
+    border-color: #065f46;
+}
+
+/* Animación para el grid */
+.winning-numbers-grid {
+    animation: fadeInGrid 0.8s ease-out;
+}
+
+@keyframes fadeInGrid {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive para Super Kino */
+@media (max-width: 768px) {
+    .winning-numbers-grid {
+        max-width: 240px;
+        gap: 0.1rem;
+    }
+    
+    .winning-numbers-grid .number-ball {
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1rem;
+        margin: 0.10rem;
+    }
+    
+    .lottery-card:has(.winning-numbers-grid) {
+        min-height: 240px;
+        padding: 0.75rem;
+    }
+}

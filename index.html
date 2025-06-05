@@ -175,8 +175,7 @@
         </div>
     </div>
 
-    <!-- Espacio para el tercer card (se agregará después) -->
-<!-- Lotería Gana Más -->
+    <!-- Lotería Gana Más -->
     <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
         <!-- Layout vertical organizado -->
         <div class="flex flex-col h-full">
@@ -196,12 +195,12 @@
                 <!-- Imagen de la lotería - Derecha -->
                 <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
                     <img src="imaguenes_loterias/ganamas.png" 
-                         alt="Logo Quiniela Pale" 
+                         alt="Logo Gana Más" 
                          class="w-full h-full object-cover"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <!-- Fallback si la imagen no carga -->
                     <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
-                        QP
+                        GM
                     </div>
                 </div>
             </div>
@@ -224,10 +223,8 @@
             </div>
         </div>
     </div>
-    
 
-    <!-- Espacio para el tercer card (se agregará después) -->
-<!-- Lotería nacional -->
+    <!-- Lotería Nacional -->
     <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
         <!-- Layout vertical organizado -->
         <div class="flex flex-col h-full">
@@ -247,12 +244,12 @@
                 <!-- Imagen de la lotería - Derecha -->
                 <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
                     <img src="imaguenes_loterias/loteria_nacional.png" 
-                         alt="Logo Quiniela Pale" 
+                         alt="Logo Lotería Nacional" 
                          class="w-full h-full object-cover"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <!-- Fallback si la imagen no carga -->
                     <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
-                        QP
+                        LN
                     </div>
                 </div>
             </div>
@@ -276,19 +273,56 @@
         </div>
     </div>
 
-
-    <!-- Aquí irá la próxima lotería cuando la agregues -->
-    
+    <!-- Super Kino TV Card - Versión Compacta -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Super Kino TV</h3>
+            
+            <!-- Imagen de la lotería - Derecha (más pequeña) -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                <img src="imaguenes_loterias/kinotv.png" 
+                     alt="Logo Super Kino TV" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    SK
+                </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores en 3 columnas - Centro -->
+        <div class="flex justify-center mb-4">
+            <div class="winning-numbers-grid" data-lottery="super_kino" data-positions="20">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding reducido -->
+        <div class="mt-auto pt-2">
+            <div class="flex justify-center">
+                <a href="loteria_super_kino_tv/super_kino.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-6 py-1.5 rounded-lg transition duration-300 font-semibold text-sm">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- Ejemplo de cómo se vería con 6 cards (2 filas de 3) -->
-<!--
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    Card 1 | Card 2 | Card 3
-    Card 4 | Card 5 | Card 6
 </div>
--->
-
                 
             </div>
         </div>
@@ -381,8 +415,10 @@
             
             // Cargar datos de loterías
             loadLotteryData();
+            loadSuperKinoNumbers();
         });
         
+        // Función para loterías normales (pocas posiciones)
         function loadLotteryData() {
             const winningNumbersContainers = document.querySelectorAll('.winning-numbers');
             
@@ -405,7 +441,11 @@
                         container.innerHTML = '';
                         
                         if (data.winningNumbers && data.winningNumbers.length > 0) {
-                            data.winningNumbers.forEach(numData => {
+                            // Limitar números mostrados para pantalla principal
+                            const maxDisplay = Math.min(positions, 6);
+                            const numbersToShow = data.winningNumbers.slice(0, maxDisplay);
+                            
+                            numbersToShow.forEach(numData => {
                                 const bgColorClass = card.querySelector('a').classList.contains('bg-accent') 
                                     ? 'bg-accent dark:bg-red-600' : 'bg-primary dark:bg-green-600';
                                 
@@ -420,7 +460,8 @@
                                 sorteoDateElement.textContent = `Sorteo: ${data.winningNumbers[0].date}`;
                             }
                         } else if (data.hottestNumbers && data.hottestNumbers.length > 0) {
-                            const hotNumbers = data.hottestNumbers.slice(0, positions);
+                            const maxDisplay = Math.min(positions, 6);
+                            const hotNumbers = data.hottestNumbers.slice(0, maxDisplay);
                             
                             hotNumbers.forEach(numData => {
                                 const bgColorClass = card.querySelector('a').classList.contains('bg-accent') 
@@ -441,6 +482,52 @@
                     });
             });
         }
+
+        // Función específica para Super Kino y loterías con muchos números
+        function loadSuperKinoNumbers() {
+            const container = document.querySelector('.winning-numbers-grid[data-lottery="super_kino"]');
+            if (!container) return;
+            
+            const jsonUrl = 'json_Datos/lottery_data_super_kino.json';
+            
+            fetch(jsonUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se pudieron cargar los datos');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const card = container.closest('.lottery-card');
+                    const sorteoDateElement = card.querySelector('.sorteo-date');
+                    
+                    container.innerHTML = '';
+                    
+                    if (data.winningNumbers && data.winningNumbers.length >= 20) {
+                        // Tomar exactamente 20 números
+                        const numbers = data.winningNumbers.slice(0, 20);
+                        
+                        numbers.forEach(numData => {
+                            const numberElement = document.createElement('span');
+                            numberElement.className = 'number-ball bg-primary dark:bg-green-600 text-white';
+                            numberElement.textContent = numData.number;
+                            container.appendChild(numberElement);
+                        });
+                        
+                        // Mostrar fecha del sorteo
+                        if (data.winningNumbers[0].date && sorteoDateElement) {
+                            sorteoDateElement.textContent = `Sorteo: ${data.winningNumbers[0].date}`;
+                        }
+                    } else {
+                        container.innerHTML = '<p class="text-gray-500 dark:text-gray-400 col-span-3 text-center">No hay datos disponibles</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al cargar los datos de Super Kino:', error);
+                    container.innerHTML = '<p class="text-red-500 dark:text-red-400 col-span-3 text-center">Error al cargar datos</p>';
+                });
+        }
+        
     </script>
 </body>
 </html>
