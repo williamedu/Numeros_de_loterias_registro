@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analizador Lotería Nacional - Lotería Dominicana</title>
+    <title>Analizador Super Kino TV - Lotería Dominicana</title>
     <link rel="stylesheet" href="../styles.css">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -71,7 +71,7 @@
                                     <div class="flex items-center">
                                         <i class="fas fa-star text-yellow-400 mr-3"></i>
                                         <div>
-                                            <div class="font-medium">Lotería Nacional</div>
+                                            <div class="font-medium">Super Kino TV</div>
                                             <div class="text-xs text-gray-400">Lotería de 3 números</div>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                                     <div class="flex items-center">
                                         <i class="fas fa-flag text-blue-400 mr-3"></i>
                                         <div>
-                                            <div class="font-medium">Lotería Nacional</div>
+                                            <div class="font-medium">Super Kino TV</div>
                                             <div class="text-xs text-gray-400">Sorteo tradicional</div>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@
                                     <div class="flex items-center">
                                         <i class="fas fa-trophy text-green-400 mr-3"></i>
                                         <div>
-                                            <div class="font-medium">Lotería Nacional</div>
+                                            <div class="font-medium">Super Kino TV</div>
                                             <div class="text-xs text-gray-400">Números especiales</div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                             <i class="fas fa-star text-yellow-400 mr-3"></i>Pega 3 Más
                         </a>
                         <a href="#" class="block px-6 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150">
-                            <i class="fas fa-flag text-blue-400 mr-3"></i>Lotería Nacional
+                            <i class="fas fa-flag text-blue-400 mr-3"></i>Super Kino TV
                         </a>
                         <a href="#" class="block px-6 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150">
                             <i class="fas fa-trophy text-green-400 mr-3"></i>Gana Más
@@ -156,8 +156,8 @@
             <!-- Imagen con fondo blanco -->
             <div class="flex-1 flex justify-center mb-4 md:mb-0">
                 <div class="bg-white p-4 rounded-lg shadow-lg">
-                    <img src="../imaguenes_loterias/loteria_nacional.png" 
-                         alt="Pega 3 Más" 
+                    <img src="../imaguenes_loterias/kinotv.png" 
+                         alt="Super Kino TV" 
                          class="h-16 md:h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
                          onerror="this.style.display='none'">
                 </div>
@@ -196,16 +196,9 @@
             </div>
 
             <!-- Controles de Filtrado y Búsqueda -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                    <label class="block text-gray-300 font-medium mb-2">Filtrar por posición</label>
-                    <select id="positionFilter" class="w-full p-2 border border-slate-600 rounded-lg bg-slate-700 text-gray-100 focus:ring-blue-500 focus:border-blue-500">
-                        <option value="any">Cualquier posición</option>
-                        <option value="1ra">Primera posición</option>
-                        <option value="2da">Segunda posición</option>
-                        <option value="3ra">Tercera posición</option>
-                    </select>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+               
                 <div>
                     <label class="block text-gray-300 font-medium mb-2">Ordenar por</label>
                     <select id="sortBy" class="w-full p-2 border border-slate-600 rounded-lg bg-slate-700 text-gray-100 focus:ring-blue-500 focus:border-blue-500">
@@ -245,7 +238,7 @@
             <div class="lg:col-span-2">
                 <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg shadow-2xl p-6 border border-slate-600">
                     <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold text-gray-100">Lotería Nacional</h2>
+                        <h2 class="text-xl font-bold text-gray-100">Super Kino TV</h2>
                         <div class="flex items-center">
                             <span class="text-sm mr-2 text-gray-300">Leyenda:</span>
                             <div class="flex space-x-1">
@@ -561,7 +554,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="charts.js"></script>
-    <script src="../main.js"></script>
-<script src="../strategy.js"></script>
+    <script src="../main-multi.js"></script>
+    <script src="../strategy.js"></script>
 </body>
 </html>

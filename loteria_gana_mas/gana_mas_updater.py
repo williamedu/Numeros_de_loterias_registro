@@ -15,9 +15,9 @@ import random
 import sys
 
 # Configuración de la lotería
-LOTTERY_NAME = "Pega_3_Mas"  # Nombre para el archivo (sin espacios ni caracteres especiales)
-LOTTERY_URL_PARAM = "leidsa/pega-3-mas"  # Parámetro para la URL en loteriasdominicanas.com
-LOTTERY_DISPLAY_NAME = "Pega 3 Más"  # Nombre para mostrar en la salida (puede tener espacios)
+LOTTERY_NAME = "gana_mas"  # Nombre para el archivo (sin espacios ni caracteres especiales)
+LOTTERY_URL_PARAM = "loteria-nacional/gana-mas"  # Parámetro para la URL en loteriasdominicanas.com
+LOTTERY_DISPLAY_NAME = "gana mas"  # Nombre para mostrar en la salida (puede tener espacios)
 NUMBER_OF_POSITIONS = 3  # Número de posiciones (ej: 3 para Gana Más)
 
 # Configuración del scraping
@@ -26,7 +26,7 @@ DAYS_TO_GO_BACK = 8  # Días a retroceder entre cada iteración (cada página mu
 WAIT_TIMEOUT = 15  # Tiempo máximo de espera para elementos (segundos)
 PAUSE_AFTER_PAGE_LOAD = 2  # Segundos de pausa después de cargar cada página
 MIN_NUMBER = 0  # Número mínimo (algunas loterías comienzan desde 1 en lugar de 0)
-MAX_NUMBER = 50  # Número máximo
+MAX_NUMBER = 99  # Número máximo
 
 # Definir la ruta absoluta a la carpeta del proyecto
 # Definir la ruta absoluta a la carpeta del proyecto
