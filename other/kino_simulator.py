@@ -4,12 +4,12 @@ from collections import defaultdict
 import os
 
 # Configuración del simulador
-JSON_FILE_PATH = r"C:\Users\willi\OneDrive\Escritorio\New_Loteria_Resultados\Numeros_de_loterias_registro\json_Datos\lottery_data_super_kino.json"  # Ruta al archivo JSON
+JSON_FILE_PATH = r"C:\Users\Acer\Desktop\Pyhton_Projects\Numeros_de_loterias_registro\json_Datos\lottery_data_super_kino.json"  # Ruta al archivo JSON
 COST_PER_GAME = 25  # Costo por jugada en pesos
 NUMBERS_TO_PLAY = 10  # Números que jugamos por sorteo
 TOTAL_NUMBERS = 80  # Rango de números (1-80)
 WINNING_NUMBERS_PER_DRAW = 20  # Números que salen por sorteo
-PLAYERS = 100000  # Número de jugadores/jugadas por sorteo (cambia esto para simular múltiples jugadores)
+PLAYERS = 500  # Número de jugadores/jugadas por sorteo (cambia esto para simular múltiples jugadores)
 
 # Reglas de premios del Super Kino TV
 PRIZE_TABLE = {

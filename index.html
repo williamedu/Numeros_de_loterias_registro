@@ -322,6 +322,55 @@
     </div>
 </div>
 
+<!-- juega + pega Card - Versión Compacta -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Juega Más Pega Más</h3>
+            
+            <!-- Imagen de la lotería - Derecha (más pequeña) -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                <img src="imaguenes_loterias/loteria_nacional.png" 
+                     alt="Logo juega mas pega mas" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    SK
+                </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores en 3 columnas - Centro -->
+        <div class="flex justify-center mb-4">
+            <div class="winning-numbers-grid" data-lottery="juega_mas_pega" data-positions="5">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding reducido -->
+        <div class="mt-auto pt-2">
+            <div class="flex justify-center">
+                <a href="loteria_juega_+_pega/juega_+_pega.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-6 py-1.5 rounded-lg transition duration-300 font-semibold text-sm">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
                 
             </div>
@@ -483,50 +532,62 @@
             });
         }
 
-        // Función específica para Super Kino y loterías con muchos números
-        function loadSuperKinoNumbers() {
-            const container = document.querySelector('.winning-numbers-grid[data-lottery="super_kino"]');
-            if (!container) return;
-            
-            const jsonUrl = 'json_Datos/lottery_data_super_kino.json';
-            
-            fetch(jsonUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('No se pudieron cargar los datos');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const card = container.closest('.lottery-card');
-                    const sorteoDateElement = card.querySelector('.sorteo-date');
+       // Función específica para loterías con muchos números (Super Kino, Juega+Pega, etc.)
+function loadSuperKinoNumbers() {
+    const containers = document.querySelectorAll('.winning-numbers-grid');
+    console.log(`Found ${containers.length} grid containers`);
+    
+    containers.forEach(container => {
+        const lotteryName = container.getAttribute('data-lottery');
+        const positions = parseInt(container.getAttribute('data-positions'));
+        const jsonUrl = `json_Datos/lottery_data_${lotteryName}.json`;
+        
+        console.log(`Loading lottery: ${lotteryName}, positions: ${positions}, URL: ${jsonUrl}`);
+        
+        fetch(jsonUrl)
+            .then(response => {
+                console.log(`Response status for ${lotteryName}:`, response.status);
+                if (!response.ok) {
+                    throw new Error('No se pudieron cargar los datos');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(`Data loaded for ${lotteryName}:`, data);
+                console.log(`WinningNumbers length:`, data.winningNumbers?.length);
+                
+                const card = container.closest('.lottery-card');
+                const sorteoDateElement = card.querySelector('.sorteo-date');
+                
+                container.innerHTML = '';
+                
+                if (data.winningNumbers && data.winningNumbers.length >= positions) {
+                    console.log(`Processing ${positions} numbers for ${lotteryName}`);
+                    const numbers = data.winningNumbers.slice(0, positions);
                     
-                    container.innerHTML = '';
+                    numbers.forEach((numData, index) => {
+                        console.log(`Adding number ${index + 1}: ${numData.number}`);
+                        const numberElement = document.createElement('span');
+                        numberElement.className = 'number-ball bg-primary dark:bg-green-600 text-white';
+                        numberElement.textContent = numData.number;
+                        container.appendChild(numberElement);
+                    });
                     
-                    if (data.winningNumbers && data.winningNumbers.length >= 20) {
-                        // Tomar exactamente 20 números
-                        const numbers = data.winningNumbers.slice(0, 20);
-                        
-                        numbers.forEach(numData => {
-                            const numberElement = document.createElement('span');
-                            numberElement.className = 'number-ball bg-primary dark:bg-green-600 text-white';
-                            numberElement.textContent = numData.number;
-                            container.appendChild(numberElement);
-                        });
-                        
-                        // Mostrar fecha del sorteo
-                        if (data.winningNumbers[0].date && sorteoDateElement) {
-                            sorteoDateElement.textContent = `Sorteo: ${data.winningNumbers[0].date}`;
-                        }
-                    } else {
-                        container.innerHTML = '<p class="text-gray-500 dark:text-gray-400 col-span-3 text-center">No hay datos disponibles</p>';
+                    if (data.winningNumbers[0].date && sorteoDateElement) {
+                        sorteoDateElement.textContent = `Sorteo: ${data.winningNumbers[0].date}`;
                     }
-                })
-                .catch(error => {
-                    console.error('Error al cargar los datos de Super Kino:', error);
-                    container.innerHTML = '<p class="text-red-500 dark:text-red-400 col-span-3 text-center">Error al cargar datos</p>';
-                });
-        }
+                    console.log(`Successfully loaded ${lotteryName}`);
+                } else {
+                    console.log(`Not enough winning numbers for ${lotteryName}`);
+                    container.innerHTML = '<p class="text-gray-500 dark:text-gray-400 col-span-3 text-center">No hay datos disponibles</p>';
+                }
+            })
+            .catch(error => {
+                console.error(`Error loading ${lotteryName}:`, error);
+                container.innerHTML = '<p class="text-red-500 dark:text-red-400 col-span-3 text-center">Error al cargar datos</p>';
+            });
+    });
+}
         
     </script>
 </body>
