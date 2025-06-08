@@ -1,0 +1,95 @@
+/* =================================
+   JUEGA + PEGA - COLORES ESPECÍFICOS
+   ================================= */
+
+/* Selector específico para Juega + Pega */
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball {
+    /* Restablecer el estilo base */
+    background: none;
+    border: 2px solid;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Primeras 2 bolas - Azul gradiente */
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(1),
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(2) {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-color: #1e40af;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(1):hover,
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(2):hover {
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5), 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Siguientes 2 bolas - Rojo gradiente */
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(3),
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(4) {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border-color: #b91c1c;
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(3):hover,
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(4):hover {
+    box-shadow: 0 12px 35px rgba(239, 68, 68, 0.5), 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Última bola - Dorado gradiente */
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(5) {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    border-color: #d97706;
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Efecto dorado especial */
+    position: relative;
+    overflow: hidden;
+}
+
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(5):hover {
+    box-shadow: 0 12px 35px rgba(251, 191, 36, 0.6), 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Efecto brillante para la bola dorada */
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(5)::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    animation: goldShine 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes goldShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    50% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+}
+
+/* Asegurar que el texto esté por encima del efecto brillante */
+.winning-numbers[data-lottery="juega_mas_pega"] .number-ball:nth-child(5) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .winning-numbers[data-lottery="juega_mas_pega"] .number-ball {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+}

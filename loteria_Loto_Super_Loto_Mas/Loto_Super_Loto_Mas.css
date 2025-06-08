@@ -1,0 +1,65 @@
+/* =================================
+   LOTO SUPER LOTO MAS - COLORES ESPECÍFICOS
+   ================================= */
+
+/* PENÚLTIMA bola (7ma de 8) - Rojo gradiente */
+.winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(2) {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border-color: #b91c1c;
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(2):hover {
+    box-shadow: 0 12px 35px rgba(239, 68, 68, 0.5), 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* ÚLTIMA bola (8va de 8) - Dorado gradiente con efecto brillante */
+.winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(1) {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    border-color: #d97706;
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Efecto dorado especial */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(1):hover {
+    box-shadow: 0 12px 35px rgba(251, 191, 36, 0.6), 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Efecto brillante para la bola dorada (8va bola) */
+.winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(1)::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    animation: goldShine 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes goldShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    50% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+}
