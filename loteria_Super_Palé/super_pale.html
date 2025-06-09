@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="es" data-lottery="Loto_Super_Loto_Mas">
+<html lang="es" data-lottery="super_pale">
 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analizador Loto - Super Loto Más - Lotería Dominicana</title>
+    <title>Analizador Quiniela Pale - Lotería Dominicana</title>
     <link rel="stylesheet" href="../styles.css">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -71,7 +70,7 @@
                                     <div class="flex items-center">
                                         <i class="fas fa-star text-yellow-400 mr-3"></i>
                                         <div>
-                                            <div class="font-medium">Loto - Super Loto Más</div>
+                                            <div class="font-medium">Super Palé</div>
                                             <div class="text-xs text-gray-400">Lotería de 3 números</div>
                                         </div>
                                     </div>
@@ -80,7 +79,7 @@
                                     <div class="flex items-center">
                                         <i class="fas fa-flag text-blue-400 mr-3"></i>
                                         <div>
-                                            <div class="font-medium">Loto - Super Loto Más</div>
+                                            <div class="font-medium">Super Palé</div>
                                             <div class="text-xs text-gray-400">Sorteo tradicional</div>
                                         </div>
                                     </div>
@@ -89,7 +88,7 @@
                                     <div class="flex items-center">
                                         <i class="fas fa-trophy text-green-400 mr-3"></i>
                                         <div>
-                                            <div class="font-medium">Loto - Super Loto Más</div>
+                                            <div class="font-medium">Super Palé</div>
                                             <div class="text-xs text-gray-400">Números especiales</div>
                                         </div>
                                     </div>
@@ -130,13 +129,13 @@
                     <div class="border-t border-slate-700">
                         <div class="px-4 py-2 text-gray-400 text-xs font-semibold uppercase tracking-wider">Loterías</div>
                         <a href="#" class="block px-6 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150">
-                            <i class="fas fa-star text-yellow-400 mr-3"></i>Pega 3 Más
+                            <i class="fas fa-star text-yellow-400 mr-3"></i>Quiniela Pale
                         </a>
                         <a href="#" class="block px-6 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150">
-                            <i class="fas fa-flag text-blue-400 mr-3"></i>Super Kino TV
+                            <i class="fas fa-flag text-blue-400 mr-3"></i>Lotería Nacional
                         </a>
                         <a href="#" class="block px-6 py-2 text-gray-300 hover:text-white hover:bg-slate-700 transition-colors duration-150">
-                            <i class="fas fa-trophy text-green-400 mr-3"></i>Gana Más
+                            <i class="fas fa-trophy text-green-400 mr-3"></i>Quiniela Pale
                         </a>
                     </div>
                     
@@ -156,8 +155,8 @@
             <!-- Imagen con fondo blanco -->
             <div class="flex-1 flex justify-center mb-4 md:mb-0">
                 <div class="bg-white p-4 rounded-lg shadow-lg">
-                    <img src="../imaguenes_loterias/LotoSuperLotoMas.png" 
-                         alt="Super Kino TV" 
+                    <img src="../imaguenes_loterias/super_pale.png" 
+                         alt="Super Palé" 
                          class="h-16 md:h-20 w-auto object-contain hover:scale-105 transition-all duration-300"
                          onerror="this.style.display='none'">
                 </div>
@@ -196,9 +195,14 @@
             </div>
 
             <!-- Controles de Filtrado y Búsqueda -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-               
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-gray-300 font-medium mb-2">Filtrar por posición</label>
+                    <select id="positionFilter" class="w-full p-2 border border-slate-600 rounded-lg bg-slate-700 text-gray-100 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="any">Cualquier posición</option>
+                    <!-- Las opciones se agregarán dinámicamente según positionsCount -->
+                    </select>
+                </div>
                 <div>
                     <label class="block text-gray-300 font-medium mb-2">Ordenar por</label>
                     <select id="sortBy" class="w-full p-2 border border-slate-600 rounded-lg bg-slate-700 text-gray-100 focus:ring-blue-500 focus:border-blue-500">
@@ -238,7 +242,7 @@
             <div class="lg:col-span-2">
                 <div class="bg-gradient-to-br from-slate-800 to-slate-700 rounded-lg shadow-2xl p-6 border border-slate-600">
                     <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold text-gray-100">Loto - Super Loto Más</h2>
+                        <h2 class="text-xl font-bold text-gray-100">Quiniela Pale</h2>
                         <div class="flex items-center">
                             <span class="text-sm mr-2 text-gray-300">Leyenda:</span>
                             <div class="flex space-x-1">
@@ -471,7 +475,7 @@
 
         <!-- Footer -->
         <footer class="mt-12 text-center text-gray-400 text-sm">
-            <p>© 2023 Analizador Gana Más - Todos los derechos reservados</p>
+            <p>© 2023 Analizador Quiniela Pale - Todos los derechos reservados</p>
             <p class="mt-1"></p>
         </footer>
     </div>
@@ -490,7 +494,7 @@
                 <div class="space-y-4">
                     <div>
                         <h4 class="font-medium text-gray-200 mb-2">1. Actualización de datos</h4>
-                        <p class="text-gray-300">Haz clic en el botón "Actualizar Datos" para obtener los resultados más recientes del sorteo Gana Más. La primera vez puede tardar unos minutos mientras recopila los datos históricos.</p>
+                        <p class="text-gray-300">Haz clic en el botón "Actualizar Datos" para obtener los resultados más recientes del sorteo Quiniela Pale. La primera vez puede tardar unos minutos mientras recopila los datos históricos.</p>
                     </div>
                     
                     <div>
@@ -554,7 +558,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="charts.js"></script>
-    <script src="../main-multi.js"></script>
+    <script src="../main.js"></script>
     <script src="../strategy.js"></script>
+    <script src="./super-pale-override.js"></script>
 </body>
 </html>

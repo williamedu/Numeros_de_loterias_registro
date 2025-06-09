@@ -1,24 +1,37 @@
 /* =================================
-   LOTO SUPER LOTO MAS - COLORES ESPECÍFICOS
+   LOTO SUPER LOTO MAS - COLORES Y TAMAÑOS ESPECÍFICOS
    ================================= */
+
+/* Tamaños para todas las bolas de esta lotería */
+.winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball {
+    width: 40px !important;          /* Tamaño reducido (normal: 55px) */
+    height: 40px !important;         /* Tamaño reducido (normal: 55px) */
+    font-size: 0.9rem !important;    /* Texto más pequeño (normal: 1.2rem) */
+    margin: 0 3px !important;        /* Menos espacio entre bolas (normal: 0 6px) */
+}
+
+/* Reducir espaciado entre las bolas */
+.winning-numbers[data-lottery="Loto_Super_Loto_Mas"] {
+    gap: 4px; /* Espacio entre las bolas en flex */
+}
 
 /* PENÚLTIMA bola (7ma de 8) - Rojo gradiente */
 .winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(2) {
     background: linear-gradient(135deg, #ef4444, #dc2626);
     border-color: #b91c1c;
-    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4), 0 3px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada al tamaño */
 }
 
 .winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(2):hover {
-    box-shadow: 0 12px 35px rgba(239, 68, 68, 0.5), 0 6px 15px rgba(0, 0, 0, 0.3);
-    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra hover ajustada */
+    transform: translateY(-2px) scale(1.05); /* Movimiento reducido */
 }
 
 /* ÚLTIMA bola (8va de 8) - Dorado gradiente con efecto brillante */
 .winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(1) {
     background: linear-gradient(135deg, #fbbf24, #f59e0b);
     border-color: #d97706;
-    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4), 0 3px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada */
     /* Efecto dorado especial */
     position: relative;
     overflow: hidden;
@@ -26,8 +39,8 @@
 }
 
 .winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(1):hover {
-    box-shadow: 0 12px 35px rgba(251, 191, 36, 0.6), 0 6px 15px rgba(0, 0, 0, 0.3);
-    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.6), 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra hover ajustada */
+    transform: translateY(-2px) scale(1.05); /* Movimiento reducido */
 }
 
 /* Efecto brillante para la bola dorada (8va bola) */
@@ -55,11 +68,22 @@
     }
 }
 
-/* Responsive para móviles */
+/* Responsive para móviles - aún más pequeñas */
 @media (max-width: 768px) {
     .winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball {
-        width: 45px;
-        height: 45px;
-        font-size: 1rem;
+        width: 35px !important;       /* Más pequeñas en móvil */
+        height: 35px !important;      /* Más pequeñas en móvil */
+        font-size: 0.8rem !important; /* Texto más pequeño */
+        margin: 0 2px !important;     /* Menos margen */
+    }
+    
+    /* Ajustar sombras en móvil */
+    .winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(2),
+    .winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(1) {
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    .winning-numbers[data-lottery="Loto_Super_Loto_Mas"] .number-ball:nth-last-child(1) {
+        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 }

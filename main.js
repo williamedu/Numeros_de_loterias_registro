@@ -64,6 +64,9 @@ async function initApp() {
         
         // Inicializar eventos de la interfaz
         setupEventListeners();
+
+        // 🔥 AGREGAR ESTA LÍNEA AQUÍ:
+        setupPositionFilter(lotteryData.positionsCount || 3);
         
         // Inicializar los gráficos usando las funciones de charts.js
         //if (window.chartFunctions && window.chartFunctions.initCharts) {
@@ -82,6 +85,35 @@ async function initApp() {
         console.error('Error al inicializar la aplicación:', error);
         hideLoading();
         alert('Error al cargar los datos. Por favor, inténtelo de nuevo más tarde.');
+    }
+}
+
+// Función para configurar dinámicamente las opciones de posición
+function setupPositionFilter(positionsCount) {
+    const positionFilter = document.getElementById('positionFilter');
+    if (!positionFilter) return;
+    
+    // Limpiar opciones existentes excepto "Cualquier posición"
+    positionFilter.innerHTML = '<option value="any">Cualquier posición</option>';
+    
+    // Agregar opciones según el número de posiciones
+    const positionNames = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta'];
+    const positionValues = ['1ra', '2da', '3ra', '4ta', '5ta', '6ta'];
+    
+    for (let i = 0; i < positionsCount; i++) {
+        const option = document.createElement('option');
+        option.value = positionValues[i];
+        option.textContent = `${positionNames[i]} posición`;
+        positionFilter.appendChild(option);
+    }
+    
+    // Para Super Palé específicamente, cambiar los textos
+    const lotteryType = document.documentElement.getAttribute('data-lottery');
+    if (lotteryType === 'super_pale' && positionsCount === 2) {
+        if (positionFilter.children.length >= 3) {
+            positionFilter.children[1].textContent = 'Primer número (Quiniela)';
+            positionFilter.children[2].textContent = 'Segundo número (Lotería Nacional)';
+        }
     }
 }
 

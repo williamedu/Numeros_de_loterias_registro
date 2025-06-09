@@ -342,8 +342,8 @@
                             <h3 class="text-lg font-bold text-gray-800 dark:text-white">Juega Más Pega Más</h3>
                             
                             <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/loteria_nacional.png" 
+                            <div class="w-60 h-22 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                                <img src="imaguenes_loterias/loteria-nacional_juega-mas-pega-mas.png" 
                                      alt="Logo juega mas pega mas" 
                                      class="w-full h-full object-cover"
                                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -423,7 +423,7 @@
                 </div>
 
                 <!-- Agrega cards aqui -->
-                 <!-- Loto Pool Card - AÑADIDA (faltaba) -->
+                 <!-- Loto - Super Loto Más- AÑADIDA (faltaba) -->
                 <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
                     <!-- Layout vertical organizado -->
                     <div class="flex flex-col h-full">
@@ -472,6 +472,55 @@
                     </div>
                 </div>
                 <!-- Agrega cards aqui -->
+
+                <!--  Super Palé- AÑADIDA (faltaba) -->
+                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+                    <!-- Layout vertical organizado -->
+                    <div class="flex flex-col h-full">
+                        
+                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+                        <div class="mb-1">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                                <!-- Fecha se cargará dinámicamente -->
+                            </div>
+                        </div>
+                        
+                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+                        <div class="flex justify-between items-center mb-3">
+                            <!-- Nombre de la lotería - Izquierda -->
+                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Super Palé</h3>
+                            
+                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
+                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                                <img src="imaguenes_loterias/super_pale.png" 
+                                     alt="Logo Loto - Super Loto Más" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <!-- Fallback si la imagen no carga -->
+                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                                    LSLM
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 3. Números ganadores en 3 columnas - Centro -->
+                        <div class="flex justify-center mb-6">
+                            <div class="flex space-x-2 winning-numbers" data-lottery="super_pale" data-positions="2">
+                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 4. Botón - Abajo centro con padding -->
+                        <div class="mt-auto pt-4">
+                            <div class="flex justify-center">
+                                <a href="loteria_Super_Palé/super_pale.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                                    Ver Análisis
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- Agrega cards aqui -->
                 <!-- Agrega cards aqui -->
                 <!-- Agrega cards aqui -->
@@ -597,7 +646,8 @@
                         
                         if (data.winningNumbers && data.winningNumbers.length > 0) {
                             // Limitar números mostrados para pantalla principal
-                            const maxDisplay = Math.min(positions, 6);
+                            // Solución más específica:
+                            const maxDisplay = (lotteryName === 'Loto_Super_Loto_Mas') ? positions : Math.min(positions, 6);
                             const numbersToShow = data.winningNumbers.slice(0, maxDisplay);
                             
                             numbersToShow.forEach(numData => {
