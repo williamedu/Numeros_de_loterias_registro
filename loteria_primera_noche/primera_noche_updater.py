@@ -15,20 +15,20 @@ import random
 import sys
 
 # Configuración de la lotería
-LOTTERY_NAME = "loto_Pool"  # Nombre para el archivo (sin espacios ni caracteres especiales)
-LOTTERY_URL_PARAM = "leidsa/loto-pool"  # Parámetro para la URL en loteriasdominicanas.com
-LOTTERY_DISPLAY_NAME = "Loto Pool"  # Nombre para mostrar en la salida (puede tener espacios)
-NUMBER_OF_POSITIONS = 5  # Número de posiciones (ej: 3 para Gana Más)
+LOTTERY_NAME = "primera_noche"  # Nombre para el archivo (sin espacios ni caracteres especiales)
+LOTTERY_URL_PARAM = "la-primera/quiniela-noche"  # Parámetro para la URL en loteriasdominicanas.com
+LOTTERY_DISPLAY_NAME = "La Primera Noche"  # Nombre para mostrar en la salida (puede tener espacios)
+NUMBER_OF_POSITIONS = 3  # Número de posiciones (ej: 3 para Gana Más)
 
 # Configuración del scraping
 MAX_ITERATIONS = 10  # Número máximo de iteraciones a realizar si no se encuentran todas las fechas
-TOTAL_ITERATIONS = 10  # Número de iteraciones (páginas a visitar)
-DAYS_TO_GO_BACK = 8  # Días a retroceder entre cada iteración
+DAYS_TO_GO_BACK = 8  # Días a retroceder entre cada iteración (cada página muestra ~8 fechas)
 WAIT_TIMEOUT = 15  # Tiempo máximo de espera para elementos (segundos)
 PAUSE_AFTER_PAGE_LOAD = 2  # Segundos de pausa después de cargar cada página
-MIN_NUMBER = 1  # Número mínimo (algunas loterías comienzan desde 1 en lugar de 0)
-MAX_NUMBER = 31  # Número máximo
+MIN_NUMBER = 0  # Número mínimo (algunas loterías comienzan desde 1 en lugar de 0)
+MAX_NUMBER = 99  # Número máximo
 
+# Definir la ruta absoluta a la carpeta del proyecto
 # Definir la ruta absoluta a la carpeta del proyecto
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.dirname(SCRIPT_DIR)  # Carpeta padre

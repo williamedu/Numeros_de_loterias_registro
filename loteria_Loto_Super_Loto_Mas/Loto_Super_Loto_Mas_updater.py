@@ -22,6 +22,7 @@ LOTTERY_DISPLAY_NAME = "Loto - Super Loto Más"  # Nombre para mostrar en la sal
 NUMBER_OF_POSITIONS = 8  # Número de posiciones (ej: 3 para Gana Más)
 
 # Configuración del scraping
+MAX_ITERATIONS = 10  # Número máximo de iteraciones a realizar si no se encuentran todas las fechas
 TOTAL_ITERATIONS = 200  # Número de iteraciones (páginas a visitar)
 DAYS_TO_GO_BACK = 8  # Días a retroceder entre cada iteración
 WAIT_TIMEOUT = 15  # Tiempo máximo de espera para elementos (segundos)

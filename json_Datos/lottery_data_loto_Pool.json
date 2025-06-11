@@ -1,9 +1,9 @@
 {
   "lotteryName": "Loto Pool",
-  "lastUpdated": "08-06-2025 17:36:06",
-  "totalProcessed": 8000,
+  "lastUpdated": "10-06-2025 18:41:12",
+  "totalProcessed": 8005,
   "numbersWithData": 31,
-  "analysisPeriod": 1600,
+  "analysisPeriod": 1601,
   "totalIterations": 200,
   "daysPerIteration": 8,
   "positionsCount": 5,
@@ -11,9 +11,9 @@
     "01": {
       "number": "01",
       "lastSeen": "05-06-2025",
-      "daysSinceSeen": 3,
+      "daysSinceSeen": 5,
       "positions": {
-        "first": 257,
+        "first": 260,
         "second": 0,
         "third": 0,
         "fourth": 0,
@@ -1310,10 +1310,10 @@
     "02": {
       "number": "02",
       "lastSeen": "06-06-2025",
-      "daysSinceSeen": 2,
+      "daysSinceSeen": 4,
       "positions": {
-        "first": 229,
-        "second": 29,
+        "first": 230,
+        "second": 30,
         "third": 0,
         "fourth": 0,
         "fifth": 0
@@ -2614,11 +2614,11 @@
     "03": {
       "number": "03",
       "lastSeen": "02-06-2025",
-      "daysSinceSeen": 6,
+      "daysSinceSeen": 8,
       "positions": {
         "first": 180,
         "second": 62,
-        "third": 2,
+        "third": 3,
         "fourth": 0,
         "fifth": 0
       },
@@ -3848,7 +3848,7 @@
     "04": {
       "number": "04",
       "lastSeen": "01-06-2025",
-      "daysSinceSeen": 7,
+      "daysSinceSeen": 9,
       "positions": {
         "first": 159,
         "second": 72,
@@ -5067,10 +5067,10 @@
     "05": {
       "number": "05",
       "lastSeen": "06-06-2025",
-      "daysSinceSeen": 2,
+      "daysSinceSeen": 4,
       "positions": {
         "first": 132,
-        "second": 97,
+        "second": 98,
         "third": 19,
         "fourth": 0,
         "fifth": 0
@@ -6321,11 +6321,11 @@
     "06": {
       "number": "06",
       "lastSeen": "06-06-2025",
-      "daysSinceSeen": 2,
+      "daysSinceSeen": 4,
       "positions": {
         "first": 120,
         "second": 92,
-        "third": 19,
+        "third": 20,
         "fourth": 4,
         "fifth": 0
       },
@@ -7510,7 +7510,7 @@
     "07": {
       "number": "07",
       "lastSeen": "31-05-2025",
-      "daysSinceSeen": 8,
+      "daysSinceSeen": 10,
       "positions": {
         "first": 100,
         "second": 117,
@@ -8863,11 +8863,11 @@
     },
     "08": {
       "number": "08",
-      "lastSeen": "05-06-2025",
-      "daysSinceSeen": 3,
+      "lastSeen": "09-06-2025",
+      "daysSinceSeen": 1,
       "positions": {
-        "first": 92,
-        "second": 127,
+        "first": 93,
+        "second": 128,
         "third": 34,
         "fourth": 10,
         "fifth": 1
@@ -10192,18 +10192,23 @@
           "date": "28-01-2021",
           "position": 2,
           "daysAgo": 1592
+        },
+        {
+          "date": "09-06-2025",
+          "position": 1,
+          "daysAgo": 1
         }
       ]
     },
     "09": {
       "number": "09",
       "lastSeen": "05-06-2025",
-      "daysSinceSeen": 3,
+      "daysSinceSeen": 5,
       "positions": {
         "first": 73,
         "second": 119,
-        "third": 66,
-        "fourth": 15,
+        "third": 67,
+        "fourth": 16,
         "fifth": 1
       },
       "history": [
@@ -11582,10 +11587,10 @@
     "10": {
       "number": "10",
       "lastSeen": "08-06-2025",
-      "daysSinceSeen": 0,
+      "daysSinceSeen": 2,
       "positions": {
         "first": 57,
-        "second": 99,
+        "second": 100,
         "third": 68,
         "fourth": 14,
         "fifth": 1
@@ -12791,9 +12796,9 @@
     "11": {
       "number": "11",
       "lastSeen": "07-06-2025",
-      "daysSinceSeen": 1,
+      "daysSinceSeen": 3,
       "positions": {
-        "first": 33,
+        "first": 35,
         "second": 119,
         "third": 86,
         "fourth": 28,
@@ -14149,11 +14154,11 @@
     },
     "12": {
       "number": "12",
-      "lastSeen": "30-05-2025",
-      "daysSinceSeen": 9,
+      "lastSeen": "09-06-2025",
+      "daysSinceSeen": 1,
       "positions": {
         "first": 46,
-        "second": 96,
+        "second": 97,
         "third": 113,
         "fourth": 22,
         "fifth": 3
@@ -15558,17 +15563,22 @@
           "date": "26-01-2021",
           "position": 3,
           "daysAgo": 1594
+        },
+        {
+          "date": "09-06-2025",
+          "position": 2,
+          "daysAgo": 1
         }
       ]
     },
     "13": {
       "number": "13",
-      "lastSeen": "04-06-2025",
-      "daysSinceSeen": 4,
+      "lastSeen": "09-06-2025",
+      "daysSinceSeen": 1,
       "positions": {
         "first": 33,
-        "second": 101,
-        "third": 92,
+        "second": 102,
+        "third": 93,
         "fourth": 32,
         "fifth": 8
       },
@@ -16902,18 +16912,23 @@
           "date": "24-01-2021",
           "position": 3,
           "daysAgo": 1596
+        },
+        {
+          "date": "09-06-2025",
+          "position": 3,
+          "daysAgo": 1
         }
       ]
     },
     "14": {
       "number": "14",
       "lastSeen": "06-06-2025",
-      "daysSinceSeen": 2,
+      "daysSinceSeen": 4,
       "positions": {
         "first": 24,
         "second": 102,
-        "third": 83,
-        "fourth": 49,
+        "third": 85,
+        "fourth": 50,
         "fifth": 4
       },
       "history": [
@@ -18232,7 +18247,7 @@
     "15": {
       "number": "15",
       "lastSeen": "29-05-2025",
-      "daysSinceSeen": 10,
+      "daysSinceSeen": 12,
       "positions": {
         "first": 19,
         "second": 66,
@@ -19476,12 +19491,12 @@
     "16": {
       "number": "16",
       "lastSeen": "03-06-2025",
-      "daysSinceSeen": 5,
+      "daysSinceSeen": 7,
       "positions": {
         "first": 15,
         "second": 71,
         "third": 107,
-        "fourth": 81,
+        "fourth": 82,
         "fifth": 9
       },
       "history": [
@@ -20905,7 +20920,7 @@
     "17": {
       "number": "17",
       "lastSeen": "22-05-2025",
-      "daysSinceSeen": 17,
+      "daysSinceSeen": 19,
       "positions": {
         "first": 6,
         "second": 51,
@@ -22219,10 +22234,10 @@
     "18": {
       "number": "18",
       "lastSeen": "07-06-2025",
-      "daysSinceSeen": 1,
+      "daysSinceSeen": 3,
       "positions": {
         "first": 11,
-        "second": 37,
+        "second": 38,
         "third": 108,
         "fourth": 78,
         "fifth": 18
@@ -23493,13 +23508,13 @@
     "19": {
       "number": "19",
       "lastSeen": "06-06-2025",
-      "daysSinceSeen": 2,
+      "daysSinceSeen": 4,
       "positions": {
         "first": 5,
         "second": 42,
         "third": 108,
-        "fourth": 93,
-        "fifth": 26
+        "fourth": 95,
+        "fifth": 27
       },
       "history": [
         {
@@ -24877,11 +24892,11 @@
     "20": {
       "number": "20",
       "lastSeen": "07-06-2025",
-      "daysSinceSeen": 1,
+      "daysSinceSeen": 3,
       "positions": {
         "first": 2,
         "second": 30,
-        "third": 84,
+        "third": 85,
         "fourth": 125,
         "fifth": 45
       },
@@ -26321,7 +26336,7 @@
     "21": {
       "number": "21",
       "lastSeen": "23-05-2025",
-      "daysSinceSeen": 16,
+      "daysSinceSeen": 18,
       "positions": {
         "first": 4,
         "second": 25,
@@ -27655,7 +27670,7 @@
     "22": {
       "number": "22",
       "lastSeen": "22-05-2025",
-      "daysSinceSeen": 17,
+      "daysSinceSeen": 19,
       "positions": {
         "first": 0,
         "second": 13,
@@ -29029,13 +29044,13 @@
     "23": {
       "number": "23",
       "lastSeen": "08-06-2025",
-      "daysSinceSeen": 0,
+      "daysSinceSeen": 2,
       "positions": {
         "first": 3,
         "second": 11,
         "third": 43,
         "fourth": 104,
-        "fifth": 73
+        "fifth": 75
       },
       "history": [
         {
@@ -30212,13 +30227,13 @@
     },
     "24": {
       "number": "24",
-      "lastSeen": "01-06-2025",
-      "daysSinceSeen": 7,
+      "lastSeen": "09-06-2025",
+      "daysSinceSeen": 1,
       "positions": {
         "first": 0,
         "second": 12,
         "third": 55,
-        "fourth": 108,
+        "fourth": 109,
         "fifth": 107
       },
       "history": [
@@ -31631,13 +31646,18 @@
           "date": "01-02-2021",
           "position": 3,
           "daysAgo": 1588
+        },
+        {
+          "date": "09-06-2025",
+          "position": 4,
+          "daysAgo": 1
         }
       ]
     },
     "25": {
       "number": "25",
       "lastSeen": "18-05-2025",
-      "daysSinceSeen": 21,
+      "daysSinceSeen": 23,
       "positions": {
         "first": 0,
         "second": 9,
@@ -32991,7 +33011,7 @@
     "26": {
       "number": "26",
       "lastSeen": "27-05-2025",
-      "daysSinceSeen": 12,
+      "daysSinceSeen": 14,
       "positions": {
         "first": 0,
         "second": 1,
@@ -34235,7 +34255,7 @@
     "27": {
       "number": "27",
       "lastSeen": "27-05-2025",
-      "daysSinceSeen": 12,
+      "daysSinceSeen": 14,
       "positions": {
         "first": 0,
         "second": 0,
@@ -35414,13 +35434,13 @@
     "28": {
       "number": "28",
       "lastSeen": "08-06-2025",
-      "daysSinceSeen": 0,
+      "daysSinceSeen": 2,
       "positions": {
         "first": 0,
         "second": 0,
         "third": 10,
-        "fourth": 74,
-        "fifth": 163
+        "fourth": 75,
+        "fifth": 164
       },
       "history": [
         {
@@ -36663,13 +36683,13 @@
     "29": {
       "number": "29",
       "lastSeen": "07-06-2025",
-      "daysSinceSeen": 1,
+      "daysSinceSeen": 3,
       "positions": {
         "first": 0,
         "second": 0,
         "third": 1,
         "fourth": 65,
-        "fifth": 182
+        "fifth": 183
       },
       "history": [
         {
@@ -37917,13 +37937,13 @@
     "30": {
       "number": "30",
       "lastSeen": "08-06-2025",
-      "daysSinceSeen": 0,
+      "daysSinceSeen": 2,
       "positions": {
         "first": 0,
         "second": 0,
         "third": 0,
         "fourth": 29,
-        "fifth": 193
+        "fifth": 194
       },
       "history": [
         {
@@ -39040,14 +39060,14 @@
     },
     "31": {
       "number": "31",
-      "lastSeen": "08-06-2025",
-      "daysSinceSeen": 0,
+      "lastSeen": "09-06-2025",
+      "daysSinceSeen": 1,
       "positions": {
         "first": 0,
         "second": 0,
         "third": 0,
         "fourth": 0,
-        "fifth": 278
+        "fifth": 279
       },
       "history": [
         {
@@ -40439,19 +40459,23 @@
           "date": "26-01-2021",
           "position": 5,
           "daysAgo": 1594
+        },
+        {
+          "date": "09-06-2025",
+          "position": 5,
+          "daysAgo": 1
         }
       ]
     }
   },
   "repeatedInLast30Days": {
     "10": {
-      "occurrences": 5,
+      "occurrences": 4,
       "dates": [
         "08-06-2025",
         "03-06-2025",
         "23-05-2025",
-        "21-05-2025",
-        "11-05-2025"
+        "21-05-2025"
       ]
     },
     "23": {
@@ -40494,18 +40518,17 @@
         "08-06-2025",
         "31-05-2025",
         "26-05-2025",
-        "10-05-2025"
+        "09-06-2025"
       ]
     },
     "11": {
-      "occurrences": 6,
+      "occurrences": 5,
       "dates": [
         "07-06-2025",
         "04-06-2025",
         "29-05-2025",
         "28-05-2025",
-        "14-05-2025",
-        "10-05-2025"
+        "14-05-2025"
       ]
     },
     "18": {
@@ -40526,15 +40549,14 @@
       ]
     },
     "29": {
-      "occurrences": 7,
+      "occurrences": 6,
       "dates": [
         "07-06-2025",
         "27-05-2025",
         "25-05-2025",
         "22-05-2025",
         "20-05-2025",
-        "15-05-2025",
-        "11-05-2025"
+        "15-05-2025"
       ]
     },
     "02": {
@@ -40594,55 +40616,54 @@
       ]
     },
     "01": {
-      "occurrences": 7,
+      "occurrences": 6,
       "dates": [
         "05-06-2025",
         "03-06-2025",
         "02-06-2025",
         "31-05-2025",
         "18-05-2025",
-        "16-05-2025",
-        "10-05-2025"
-      ]
-    },
-    "08": {
-      "occurrences": 3,
-      "dates": [
-        "05-06-2025",
-        "24-05-2025",
         "16-05-2025"
       ]
     },
+    "08": {
+      "occurrences": 4,
+      "dates": [
+        "05-06-2025",
+        "24-05-2025",
+        "16-05-2025",
+        "09-06-2025"
+      ]
+    },
     "09": {
-      "occurrences": 6,
+      "occurrences": 5,
       "dates": [
         "05-06-2025",
         "02-06-2025",
         "01-06-2025",
         "28-05-2025",
-        "21-05-2025",
-        "11-05-2025"
+        "21-05-2025"
       ]
     },
     "13": {
-      "occurrences": 5,
+      "occurrences": 6,
       "dates": [
         "04-06-2025",
         "26-05-2025",
         "19-05-2025",
         "18-05-2025",
-        "13-05-2025"
+        "13-05-2025",
+        "09-06-2025"
       ]
     },
     "16": {
-      "occurrences": 6,
+      "occurrences": 5,
       "dates": [
         "03-06-2025",
         "31-05-2025",
         "30-05-2025",
         "15-05-2025",
-        "14-05-2025",
-        "10-05-2025"
+        "14-05-2025"
       ]
     },
     "03": {
@@ -40665,7 +40686,7 @@
       ]
     },
     "24": {
-      "occurrences": 7,
+      "occurrences": 8,
       "dates": [
         "01-06-2025",
         "30-05-2025",
@@ -40673,7 +40694,8 @@
         "26-05-2025",
         "20-05-2025",
         "17-05-2025",
-        "14-05-2025"
+        "14-05-2025",
+        "09-06-2025"
       ]
     },
     "07": {
@@ -40684,12 +40706,13 @@
       ]
     },
     "12": {
-      "occurrences": 4,
+      "occurrences": 5,
       "dates": [
         "30-05-2025",
         "25-05-2025",
         "20-05-2025",
-        "19-05-2025"
+        "19-05-2025",
+        "09-06-2025"
       ]
     },
     "15": {
@@ -40703,13 +40726,12 @@
       ]
     },
     "26": {
-      "occurrences": 5,
+      "occurrences": 4,
       "dates": [
         "27-05-2025",
         "24-05-2025",
         "22-05-2025",
-        "18-05-2025",
-        "11-05-2025"
+        "18-05-2025"
       ]
     },
     "27": {
@@ -40728,157 +40750,148 @@
         "16-05-2025"
       ]
     },
-    "17": {
-      "occurrences": 2,
-      "dates": [
-        "22-05-2025",
-        "10-05-2025"
-      ]
-    },
     "22": {
       "occurrences": 2,
       "dates": [
         "22-05-2025",
         "13-05-2025"
       ]
-    },
-    "25": {
-      "occurrences": 2,
-      "dates": [
-        "18-05-2025",
-        "11-05-2025"
-      ]
     }
   },
   "coldestNumbers": [
     {
       "number": "25",
-      "daysSinceSeen": 21,
+      "daysSinceSeen": 23,
       "lastSeen": "18-05-2025"
     },
     {
       "number": "17",
-      "daysSinceSeen": 17,
+      "daysSinceSeen": 19,
       "lastSeen": "22-05-2025"
     },
     {
       "number": "22",
-      "daysSinceSeen": 17,
+      "daysSinceSeen": 19,
       "lastSeen": "22-05-2025"
     },
     {
       "number": "21",
-      "daysSinceSeen": 16,
+      "daysSinceSeen": 18,
       "lastSeen": "23-05-2025"
     },
     {
       "number": "26",
-      "daysSinceSeen": 12,
+      "daysSinceSeen": 14,
       "lastSeen": "27-05-2025"
     },
     {
       "number": "27",
-      "daysSinceSeen": 12,
+      "daysSinceSeen": 14,
       "lastSeen": "27-05-2025"
     },
     {
       "number": "15",
-      "daysSinceSeen": 10,
+      "daysSinceSeen": 12,
       "lastSeen": "29-05-2025"
     },
     {
-      "number": "12",
-      "daysSinceSeen": 9,
-      "lastSeen": "30-05-2025"
-    },
-    {
       "number": "07",
-      "daysSinceSeen": 8,
+      "daysSinceSeen": 10,
       "lastSeen": "31-05-2025"
     },
     {
       "number": "04",
-      "daysSinceSeen": 7,
+      "daysSinceSeen": 9,
       "lastSeen": "01-06-2025"
+    },
+    {
+      "number": "03",
+      "daysSinceSeen": 8,
+      "lastSeen": "02-06-2025"
     }
   ],
   "hottestNumbers": [
     {
+      "number": "08",
+      "daysSinceSeen": 1,
+      "lastSeen": "09-06-2025"
+    },
+    {
+      "number": "12",
+      "daysSinceSeen": 1,
+      "lastSeen": "09-06-2025"
+    },
+    {
+      "number": "13",
+      "daysSinceSeen": 1,
+      "lastSeen": "09-06-2025"
+    },
+    {
+      "number": "24",
+      "daysSinceSeen": 1,
+      "lastSeen": "09-06-2025"
+    },
+    {
+      "number": "31",
+      "daysSinceSeen": 1,
+      "lastSeen": "09-06-2025"
+    },
+    {
       "number": "10",
-      "daysSinceSeen": 0,
+      "daysSinceSeen": 2,
       "lastSeen": "08-06-2025"
     },
     {
       "number": "23",
-      "daysSinceSeen": 0,
+      "daysSinceSeen": 2,
       "lastSeen": "08-06-2025"
     },
     {
       "number": "28",
-      "daysSinceSeen": 0,
+      "daysSinceSeen": 2,
       "lastSeen": "08-06-2025"
     },
     {
       "number": "30",
-      "daysSinceSeen": 0,
-      "lastSeen": "08-06-2025"
-    },
-    {
-      "number": "31",
-      "daysSinceSeen": 0,
+      "daysSinceSeen": 2,
       "lastSeen": "08-06-2025"
     },
     {
       "number": "11",
-      "daysSinceSeen": 1,
+      "daysSinceSeen": 3,
       "lastSeen": "07-06-2025"
-    },
-    {
-      "number": "18",
-      "daysSinceSeen": 1,
-      "lastSeen": "07-06-2025"
-    },
-    {
-      "number": "20",
-      "daysSinceSeen": 1,
-      "lastSeen": "07-06-2025"
-    },
-    {
-      "number": "29",
-      "daysSinceSeen": 1,
-      "lastSeen": "07-06-2025"
-    },
-    {
-      "number": "02",
-      "daysSinceSeen": 2,
-      "lastSeen": "06-06-2025"
     }
   ],
   "winningNumbers": [
     {
-      "number": "10",
+      "number": "08",
       "position": 1,
-      "date": "08-06-2025"
+      "date": "09-06-2025"
     },
     {
-      "number": "23",
+      "number": "12",
       "position": 2,
-      "date": "08-06-2025"
+      "date": "09-06-2025"
     },
     {
-      "number": "28",
+      "number": "13",
       "position": 3,
-      "date": "08-06-2025"
+      "date": "09-06-2025"
     },
     {
-      "number": "30",
+      "number": "24",
       "position": 4,
-      "date": "08-06-2025"
+      "date": "09-06-2025"
     },
     {
       "number": "31",
       "position": 5,
-      "date": "08-06-2025"
+      "date": "09-06-2025"
     }
-  ]
+  ],
+  "analysisPeriodFormatted": "4 años, 4 meses y 21 días",
+  "analysisDateRange": {
+    "startDate": "21-01-2021",
+    "endDate": "09-06-2025"
+  }
 }

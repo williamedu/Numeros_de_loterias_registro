@@ -621,6 +621,113 @@
                     </div>
                 </div>
                 <!-- Agrega cards aqui -->
+                <!--  La Primera Día- AÑADIDA (faltaba) -->
+                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+                    <!-- Layout vertical organizado -->
+                    <div class="flex flex-col h-full">
+                        
+                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+                        <div class="mb-1">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                                <!-- Fecha se cargará dinámicamente -->
+                            </div>
+                        </div>
+                        
+                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+                        <div class="flex justify-between items-center mb-3">
+                            <!-- Nombre de la lotería - Izquierda -->
+                            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
+                            La Primera Día 
+                            <i class="fas fa-sun text-yellow-500 ml-2 text-lg drop-shadow-sm"></i>
+                            </h3>
+                            
+                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
+                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                                <img src="imaguenes_loterias/laprimera.png" 
+                                     alt="Logo Loto - La Primera Día" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <!-- Fallback si la imagen no carga -->
+                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                                    LSLM
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 3. Números ganadores en 3 columnas - Centro -->
+                        <div class="flex justify-center mb-6">
+                            <div class="flex space-x-2 winning-numbers" data-lottery="primera_dia" data-positions="3">
+                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 4. Botón - Abajo centro con padding -->
+                        <div class="mt-auto pt-4">
+                            <div class="flex justify-center">
+                                <a href="loteria_primera_dia/primera_dia.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                                    Ver Análisis
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Agrega cards aqui -->
+                 <!--  La Primera Noche- AÑADIDA (faltaba) -->
+                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+                    <!-- Layout vertical organizado -->
+                    <div class="flex flex-col h-full">
+                        
+                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+                        <div class="mb-1">
+                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                                <!-- Fecha se cargará dinámicamente -->
+                            </div>
+                        </div>
+                        
+                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+                        <div class="flex justify-between items-center mb-3">
+                            <!-- Nombre de la lotería - Izquierda -->
+                            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
+                            La Primera Noche
+                            <i class="fas fa-moon text-blue-400 ml-2 text-lg drop-shadow-sm"></i>
+                            </h3>
+                            
+                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
+                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
+                                <img src="imaguenes_loterias/laprimera.png" 
+                                     alt="Logo Loto - La Primera Noche" 
+                                     class="w-full h-full object-cover"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <!-- Fallback si la imagen no carga -->
+                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                                    LSLM
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 3. Números ganadores en 3 columnas - Centro -->
+                        <div class="flex justify-center mb-6">
+                            <div class="flex space-x-2 winning-numbers" data-lottery="primera_noche" data-positions="3">
+                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 4. Botón - Abajo centro con padding -->
+                        <div class="mt-auto pt-4">
+                            <div class="flex justify-center">
+                                <a href="loteria_primera_noche/primera_noche.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                                    Ver Análisis
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Agrega cards aqui -->
+                <!-- Agrega cards aqui -->
+                <!-- Agrega cards aqui -->
+                <!-- Agrega cards aqui -->
 
 
             </div> <!-- ✅ Cierre del grid principal -->

@@ -26,7 +26,7 @@ DAYS_TO_GO_BACK = 8  # Días a retroceder entre cada iteración (cada página mu
 WAIT_TIMEOUT = 15  # Tiempo máximo de espera para elementos (segundos)
 PAUSE_AFTER_PAGE_LOAD = 2  # Segundos de pausa después de cargar cada página
 MIN_NUMBER = 0  # Número mínimo (algunas loterías comienzan desde 1 en lugar de 0)
-MAX_NUMBER = 50  # Número máximo
+MAX_NUMBER = 99  # Número máximo
 
 # Definir la ruta absoluta a la carpeta del proyecto
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -180,6 +180,42 @@ def calculate_days_to_update(existing_data):
     
     return days_to_update, today
 
+def remove_existing_date_data(numbers_data, existing_data, target_date):
+    """Remover datos existentes para una fecha específica antes de sobrescribir"""
+    # Remover de winningNumbers
+    if "winningNumbers" in existing_data:
+        existing_data["winningNumbers"] = [
+            win_data for win_data in existing_data["winningNumbers"] 
+            if win_data.get("date") != target_date
+        ]
+    
+    # Remover del historial de cada número y recalcular contadores
+    for num in numbers_data:
+        # Filtrar historial para remover entradas de esta fecha
+        original_history = numbers_data[num]["history"][:]
+        numbers_data[num]["history"] = [
+            entry for entry in numbers_data[num]["history"] 
+            if entry.get("date") != target_date
+        ]
+        
+        # Si se removieron entradas, recalcular contadores de posiciones
+        removed_entries = [
+            entry for entry in original_history 
+            if entry.get("date") == target_date
+        ]
+        
+        if removed_entries:
+            print(f"    Removiendo {len(removed_entries)} entrada(s) existente(s) del número {num} para la fecha {target_date}")
+            
+            # Restar los contadores de posiciones
+            position_names = ["first", "second", "third", "fourth", "fifth", "sixth"]
+            for entry in removed_entries:
+                pos = entry.get("position", 0)
+                if 1 <= pos <= len(position_names):
+                    position_key = position_names[pos - 1]
+                    if numbers_data[num]["positions"][position_key] > 0:
+                        numbers_data[num]["positions"][position_key] -= 1
+
 def update_lottery_data(existing_data, days_to_update, today):
     """Actualizar los datos de la lotería mediante web scraping"""
     driver, wait = configure_webdriver()
@@ -320,8 +356,8 @@ def update_lottery_data(existing_data, days_to_update, today):
                             # Asegurarse de que los números tienen 2 dígitos
                             drawn_numbers = [num.zfill(2) for num in drawn_numbers]
                             
-                            # Comprobar si estos resultados ya están en nuestros datos existentes
-                            # Si tenemos esta fecha exacta en el historial de números ganadores, podemos saltarla
+                            # NUEVA LÓGICA: Comprobar si estos resultados ya están en nuestros datos existentes
+                            # Si existe la fecha, remover los datos existentes antes de sobrescribir
                             existing_date = False
                             if "winningNumbers" in existing_data:
                                 for win_data in existing_data["winningNumbers"]:
@@ -330,8 +366,9 @@ def update_lottery_data(existing_data, days_to_update, today):
                                         break
                             
                             if existing_date:
-                                print(f"    La fecha {complete_date} ya existe en los datos, saltando...")
-                                continue
+                                print(f"    La fecha {complete_date} ya existe en los datos, sobrescribiendo...")
+                                # Remover datos existentes para esta fecha
+                                remove_existing_date_data(numbers_data, existing_data, complete_date)
                             
                             # Guardar los números ganadores más recientes
                             if latest_winning_date is None or block_date > latest_winning_date:
@@ -369,23 +406,16 @@ def update_lottery_data(existing_data, days_to_update, today):
                                     
                                     numbers_data[num]["positions"][position_key] += 1
                                     
-                                    # Añadir al historial de apariciones si no existe ya
+                                    # Añadir al historial de apariciones
                                     history_entry = {
                                         "date": complete_date,
                                         "position": pos,
                                         "daysAgo": days_diff
                                     }
                                     
-                                    # Comprobar si esta entrada ya existe en el historial
-                                    entry_exists = False
-                                    for entry in numbers_data[num]["history"]:
-                                        if entry.get("date") == complete_date and entry.get("position") == pos:
-                                            entry_exists = True
-                                            break
-                                    
-                                    if not entry_exists:
-                                        numbers_data[num]["history"].append(history_entry)
-                                        total_numbers_found += 1
+                                    # Agregar la entrada (ya no verificamos si existe porque ya fue removida)
+                                    numbers_data[num]["history"].append(history_entry)
+                                    total_numbers_found += 1
                                     
                                     # Registrar ocurrencia para conteo de últimos 30 días
                                     if block_date >= thirty_days_ago:

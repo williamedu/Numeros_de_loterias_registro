@@ -15,10 +15,10 @@ import random
 import sys
 
 # Configuración de la lotería
-LOTTERY_NAME = "Quiniela_Pale"  # Nombre para el archivo (sin espacios ni caracteres especiales)
-LOTTERY_URL_PARAM = "leidsa/quiniela-pale"  # Parámetro para la URL en loteriasdominicanas.com
-LOTTERY_DISPLAY_NAME = "Quiniela Pale"  # Nombre para mostrar en la salida (puede tener espacios)
-NUMBER_OF_POSITIONS = 3  # Número de posiciones (ej: 3 para Gana Más)
+LOTTERY_NAME = "super_pale"  # Nombre para el archivo (sin espacios ni caracteres especiales)
+LOTTERY_URL_PARAM = "/loterias/leidsa/super-pale"  # Parámetro para la URL en loteriasdominicanas.com
+LOTTERY_DISPLAY_NAME = "Super Palé"  # Nombre para mostrar en la salida (puede tener espacios)
+NUMBER_OF_POSITIONS = 2  # Número de posiciones (ej: 3 para Gana Más)
 
 # Configuración del scraping
 MAX_ITERATIONS = 10  # Número máximo de iteraciones a realizar si no se encuentran todas las fechas
@@ -26,7 +26,7 @@ DAYS_TO_GO_BACK = 8  # Días a retroceder entre cada iteración (cada página mu
 WAIT_TIMEOUT = 15  # Tiempo máximo de espera para elementos (segundos)
 PAUSE_AFTER_PAGE_LOAD = 2  # Segundos de pausa después de cargar cada página
 MIN_NUMBER = 0  # Número mínimo (algunas loterías comienzan desde 1 en lugar de 0)
-MAX_NUMBER = 50  # Número máximo
+MAX_NUMBER = 99  # Número máximo
 
 # Definir la ruta absoluta a la carpeta del proyecto
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -180,6 +180,43 @@ def calculate_days_to_update(existing_data):
     
     return days_to_update, today
 
+
+def remove_existing_date_data(numbers_data, existing_data, target_date):
+    """Remover datos existentes para una fecha específica antes de sobrescribir"""
+    # Remover de winningNumbers
+    if "winningNumbers" in existing_data:
+        existing_data["winningNumbers"] = [
+            win_data for win_data in existing_data["winningNumbers"] 
+            if win_data.get("date") != target_date
+        ]
+    
+    # Remover del historial de cada número y recalcular contadores
+    for num in numbers_data:
+        # Filtrar historial para remover entradas de esta fecha
+        original_history = numbers_data[num]["history"][:]
+        numbers_data[num]["history"] = [
+            entry for entry in numbers_data[num]["history"] 
+            if entry.get("date") != target_date
+        ]
+        
+        # Si se removieron entradas, recalcular contadores de posiciones
+        removed_entries = [
+            entry for entry in original_history 
+            if entry.get("date") == target_date
+        ]
+        
+        if removed_entries:
+            print(f"    Removiendo {len(removed_entries)} entrada(s) existente(s) del número {num} para la fecha {target_date}")
+            
+            # Restar los contadores de posiciones
+            position_names = ["first", "second", "third", "fourth", "fifth", "sixth"]
+            for entry in removed_entries:
+                pos = entry.get("position", 0)
+                if 1 <= pos <= len(position_names):
+                    position_key = position_names[pos - 1]
+                    if numbers_data[num]["positions"][position_key] > 0:
+                        numbers_data[num]["positions"][position_key] -= 1
+
 def update_lottery_data(existing_data, days_to_update, today):
     """Actualizar los datos de la lotería mediante web scraping"""
     driver, wait = configure_webdriver()
@@ -219,7 +256,7 @@ def update_lottery_data(existing_data, days_to_update, today):
             url_date = current_date.strftime("%d-%m-%Y")
             url_year = current_date.year
             
-            url = f"https://loteriasdominicanas.com/{LOTTERY_URL_PARAM}?date={url_date}"
+            url = f"https://www.conectate.com.do{LOTTERY_URL_PARAM}?date={url_date}"
             
             print(f"\nIteración {iteration}/{required_iterations} - Cargando fecha: {url_date}")
             
@@ -231,7 +268,7 @@ def update_lottery_data(existing_data, days_to_update, today):
                     # Pausa después de cargar la página
                     time.sleep(PAUSE_AFTER_PAGE_LOAD)
                     # Esperar a que aparezcan fechas o bloques
-                    element_present = EC.presence_of_element_located((By.CSS_SELECTOR, ".session-date.px-2, .game-scores.p-2.ball-mode"))
+                    element_present = EC.presence_of_element_located((By.CSS_SELECTOR, ".session-date.session-badge, .game-scores.ball-mode"))
                     wait.until(element_present)
                     break
                 except Exception as e:
@@ -245,12 +282,12 @@ def update_lottery_data(existing_data, days_to_update, today):
                         raise
             
             # Encontrar todas las fechas
-            date_elements = driver.find_elements(By.CSS_SELECTOR, ".session-date.px-2")
+            date_elements = driver.find_elements(By.CSS_SELECTOR, ".session-date.session-badge")
             date_texts = [elem.text.strip() for elem in date_elements]
             print(f"Encontradas {len(date_texts)} fechas sin año: {date_texts}")
             
             # Encontrar todos los bloques de juego
-            game_blocks = driver.find_elements(By.CSS_SELECTOR, ".game-scores.p-2.ball-mode")
+            game_blocks = driver.find_elements(By.CSS_SELECTOR, ".game-scores.ball-mode")
             print(f"Encontrados {len(game_blocks)} bloques de juego")
             
             # Si no hay suficientes elementos, continuar
@@ -331,6 +368,8 @@ def update_lottery_data(existing_data, days_to_update, today):
                             
                             if existing_date:
                                 print(f"    La fecha {complete_date} ya existe en los datos, saltando...")
+                                # Remover datos existentes para esta fecha
+                                remove_existing_date_data(numbers_data, existing_data, complete_date)
                                 continue
                             
                             # Guardar los números ganadores más recientes
@@ -377,15 +416,9 @@ def update_lottery_data(existing_data, days_to_update, today):
                                     }
                                     
                                     # Comprobar si esta entrada ya existe en el historial
-                                    entry_exists = False
-                                    for entry in numbers_data[num]["history"]:
-                                        if entry.get("date") == complete_date and entry.get("position") == pos:
-                                            entry_exists = True
-                                            break
-                                    
-                                    if not entry_exists:
-                                        numbers_data[num]["history"].append(history_entry)
-                                        total_numbers_found += 1
+                                    # Agregar la entrada (ya no verificamos si existe porque ya fue removida)
+                                    numbers_data[num]["history"].append(history_entry)
+                                    total_numbers_found += 1
                                     
                                     # Registrar ocurrencia para conteo de últimos 30 días
                                     if block_date >= thirty_days_ago:
