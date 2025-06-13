@@ -26,9 +26,9 @@
         }
     </script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 font-sans transition-colors duration-300">
+<body class="bg-gray-50">
     <!-- Header -->
-    <header class="bg-primary dark:bg-gray-800 text-white shadow-lg">
+    <header class="bg-primary">
         <div class="container mx-auto px-4 py-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="flex items-center mb-4 md:mb-0">
@@ -42,9 +42,7 @@
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <button id="themeToggle" class="bg-secondary hover:bg-yellow-600 text-white p-2 rounded-full transition">
-                        <i class="fas fa-moon"></i>
-                    </button>
+                    
                     
                     <div class="relative">
                         <input type="text" placeholder="Buscar lotería..." class="bg-white bg-opacity-20 placeholder-white text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-secondary">
@@ -79,755 +77,707 @@
             <!-- Lottery Grid - Configurado para 3 cards por fila -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">   
                 
-                <!-- Lotería Pega 3 Más -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-2">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-4">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Pega 3 Más</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/pega3mas.png" 
-                                     alt="Logo Pega 3 Más" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
-                                    P3M
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="Pega_3_Mas" data-positions="3">
-                                <!-- Números ganadores serán cargados dinámicamente -->
-                                <span class="loading-spinner"></span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_Pega_3_mas/pega_3_mas.html" class="bg-accent hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+        <!-- 1. Loto - Super Loto Más - VERSIÓN ORIGINAL -->
+<div class="lottery-card bg-slate-50 rounded-lg shadow-md p-4 border border-slate-200 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800">Loto - Super Loto Más</h3>
+            
+            <!-- Imagen de la lotería - Derecha (más pequeña) -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                <img src="imaguenes_loterias/LotoSuperLotoMas.png" 
+                     alt="Logo Loto - Super Loto Más" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    LSLM
                 </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="Loto_Super_Loto_Mas" data-positions="8">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_Loto_Super_Loto_Mas/Loto_Super_Loto_Mas.html" class="bg-primary hover:bg-green-700 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>        
 
-                <!-- Lotería Quiniela Pale -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-2">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-4">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Quiniela Pale</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/quinielaLeisa.png" 
-                                     alt="Logo Quiniela Pale" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
-                                    QP
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="Quiniela_Pale" data-positions="3">
-                                <!-- Números ganadores serán cargados dinámicamente -->
-                                <span class="loading-spinner"></span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_Quiniela_leisa/quiniela_pale.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!-- 2. Loto Pool -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Loto Pool</h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/lotoPool.png" 
+                     alt="Logo Loto Pool" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    LP
                 </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="loto_Pool" data-positions="5">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_loto_pool/loto_pool.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <!-- Lotería Gana Más -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-2">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-4">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Gana Más</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/ganamas.png" 
-                                     alt="Logo Gana Más" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
-                                    GM
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="gana_mas" data-positions="3">
-                                <!-- Números ganadores serán cargados dinámicamente -->
-                                <span class="loading-spinner"></span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_gana_mas/gana_mas.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!-- 3. Super Kino TV -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Super Kino TV</h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/kinotv.png" 
+                     alt="Logo Super Kino TV" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    SK
                 </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores en grid - Centro -->
+        <div class="flex justify-center mb-4">
+            <div class="winning-numbers-grid" data-lottery="super_kino" data-positions="20">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-2">
+            <div class="flex justify-center">
+                <a href="loteria_super_kino_tv/super_kino.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-6 py-1.5 rounded-lg transition duration-300 font-semibold text-sm">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <!-- Lotería Nacional -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-2">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-4">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Lotería Nacional</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/loteria_nacional.png" 
-                                     alt="Logo Lotería Nacional" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
-                                    LN
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="nacional" data-positions="3">
-                                <!-- Números ganadores serán cargados dinámicamente -->
-                                <span class="loading-spinner"></span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_nacional/nacional.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!-- 4. Pega 3 Más -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-2">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-4">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Pega 3 Más</h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/pega3mas.png" 
+                     alt="Logo Pega 3 Más" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
+                    P3M
                 </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="Pega_3_Mas" data-positions="3">
+                <!-- Números ganadores serán cargados dinámicamente -->
+                <span class="loading-spinner"></span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_Pega_3_mas/pega_3_mas.html" class="bg-accent hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <!-- Super Kino TV Card - Versión Compacta -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Super Kino TV</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/kinotv.png" 
-                                     alt="Logo Super Kino TV" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    SK
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-4">
-                            <div class="winning-numbers-grid" data-lottery="super_kino" data-positions="20">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding reducido -->
-                        <div class="mt-auto pt-2">
-                            <div class="flex justify-center">
-                                <a href="loteria_super_kino_tv/super_kino.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-6 py-1.5 rounded-lg transition duration-300 font-semibold text-sm">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!-- 5. Quiniela Pale -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-2">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-4">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Quiniela Pale</h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/quinielaLeisa.png" 
+                     alt="Logo Quiniela Pale" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
+                    QP
                 </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="Quiniela_Pale" data-positions="3">
+                <!-- Números ganadores serán cargados dinámicamente -->
+                <span class="loading-spinner"></span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_Quiniela_leisa/quiniela_pale.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <!-- Juega + Pega Card - Versión Compacta - CORREGIDA -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Juega Más Pega Más</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-22 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/loteria-nacional_juega-mas-pega-mas.png" 
-                                     alt="Logo juega mas pega mas" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    JMPG
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="juega_mas_pega" data-positions="5">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_juega_+_pega/juega_+_pega.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!-- 6. Super Palé -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Super Palé</h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/super_pale.png" 
+                     alt="Logo Super Palé" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    SP
                 </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="super_pale" data-positions="2">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_Super_Palé/super_pale.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <!-- Loto Pool Card - AÑADIDA (faltaba) -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Loto Pool</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/lotoPool.png" 
-                                     alt="Logo Loto Pool" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    LP
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="loto_Pool" data-positions="5">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_loto_pool/loto_pool.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!-- 7. Lotería Nacional -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-2">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-4">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Lotería Nacional</h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/loteria_nacional.png" 
+                     alt="Logo Lotería Nacional" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
+                    LN
                 </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="nacional" data-positions="3">
+                <!-- Números ganadores serán cargados dinámicamente -->
+                <span class="loading-spinner"></span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_nacional/nacional.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <!-- Agrega cards aqui -->
-                 <!-- Loto - Super Loto Más- AÑADIDA (faltaba) -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Loto - Super Loto Más</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/LotoSuperLotoMas.png" 
-                                     alt="Logo Loto - Super Loto Más" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    LSLM
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="Loto_Super_Loto_Mas" data-positions="8">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_Loto_Super_Loto_Mas/Loto_Super_Loto_Mas.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!-- 8. La Suerte 12:30 (Día) -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
+                La Suerte 12:30
+                <i class="fas fa-sun text-yellow-500 ml-2 text-lg drop-shadow-sm"></i>
+            </h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/suerte.png" 
+                     alt="Logo La Suerte 12:30" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    LS
                 </div>
-                <!-- Agrega cards aqui -->
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="suerte_dia" data-positions="3">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_Suerte_dia/Suerte_dia.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <!--  Super Palé- AÑADIDA (faltaba) -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Super Palé</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/super_pale.png" 
-                                     alt="Logo Loto - Super Loto Más" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    LSLM
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="super_pale" data-positions="2">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_Super_Palé/super_pale.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!-- 9. La Suerte 18:00 (Noche) -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
+                La Suerte 18:00
+                <i class="fas fa-moon text-blue-400 ml-2 text-lg drop-shadow-sm"></i>
+            </h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/suerte.png" 
+                     alt="Logo La Suerte 18:00" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    LS
                 </div>
-                <!-- Agrega cards aqui -->
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="suerte_noche" data-positions="3">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_Suerte_noche/Suerte_noche.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <!--  Quiniela Loteka- AÑADIDA (faltaba) -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Quiniela Loteka</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/quiniela_loteka.png" 
-                                     alt="Logo Loto - Quiniela Loteka" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    LSLM
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="quiniela_loteka" data-positions="3">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_Quiniela_Loteka/Quiniela_Loteka.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+<!-- 10. Quiniela Loteka -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Quiniela Loteka</h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/quiniela_loteka.png" 
+                     alt="Logo Quiniela Loteka" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    QL
                 </div>
-                <!-- Agrega cards aqui -->
-                 <!--  Quiniela Real- AÑADIDA (faltaba) -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Quiniela Real</h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/loteriaReal.png" 
-                                     alt="Logo Loto - Quiniela Real" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    LSLM
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="Quiniela_Real" data-positions="3">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_Quiniela_Real/Quiniela_Real.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="quiniela_loteka" data-positions="3">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_Quiniela_Loteka/Quiniela_Loteka.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 11. Quiniela Real -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Quiniela Real</h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/loteriaReal.png" 
+                     alt="Logo Quiniela Real" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    QR
                 </div>
-                <!-- Agrega cards aqui -->
-                <!--  La Primera Día- AÑADIDA (faltaba) -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
-                            La Primera Día 
-                            <i class="fas fa-sun text-yellow-500 ml-2 text-lg drop-shadow-sm"></i>
-                            </h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/laprimera.png" 
-                                     alt="Logo Loto - La Primera Día" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    LSLM
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="primera_dia" data-positions="3">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_primera_dia/primera_dia.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="Quiniela_Real" data-positions="3">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_Quiniela_Real/Quiniela_Real.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 12. La Primera Día (12:00) -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
+                La Primera Día
+                <i class="fas fa-sun text-yellow-500 ml-2 text-lg drop-shadow-sm"></i>
+            </h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/laprimera.png" 
+                     alt="Logo La Primera Día" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    LP
                 </div>
-                <!-- Agrega cards aqui -->
-                 <!--  La Primera Noche- AÑADIDA (faltaba) -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
-                            La Primera Noche
-                            <i class="fas fa-moon text-blue-400 ml-2 text-lg drop-shadow-sm"></i>
-                            </h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/laprimera.png" 
-                                     alt="Logo Loto - La Primera Noche" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    LSLM
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="primera_noche" data-positions="3">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_primera_noche/primera_noche.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="primera_dia" data-positions="3">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_primera_dia/primera_dia.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 13. La Primera Noche (18:00) -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-4 border border-slate-200 dark:border-gray-700 relative w-full">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-1">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-3">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
+                La Primera Noche
+                <i class="fas fa-moon text-blue-400 ml-2 text-lg drop-shadow-sm"></i>
+            </h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/laprimera.png" 
+                     alt="Logo La Primera Noche" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
+                    LP
                 </div>
-                <!-- Agrega cards aqui -->
-                 <!--  La Suerte 12:30- AÑADIDA (faltaba) -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
-                           La Suerte 12:30
-                            <i class="fas fa-sun text-yellow-500 ml-2 text-lg drop-shadow-sm"></i>
-                            </h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/suerte.png" 
-                                     alt="Logo Loto - La Suerte 12:30" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    LSLM
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="suerte_dia" data-positions="3">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_Suerte_dia/Suerte_dia.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="primera_noche" data-positions="3">
+                <!-- Los números ganadores serán cargados dinámicamente aquí -->
+                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_primera_noche/primera_noche.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjetas adicionales que estaban en el código original pero no en tu lista -->
+
+<!-- Gana Más -->
+<div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg  p-6 border border-slate-200 dark:border-gray-700 relative w-full min-h-40">
+    <!-- Layout vertical organizado -->
+    <div class="flex flex-col h-full">
+        
+        <!-- 1. Fecha del sorteo - Arriba izquierda -->
+        <div class="mb-2">
+            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
+                <!-- Fecha se cargará dinámicamente -->
+            </div>
+        </div>
+        
+        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
+        <div class="flex justify-between items-center mb-4">
+            <!-- Nombre de la lotería - Izquierda -->
+            <h3 class="text-xl font-bold text-gray-800 dark:text-white">Gana Más</h3>
+            
+            <!-- Imagen de la lotería - Derecha -->
+            <div class="w-60 h-16 rounded-lg overflow-hidden  flex-shrink-0">
+                <img src="imaguenes_loterias/ganamas.png" 
+                     alt="Logo Gana Más" 
+                     class="w-full h-full object-cover"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- Fallback si la imagen no carga -->
+                <div class="w-full h-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-sm font-bold" style="display: none;">
+                    GM
                 </div>
-                <!-- Agrega cards aqui -->
-                 <!--  La Suerte 12:30- AÑADIDA (faltaba) -->
-                <div class="lottery-card bg-slate-50 dark:bg-gray-800 rounded-lg shadow-md p-4 border border-slate-200 dark:border-gray-700 relative w-full">
-                    <!-- Layout vertical organizado -->
-                    <div class="flex flex-col h-full">
-                        
-                        <!-- 1. Fecha del sorteo - Arriba izquierda -->
-                        <div class="mb-1">
-                            <div class="text-xs text-gray-500 dark:text-gray-400 text-left sorteo-date">
-                                <!-- Fecha se cargará dinámicamente -->
-                            </div>
-                        </div>
-                        
-                        <!-- 2. Fila: Nombre de lotería (izquierda) + Imagen (derecha) -->
-                        <div class="flex justify-between items-center mb-3">
-                            <!-- Nombre de la lotería - Izquierda -->
-                            <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
-                           La Suerte 18:00
-                            <i class="fas fa-moon text-blue-400 ml-2 text-lg drop-shadow-sm"></i>
-                            </h3>
-                            
-                            <!-- Imagen de la lotería - Derecha (más pequeña) -->
-                            <div class="w-60 h-16 rounded-lg overflow-hidden shadow-md flex-shrink-0">
-                                <img src="imaguenes_loterias/suerte.png" 
-                                     alt="Logo Loto - La Suerte 12:30" 
-                                     class="w-full h-full object-cover"
-                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                                <!-- Fallback si la imagen no carga -->
-                                <div class="w-full h-full bg-gradient-to-br from-teal-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold" style="display: none;">
-                                    LSLM
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 3. Números ganadores en 3 columnas - Centro -->
-                        <div class="flex justify-center mb-6">
-                            <div class="flex space-x-2 winning-numbers" data-lottery="suerte_noche" data-positions="3">
-                                <!-- Los números ganadores serán cargados dinámicamente aquí -->
-                                <span class="loading-spinner flex justify-center text-xs">Cargando...</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 4. Botón - Abajo centro con padding -->
-                        <div class="mt-auto pt-4">
-                            <div class="flex justify-center">
-                                <a href="loteria_Suerte_noche/Suerte_noche.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
-                                    Ver Análisis
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+        
+        <!-- 3. Números ganadores - Centro -->
+        <div class="flex justify-center mb-6">
+            <div class="flex space-x-2 winning-numbers" data-lottery="gana_mas" data-positions="3">
+                <!-- Números ganadores serán cargados dinámicamente -->
+                <span class="loading-spinner"></span>
+            </div>
+        </div>
+        
+        <!-- 4. Botón - Abajo centro con padding -->
+        <div class="mt-auto pt-4">
+            <div class="flex justify-center">
+                <a href="loteria_gana_mas/gana_mas.html" class="bg-primary hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-8 py-2 rounded-lg transition duration-300 font-semibold text-base">
+                    Ver Análisis
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
                 <!-- Agrega cards aqui -->
                 <!-- Agrega cards aqui -->
 
@@ -839,7 +789,7 @@
 </main> <!-- ✅ Cierre del main -->
 
     <!-- Footer -->
-    <footer class="bg-dark dark:bg-gray-950 text-white py-12 mt-16">
+    <footer class="bg-dark text-white py-12 mt-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
@@ -894,38 +844,9 @@
     <script>
         // Funcionalidad del tema oscuro
         document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('themeToggle');
-            const html = document.documentElement;
-            const icon = themeToggle.querySelector('i');
-            
-            // Verificar si hay una preferencia guardada
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                html.classList.toggle('dark', savedTheme === 'dark');
-                updateIcon();
-            } else {
-                // Usar preferencia del sistema
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                html.classList.toggle('dark', prefersDark);
-                updateIcon();
-            }
-            
-            // Toggle del tema
-            themeToggle.addEventListener('click', function() {
-                html.classList.toggle('dark');
-                const isDark = html.classList.contains('dark');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                updateIcon();
-            });
-            
-            function updateIcon() {
-                const isDark = html.classList.contains('dark');
-                icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-            }
-            
-            // Cargar datos de loterías
-            loadLotteryData();
-            loadSuperKinoNumbers();
+             // Cargar datos de loterías
+    loadLotteryData();
+    loadSuperKinoNumbers();
         });
         
         // Función para loterías normales (pocas posiciones)
